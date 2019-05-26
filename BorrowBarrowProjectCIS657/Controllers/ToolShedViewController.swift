@@ -10,6 +10,8 @@ import UIKit
 
 class ToolShedViewController: UIViewController {
 
+    @IBOutlet weak var addItem: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

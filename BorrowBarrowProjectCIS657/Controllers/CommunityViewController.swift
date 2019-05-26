@@ -10,9 +10,13 @@ import UIKit
 
 class CommunityViewController: UIViewController {
 
+    @IBOutlet weak var goToToolShed: UIBarButtonItem!
+    @IBOutlet weak var addFriend: UIBarButtonItem!
+    @IBOutlet weak var community: UIToolbar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ 
         // Do any additional setup after loading the view.
     }
     

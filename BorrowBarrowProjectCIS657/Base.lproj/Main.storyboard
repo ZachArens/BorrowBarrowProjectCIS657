@@ -184,6 +184,9 @@
                         <viewLayoutGuide key="safeArea" id="P7B-cO-CiF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tool Shed" id="UXc-5R-IAF"/>
+                    <connections>
+                        <outlet property="addItem" destination="1EZ-xE-xXF" id="WsZ-VO-GUi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVX-yc-l1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -278,7 +281,9 @@
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Item" id="Kp2-gV-ZJJ"/>
+                                    <barButtonItem title="Tool Shed" id="jca-pp-wsb"/>
+                                    <barButtonItem title="Add Friend" id="Kp2-gV-ZJJ"/>
+                                    <barButtonItem title="Community" id="MSC-FA-pVw"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -286,6 +291,11 @@
                         <viewLayoutGuide key="safeArea" id="uOe-Bj-aHO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Community" id="a4z-gz-6x4"/>
+                    <connections>
+                        <outlet property="addFriend" destination="Kp2-gV-ZJJ" id="ba4-Un-5oq"/>
+                        <outlet property="community" destination="E6X-WA-Rz3" id="0sf-pt-mto"/>
+                        <outlet property="goToToolShed" destination="jca-pp-wsb" id="Uot-R3-haq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1FZ-oG-8lt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,6 +380,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NFX-ej-XDx"/>
                     </view>
+                    <connections>
+                        <segue destination="NjF-ke-IJ9" kind="show" id="2Ey-uv-l03"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJU-W2-hhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -475,10 +488,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NmD-wC-eKT"/>
                     </view>
+                    <connections>
+                        <segue destination="W0A-Qy-KAX" kind="show" id="tdV-JG-ilA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIt-e2-NUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1751" y="104"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tdV-JG-ilA"/>
+        <segue reference="2Ey-uv-l03"/>
+    </inferredMetricsTieBreakers>
 </document>
