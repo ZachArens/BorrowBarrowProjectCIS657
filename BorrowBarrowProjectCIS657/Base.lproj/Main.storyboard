@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fEa-2g-deW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -79,22 +79,6 @@
             </objects>
             <point key="canvasLocation" x="132" y="773"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1bl-p3-aHO">
-            <objects>
-                <navigationController id="fEa-2g-deW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wxY-YJ-GS7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="NjF-ke-IJ9" kind="relationship" relationship="rootViewController" id="PW3-R6-kah"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LLq-AV-bWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="132" y="-546"/>
-        </scene>
         <!--Tool Shed-->
         <scene sceneID="2gF-Xf-2Yh">
             <objects>
@@ -104,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0FR-2e-LMN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -172,52 +156,46 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1EZ-xE-xXF">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Item" id="1FK-1h-tfs"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="P7B-cO-CiF"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="9bQ-iT-wRd"/>
                     <navigationItem key="navigationItem" title="Tool Shed" id="UXc-5R-IAF"/>
-                    <connections>
-                        <outlet property="addItem" destination="1EZ-xE-xXF" id="WsZ-VO-GUi"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVX-yc-l1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="-546"/>
+            <point key="canvasLocation" x="950.72463768115949" y="-546.42857142857144"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="a9r-pX-Ucd">
+        <!--Tab Bar Controller-->
+        <scene sceneID="U7z-fn-Ycd">
             <objects>
-                <navigationController id="dot-yu-98E" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gC-gP-Wpw">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                <tabBarController id="fCp-Cc-jdH" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FlD-XB-S2r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="W0A-Qy-KAX" kind="relationship" relationship="rootViewController" id="j35-A4-nTD"/>
+                        <segue destination="NjF-ke-IJ9" kind="relationship" relationship="viewControllers" id="b8o-Dd-OWl"/>
+                        <segue destination="W0A-Qy-KAX" kind="relationship" relationship="viewControllers" id="xH0-qu-Io0"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Hm-cT-CvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cn-Q8-Zht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="98"/>
+            <point key="canvasLocation" x="99" y="-253"/>
         </scene>
         <!--Community-->
         <scene sceneID="qBV-GI-nr1">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1FZ-oG-8lt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="W0A-Qy-KAX" customClass="CommunityViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W21-sy-zZc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y2y-Qm-i0W">
-                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -277,27 +255,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6X-WA-Rz3">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Tool Shed" id="jca-pp-wsb"/>
-                                    <barButtonItem title="Add Friend" id="Kp2-gV-ZJJ"/>
-                                    <barButtonItem title="Community" id="MSC-FA-pVw"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uOe-Bj-aHO"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="v5S-Qs-sKi"/>
                     <navigationItem key="navigationItem" title="Community" id="a4z-gz-6x4"/>
-                    <connections>
-                        <outlet property="addFriend" destination="Kp2-gV-ZJJ" id="ba4-Un-5oq"/>
-                        <outlet property="community" destination="E6X-WA-Rz3" id="0sf-pt-mto"/>
-                        <outlet property="goToToolShed" destination="jca-pp-wsb" id="Uot-R3-haq"/>
-                    </connections>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1FZ-oG-8lt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="950.72463768115949" y="97.767857142857139"/>
         </scene>
@@ -498,7 +463,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tdV-JG-ilA"/>
-        <segue reference="2Ey-uv-l03"/>
+        <segue reference="xH0-qu-Io0"/>
+        <segue reference="b8o-Dd-OWl"/>
     </inferredMetricsTieBreakers>
 </document>
