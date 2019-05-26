@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  BorrowBarrowProjectCIS657
 //
 //  Created by Zachary Arens on 5/23/19.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.title = "Sign In"ß
+        self.title = "Sign In"
         // Do any additional setup after loading the view.
     }
 
