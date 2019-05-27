@@ -14,6 +14,8 @@
 		1A4A84F72297732900CCC4A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4A84F52297732900CCC4A3 /* LaunchScreen.storyboard */; };
 		1A4A85022297732900CCC4A3 /* BorrowBarrowProjectCIS657Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A85012297732900CCC4A3 /* BorrowBarrowProjectCIS657Tests.swift */; };
 		1A4A850D2297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A850C2297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.swift */; };
+		1A9A8CB3229C593A0010D824 /* ToolShedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */; };
+		1A9A8CB5229C90FC0010D824 /* TSItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */; };
 		1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */; };
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 		1A4A85082297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorrowBarrowProjectCIS657UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4A850C2297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowBarrowProjectCIS657UITests.swift; sourceTree = "<group>"; };
 		1A4A850E2297732900CCC4A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedItem.swift; sourceTree = "<group>"; };
+		1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSItemModel.swift; sourceTree = "<group>"; };
 		1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedViewController.swift; sourceTree = "<group>"; };
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +111,8 @@
 				1A4A84F32297732900CCC4A3 /* Assets.xcassets */,
 				1A4A84F52297732900CCC4A3 /* LaunchScreen.storyboard */,
 				1A4A84F82297732900CCC4A3 /* Info.plist */,
+				1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */,
+				1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */,
 			);
 			path = BorrowBarrowProjectCIS657;
 			sourceTree = "<group>";
@@ -273,7 +279,9 @@
 				1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */,
 				1A4A84EF2297732800CCC4A3 /* LoginViewController.swift in Sources */,
 				1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */,
+				1A9A8CB3229C593A0010D824 /* ToolShedItem.swift in Sources */,
 				1A4A84ED2297732800CCC4A3 /* AppDelegate.swift in Sources */,
+				1A9A8CB5229C90FC0010D824 /* TSItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
