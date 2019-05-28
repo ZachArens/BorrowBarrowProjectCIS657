@@ -20,6 +20,7 @@
 		1A9A8CBB229DDF350010D824 /* ComItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A8CBA229DDF350010D824 /* ComItemModel.swift */; };
 		1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */; };
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
+		49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		1A9A8CBA229DDF350010D824 /* ComItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComItemModel.swift; sourceTree = "<group>"; };
 		1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedViewController.swift; sourceTree = "<group>"; };
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFriend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				1A4A84F52297732900CCC4A3 /* LaunchScreen.storyboard */,
 				1A4A84F82297732900CCC4A3 /* Info.plist */,
 				1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */,
+				49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */,
 				1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */,
 				1A9A8CBA229DDF350010D824 /* ComItemModel.swift */,
 			);
@@ -284,6 +287,7 @@
 			files = (
 				1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */,
 				1A4A84EF2297732800CCC4A3 /* LoginViewController.swift in Sources */,
+				49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */,
 				1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */,
 				1A9A8CB9229CBD680010D824 /* TSItemTableViewCell.swift in Sources */,
 				1A9A8CBB229DDF350010D824 /* ComItemModel.swift in Sources */,

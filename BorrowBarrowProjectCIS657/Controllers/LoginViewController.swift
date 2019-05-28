@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, toolShedDelegate {
+class LoginViewController: UIViewController {
     func usernamePassing(passedUsername: String?) {
         
     }
@@ -25,10 +25,10 @@ class LoginViewController: UIViewController, toolShedDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        username = "Andy";
+        //username = "Andy";
         if let dest = segue.destination as? UINavigationController, let toolshed = dest.topViewController as? ToolShedViewController
         {
-            toolshed.username = self.username;
+            //toolshed.username = self.username;
         }
         
     }
