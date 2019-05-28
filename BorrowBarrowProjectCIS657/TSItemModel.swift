@@ -15,12 +15,12 @@ class TSItemModel {
         createTSItems()
     }
     
-    func createTSItems() -> [ToolShedItem]
+    func getTSItems() -> [ToolShedItem]
     {
         return self.items
     }
     
-    fileprivate func creatTSItems()
+    fileprivate func createTSItems()
     {
         items.append(ToolShedItem(itemName: "Kayak", owner: "Barrel Box", itemDescription: "River kayak, 250 lb capacity, 10' long", reqYesNo: true, requirements: "Must provide transportation to/from water, responsible for fixing any damage or replacement if needed.", photo: "ChIJAxoZu9ZlaYcRDKzKqbeYlts"))
         items.append(ToolShedItem(itemName: "Leaf Blower", owner: "Barrel Box", itemDescription: "gas powered backpack leaf blower", reqYesNo: true, requirements: "Must provide own gasoline, responsible for fixing any damage or replacement if needed.", photo: "ChIJAxoZu9ZlaYcRDKzKqbeYlts"))

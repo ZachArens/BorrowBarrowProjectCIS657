@@ -328,7 +328,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="164" id="hm4-IW-HmL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tsItemCell" rowHeight="164" id="hm4-IW-HmL">
                                         <rect key="frame" x="0.0" y="28" width="414" height="164"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hm4-IW-HmL" id="Cvg-Rl-k3Q">
@@ -398,6 +398,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="9bQ-iT-wRd"/>
                     <navigationItem key="navigationItem" title="Tool Shed" id="UXc-5R-IAF"/>
+                    <connections>
+                        <outlet property="tsItemTableView" destination="0FR-2e-LMN" id="nuv-Nl-ZRn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVX-yc-l1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
