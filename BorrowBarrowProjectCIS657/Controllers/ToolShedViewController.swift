@@ -8,14 +8,25 @@
 
 import UIKit
 
+protocol toolShedDelegate: class{
+    func usernamePassing(passedUsername: String?);
+}
+
+
+
 class ToolShedViewController: UIViewController {
+    
+    var username: String?;
 
     @IBOutlet weak var addItem: UIBarButtonItem!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    weak var toolshedDelegation: toolShedDelegate?;
 
-        // Do any additional setup after loading the view.
+    
+    override func viewDidLoad() {
+        super.viewDidLoad();
+
+        print(username);        // Do any additional setup after loading the view.
     }
     
 
