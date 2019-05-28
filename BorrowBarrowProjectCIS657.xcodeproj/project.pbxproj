@@ -21,6 +21,7 @@
 		1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */; };
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
 		49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */; };
+		49903B22229DE4F100D4CF68 /* CFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedViewController.swift; sourceTree = "<group>"; };
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFriend.swift; sourceTree = "<group>"; };
+		49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFriendTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				1AE69DEC229A2DF900686EB6 /* Controllers */,
 				1A4A84F02297732800CCC4A3 /* Main.storyboard */,
 				1A9A8CB8229CBD680010D824 /* TSItemTableViewCell.swift */,
+				49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */,
 				1A4A84F32297732900CCC4A3 /* Assets.xcassets */,
 				1A4A84F52297732900CCC4A3 /* LaunchScreen.storyboard */,
 				1A4A84F82297732900CCC4A3 /* Info.plist */,
@@ -294,6 +297,7 @@
 				1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */,
 				1A9A8CB9229CBD680010D824 /* TSItemTableViewCell.swift in Sources */,
 				1A9A8CBB229DDF350010D824 /* ComItemModel.swift in Sources */,
+				49903B22229DE4F100D4CF68 /* CFriendTableViewCell.swift in Sources */,
 				1A9A8CB3229C593A0010D824 /* ToolShedItem.swift in Sources */,
 				1A4A84ED2297732800CCC4A3 /* AppDelegate.swift in Sources */,
 				1A9A8CB5229C90FC0010D824 /* TSItemModel.swift in Sources */,
