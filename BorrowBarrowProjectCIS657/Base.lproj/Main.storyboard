@@ -404,7 +404,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="P7B-cO-CiF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="9bQ-iT-wRd"/>
+                    <tabBarItem key="tabBarItem" title="Tool Shed" id="9bQ-iT-wRd"/>
                     <navigationItem key="navigationItem" title="Tool Shed" id="UXc-5R-IAF"/>
                     <connections>
                         <outlet property="tsItemTableView" destination="0FR-2e-LMN" id="nuv-Nl-ZRn"/>
@@ -505,7 +505,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uOe-Bj-aHO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="v5S-Qs-sKi"/>
+                    <tabBarItem key="tabBarItem" title="Community" id="v5S-Qs-sKi"/>
                     <navigationItem key="navigationItem" title="Community" id="a4z-gz-6x4"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
