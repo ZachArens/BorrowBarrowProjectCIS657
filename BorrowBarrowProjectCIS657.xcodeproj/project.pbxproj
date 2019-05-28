@@ -216,6 +216,9 @@
 		1A4A84E12297732800CCC4A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"https://www.inverse.com/article/50104-star-wars-episode-9-spoilers-mark-hamill-confirms-luke-skywalker-death",
+				);
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = BarrelBox;

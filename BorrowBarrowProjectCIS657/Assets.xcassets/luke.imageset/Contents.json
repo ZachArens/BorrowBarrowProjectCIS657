@@ -1,0 +1,26 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "luke.jpeg",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "on-demand-resource-tags" : [
+      "https:\/\/www.inverse.com\/article\/50104-star-wars-episode-9-spoilers-mark-hamill-confirms-luke-skywalker-death"
+    ]
+  }
+}
