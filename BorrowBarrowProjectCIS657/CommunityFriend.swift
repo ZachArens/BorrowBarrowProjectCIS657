@@ -1,5 +1,5 @@
 //
-//  CommunityItem.swift
+//  CommunityFriend.swift
 //  BorrowBarrowProjectCIS657
 //
 //  Created by Andy V. Vuong on 5/28/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CommunityItem {
+struct CommunityFriend {
     var key : String?
     var firstName: String?
     var lastName: String?
