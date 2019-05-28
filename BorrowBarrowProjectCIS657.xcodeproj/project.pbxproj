@@ -115,16 +115,9 @@
 			children = (
 				1A4A84EC2297732800CCC4A3 /* AppDelegate.swift */,
 				1AE69DEC229A2DF900686EB6 /* Controllers */,
-				1A4A84F02297732800CCC4A3 /* Main.storyboard */,
-				1A9A8CB8229CBD680010D824 /* TSItemTableViewCell.swift */,
-				49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */,
-				1A4A84F32297732900CCC4A3 /* Assets.xcassets */,
-				1A4A84F52297732900CCC4A3 /* LaunchScreen.storyboard */,
+				1A9A8CBC229DE8370010D824 /* Views */,
 				1A4A84F82297732900CCC4A3 /* Info.plist */,
-				1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */,
-				49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */,
-				1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */,
-				1A9A8CBA229DDF350010D824 /* ComItemModel.swift */,
+				1A9A8CBD229DE8400010D824 /* Models */,
 			);
 			path = BorrowBarrowProjectCIS657;
 			sourceTree = "<group>";
@@ -145,6 +138,29 @@
 				1A4A850E2297732900CCC4A3 /* Info.plist */,
 			);
 			path = BorrowBarrowProjectCIS657UITests;
+			sourceTree = "<group>";
+		};
+		1A9A8CBC229DE8370010D824 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A4A84F02297732800CCC4A3 /* Main.storyboard */,
+				1A9A8CB8229CBD680010D824 /* TSItemTableViewCell.swift */,
+				49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */,
+				1A4A84F32297732900CCC4A3 /* Assets.xcassets */,
+				1A4A84F52297732900CCC4A3 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A9A8CBD229DE8400010D824 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */,
+				49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */,
+				1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */,
+				1A9A8CBA229DDF350010D824 /* ComItemModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		1AE69DEC229A2DF900686EB6 /* Controllers */ = {
