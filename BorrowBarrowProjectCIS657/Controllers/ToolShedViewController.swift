@@ -51,19 +51,23 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
-            let cell = self.tsItemTableView.dequeueReusableCell(withIdentifier: "tsItemCell", for: indexPath)
+            let cell = self.tsItemTableView.dequeueReusableCell(withIdentifier: "tsItemCell", for: indexPath) as! TSItemTableViewCell
             
             if let item = self.TSItems?[indexPath.row] {
-                cell.textLabel?.text = item.itemName
-                cell.detailTextLabel?.text = item.owner
-//                cell.detal? = item.itemDescription
-//                cell.reqYesNo = item.reqYesNo
-//                cell.requirements = item.requirements
-//                cell.photo = item.photo
-//                if let defaultImage = UIImage(named: "logo") {
-//                    cell.imageView?.image = defaultImage
-//                }
-            }
+                cell.itemName?.text = item.itemName
+                //TODO need logic to select user lent to or place "in Shed"
+                cell.userThatHas?.text = "in Shed"
+                cell.itemPicture?.image = UIImage(named: "Kayak")
+                cell.itemDetails?.text = item.itemDescription
+                
+//                Image by OpenClipart-Vectors
+//                "https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
+//                 from Pixabay
+//                "https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
+                
+                cell.signalImage?.image = UIImage(named: "greenSignal")
+                
+             }
             return cell
     }
 }
