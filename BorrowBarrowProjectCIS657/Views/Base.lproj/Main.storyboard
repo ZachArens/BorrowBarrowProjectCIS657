@@ -422,8 +422,16 @@
                         <viewLayoutGuide key="safeArea" id="P7B-cO-CiF"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tool Shed" id="9bQ-iT-wRd"/>
-                    <navigationItem key="navigationItem" title="Tool Shed" id="UXc-5R-IAF"/>
+                    <navigationItem key="navigationItem" title="Tool Shed" id="UXc-5R-IAF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="s02-2l-JlA">
+                            <connections>
+                                <action selector="addItem:" destination="NjF-ke-IJ9" id="Emh-lF-uqt"/>
+                                <segue destination="3m6-y3-mbS" kind="show" id="xRd-u5-ThU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addItem" destination="s02-2l-JlA" id="gmv-tN-zb2"/>
                         <outlet property="tsItemTableView" destination="0FR-2e-LMN" id="nuv-Nl-ZRn"/>
                     </connections>
                 </viewController>
@@ -523,8 +531,17 @@
                         <viewLayoutGuide key="safeArea" id="uOe-Bj-aHO"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Community" id="v5S-Qs-sKi"/>
-                    <navigationItem key="navigationItem" title="Community" id="a4z-gz-6x4"/>
+                    <navigationItem key="navigationItem" title="Community" id="a4z-gz-6x4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YUO-Xk-lUH">
+                            <connections>
+                                <segue destination="hMP-3d-KaW" kind="show" id="qHZ-df-cMU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addFriend" destination="YUO-Xk-lUH" id="bKO-Kd-7QI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1FZ-oG-8lt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

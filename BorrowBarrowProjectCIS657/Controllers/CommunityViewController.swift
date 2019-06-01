@@ -10,11 +10,11 @@ import UIKit
 
 class CommunityViewController: UIViewController {
 
-    @IBOutlet weak var goToToolShedButton: UITabBarItem!
+
     
-    @IBOutlet weak var addFriendButton: UITabBarItem!
+    @IBOutlet weak var addFriend: UIBarButtonItem!
     
-    @IBOutlet weak var goToCommunityButton: UITabBarItem!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

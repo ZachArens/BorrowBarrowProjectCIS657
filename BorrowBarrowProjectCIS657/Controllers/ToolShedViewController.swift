@@ -18,12 +18,17 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+
+        
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
         let model = TSItemModel()
         self.TSItems = model.getTSItems()
         self.setNeedsStatusBarAppearanceUpdate()
     }
+    
     
     
 
