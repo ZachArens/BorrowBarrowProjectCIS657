@@ -478,8 +478,6 @@
                         <viewLayoutGuide key="safeArea" id="dST-7p-V7b"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="BhW-MH-an0"/>
-                                <exclude reference="ngb-Yu-mX4"/>
                                 <exclude reference="9Za-Cj-2sN"/>
                                 <exclude reference="AhV-4P-yAI"/>
                                 <exclude reference="D9K-75-2lM"/>
@@ -490,6 +488,8 @@
                                 <exclude reference="q6E-nP-jex"/>
                                 <exclude reference="usO-pq-HZG"/>
                                 <exclude reference="zuC-Vl-JN0"/>
+                                <exclude reference="BhW-MH-an0"/>
+                                <exclude reference="ngb-Yu-mX4"/>
                                 <exclude reference="6ts-1o-ubL"/>
                                 <exclude reference="GfR-rn-GaQ"/>
                                 <exclude reference="pUg-Mc-W0Z"/>
@@ -516,8 +516,6 @@
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
-                                <include reference="BhW-MH-an0"/>
-                                <include reference="ngb-Yu-mX4"/>
                                 <include reference="9Za-Cj-2sN"/>
                                 <include reference="AhV-4P-yAI"/>
                                 <include reference="D9K-75-2lM"/>
@@ -528,6 +526,8 @@
                                 <include reference="q6E-nP-jex"/>
                                 <include reference="usO-pq-HZG"/>
                                 <include reference="zuC-Vl-JN0"/>
+                                <include reference="BhW-MH-an0"/>
+                                <include reference="ngb-Yu-mX4"/>
                                 <include reference="6ts-1o-ubL"/>
                                 <include reference="GfR-rn-GaQ"/>
                                 <include reference="pUg-Mc-W0Z"/>
@@ -726,7 +726,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVG-c8-09B">
-                                                    <rect key="frame" x="133" y="32.5" width="234" height="131"/>
+                                                    <rect key="frame" x="146" y="32.5" width="260" height="131"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="itemDescription"/>
                                                     <string key="text">Community member details.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -734,27 +734,27 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opc-jM-mYt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="163.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="163.5"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="itemImage"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igN-Cv-aNp">
-                                                    <rect key="frame" x="129" y="0.0" width="238" height="24.5"/>
+                                                    <rect key="frame" x="129" y="0.0" width="277" height="24.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ComMem Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-Fd-1hQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="119" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="138.5" height="24.5"/>
                                                             <accessibility key="accessibilityConfiguration" identifier="itemName"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#lends" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1f-iT-wSK">
-                                                            <rect key="frame" x="119" y="0.0" width="59.5" height="24.5"/>
+                                                            <rect key="frame" x="138.5" y="0.0" width="69.5" height="24.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#items" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJY-YN-ItS">
-                                                            <rect key="frame" x="178.5" y="0.0" width="59.5" height="24.5"/>
+                                                            <rect key="frame" x="208" y="0.0" width="69" height="24.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -831,7 +831,7 @@
         <!--Add Item-->
         <scene sceneID="nUv-CE-O2s">
             <objects>
-                <viewController title="Add Item" id="3m6-y3-mbS" sceneMemberID="viewController">
+                <viewController title="Add Item" id="3m6-y3-mbS" customClass="AddItemController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EW2-Wa-2z8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -840,6 +840,9 @@
                                 <rect key="frame" x="344" y="295" width="54" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraAddItemBtn:" destination="3m6-y3-mbS" eventType="touchUpInside" id="MLq-jD-4PP"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="95Q-9B-75Q">
                                 <rect key="frame" x="16" y="333" width="382" height="32"/>
@@ -879,6 +882,9 @@
                                         <include reference="1pg-H2-dt2"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="openLibBtn:" destination="3m6-y3-mbS" eventType="touchUpInside" id="ttV-2h-lrn"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Item Details" translatesAutoresizingMaskIntoConstraints="NO" id="Q2m-Mi-3MU" userLabel="itemDetails">
                                 <rect key="frame" x="20" y="373" width="374" height="70"/>
@@ -887,6 +893,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="6ua-Iv-Jaz"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1057,11 +1064,6 @@
                                 <exclude reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8vo-8r-334"/>
-                                <exclude reference="A0R-bL-6yL"/>
-                                <exclude reference="J5t-HZ-izx"/>
-                                <exclude reference="jof-dU-Mar"/>
-                                <exclude reference="kxV-iG-hBQ"/>
                                 <exclude reference="LC4-xz-2z7"/>
                                 <exclude reference="ZqR-AL-jfW"/>
                                 <exclude reference="gRh-lh-qaT"/>
@@ -1083,7 +1085,12 @@
                                 <exclude reference="mrr-cK-bij"/>
                                 <exclude reference="HW8-tX-YI1"/>
                                 <exclude reference="Ivc-qv-C8f"/>
+                                <exclude reference="8vo-8r-334"/>
+                                <exclude reference="A0R-bL-6yL"/>
+                                <exclude reference="J5t-HZ-izx"/>
                                 <exclude reference="NUD-ol-kUF"/>
+                                <exclude reference="jof-dU-Mar"/>
+                                <exclude reference="kxV-iG-hBQ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1099,11 +1106,6 @@
                                 <include reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8vo-8r-334"/>
-                                <include reference="A0R-bL-6yL"/>
-                                <include reference="J5t-HZ-izx"/>
-                                <include reference="jof-dU-Mar"/>
-                                <include reference="kxV-iG-hBQ"/>
                                 <include reference="LC4-xz-2z7"/>
                                 <include reference="ZqR-AL-jfW"/>
                                 <include reference="gRh-lh-qaT"/>
@@ -1125,12 +1127,21 @@
                                 <include reference="mrr-cK-bij"/>
                                 <include reference="HW8-tX-YI1"/>
                                 <include reference="Ivc-qv-C8f"/>
+                                <include reference="8vo-8r-334"/>
+                                <include reference="A0R-bL-6yL"/>
+                                <include reference="J5t-HZ-izx"/>
                                 <include reference="NUD-ol-kUF"/>
+                                <include reference="jof-dU-Mar"/>
+                                <include reference="kxV-iG-hBQ"/>
                             </mask>
                         </variation>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="AddItemCameraBtn" destination="VvH-oR-2G7" id="bqy-eX-Guw"/>
+                        <outlet property="itemImage" destination="b92-SJ-uNE" id="Vj9-a6-iqY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJU-W2-hhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1139,7 +1150,7 @@
         <!--Add a Friend-->
         <scene sceneID="bGb-7q-Jf6">
             <objects>
-                <viewController title="Add a Friend" id="hMP-3d-KaW" sceneMemberID="viewController">
+                <viewController title="Add a Friend" id="hMP-3d-KaW" customClass="AddFriendController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0uQ-kV-cqj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1155,6 +1166,9 @@
                                 <state key="normal" title="Add Picture">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addPictureFriendBtn:" destination="hMP-3d-KaW" eventType="touchUpInside" id="1hf-Po-o5k"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eP2-ah-XrV">
                                 <rect key="frame" x="20" y="327" width="374" height="30"/>
@@ -1237,6 +1251,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NmD-wC-eKT"/>
                     </view>
+                    <connections>
+                        <outlet property="friendImageView" destination="4Uf-wS-D1a" id="bA4-ny-trb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIt-e2-NUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

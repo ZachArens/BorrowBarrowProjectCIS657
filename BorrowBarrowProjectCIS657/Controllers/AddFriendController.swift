@@ -8,13 +8,37 @@
 
 import UIKit
 
-class AddFriendController: UIViewController {
+class AddFriendController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBOutlet weak var friendImageView: UIImageView!
+    
+    @IBAction func addPictureFriendBtn(_ sender: Any) {
+        
+        let imgCtrl = UIImagePickerController();
+        imgCtrl.delegate = self;
+        imgCtrl.sourceType = .photoLibrary
+        imgCtrl.allowsEditing = false;
+        present(imgCtrl, animated: true, completion: nil);
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo image: UIImage) {
+        
+        let chosenImg: UIImage = image;
+        friendImageView.image = chosenImg;
+        dismiss(animated: true, completion: nil);
+    }
+    
+    
     
 
     /*
@@ -28,3 +52,4 @@ class AddFriendController: UIViewController {
     */
 
 }
+
