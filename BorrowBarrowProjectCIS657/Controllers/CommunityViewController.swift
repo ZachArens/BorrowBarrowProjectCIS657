@@ -13,7 +13,6 @@ protocol CommunityDelegation{
     func friendsListDelegate(friends: Array<String>?)
 }
 
-class CommunityViewController: UIViewController {
 class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
@@ -84,5 +83,7 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
                                 
             }
             return cell
+            
+            
     }
 }

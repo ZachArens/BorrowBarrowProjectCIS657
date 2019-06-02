@@ -18,6 +18,10 @@
 		1A9A8CB5229C90FC0010D824 /* TSItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */; };
 		1A9A8CB9229CBD680010D824 /* TSItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A8CB8229CBD680010D824 /* TSItemTableViewCell.swift */; };
 		1A9A8CBB229DDF350010D824 /* ComItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A8CBA229DDF350010D824 /* ComItemModel.swift */; };
+		1AACD88B22A494570022AC73 /* LendItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD88A22A494570022AC73 /* LendItemViewController.swift */; };
+		1AACD88D22A494750022AC73 /* RequestItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD88C22A494750022AC73 /* RequestItemViewController.swift */; };
+		1AACD88F22A4948E0022AC73 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD88E22A4948E0022AC73 /* CreateAccountViewController.swift */; };
+		1AACD89122A494AF0022AC73 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD89022A494AF0022AC73 /* AddFriendViewController.swift */; };
 		1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */; };
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
 		49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */; };
@@ -60,6 +64,10 @@
 		1A9A8CB4229C90FC0010D824 /* TSItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSItemModel.swift; sourceTree = "<group>"; };
 		1A9A8CB8229CBD680010D824 /* TSItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSItemTableViewCell.swift; sourceTree = "<group>"; };
 		1A9A8CBA229DDF350010D824 /* ComItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComItemModel.swift; sourceTree = "<group>"; };
+		1AACD88A22A494570022AC73 /* LendItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendItemViewController.swift; sourceTree = "<group>"; };
+		1AACD88C22A494750022AC73 /* RequestItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestItemViewController.swift; sourceTree = "<group>"; };
+		1AACD88E22A4948E0022AC73 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		1AACD89022A494AF0022AC73 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedViewController.swift; sourceTree = "<group>"; };
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFriend.swift; sourceTree = "<group>"; };
@@ -172,6 +180,10 @@
 				1A4A84EE2297732800CCC4A3 /* LoginViewController.swift */,
 				1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */,
 				9F572B5322A45C3700DC45B2 /* AddItemController.swift */,
+				1AACD88A22A494570022AC73 /* LendItemViewController.swift */,
+				1AACD88C22A494750022AC73 /* RequestItemViewController.swift */,
+				1AACD88E22A4948E0022AC73 /* CreateAccountViewController.swift */,
+				1AACD89022A494AF0022AC73 /* AddFriendViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -310,15 +322,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AACD88F22A4948E0022AC73 /* CreateAccountViewController.swift in Sources */,
 				1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */,
 				1A4A84EF2297732800CCC4A3 /* LoginViewController.swift in Sources */,
 				49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */,
 				1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */,
+				1AACD88D22A494750022AC73 /* RequestItemViewController.swift in Sources */,
 				1A9A8CB9229CBD680010D824 /* TSItemTableViewCell.swift in Sources */,
 				9F572B5422A45C3700DC45B2 /* AddItemController.swift in Sources */,
 				1A9A8CBB229DDF350010D824 /* ComItemModel.swift in Sources */,
 				49903B22229DE4F100D4CF68 /* CFriendTableViewCell.swift in Sources */,
+				1AACD88B22A494570022AC73 /* LendItemViewController.swift in Sources */,
 				1A9A8CB3229C593A0010D824 /* ToolShedItem.swift in Sources */,
+				1AACD89122A494AF0022AC73 /* AddFriendViewController.swift in Sources */,
 				1A4A84ED2297732800CCC4A3 /* AppDelegate.swift in Sources */,
 				1A9A8CB5229C90FC0010D824 /* TSItemModel.swift in Sources */,
 			);
