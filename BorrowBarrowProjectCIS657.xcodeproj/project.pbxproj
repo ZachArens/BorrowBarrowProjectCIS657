@@ -22,6 +22,7 @@
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
 		49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */; };
 		49903B22229DE4F100D4CF68 /* CFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */; };
+		9F572B5422A45C3700DC45B2 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F572B5322A45C3700DC45B2 /* AddItemController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFriend.swift; sourceTree = "<group>"; };
 		49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFriendTableViewCell.swift; sourceTree = "<group>"; };
+		9F572B5322A45C3700DC45B2 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */,
 				1A4A84EE2297732800CCC4A3 /* LoginViewController.swift */,
 				1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */,
+				9F572B5322A45C3700DC45B2 /* AddItemController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */,
 				1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */,
 				1A9A8CB9229CBD680010D824 /* TSItemTableViewCell.swift in Sources */,
+				9F572B5422A45C3700DC45B2 /* AddItemController.swift in Sources */,
 				1A9A8CBB229DDF350010D824 /* ComItemModel.swift in Sources */,
 				49903B22229DE4F100D4CF68 /* CFriendTableViewCell.swift in Sources */,
 				1A9A8CB3229C593A0010D824 /* ToolShedItem.swift in Sources */,
