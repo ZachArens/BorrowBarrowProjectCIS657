@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol CommunityDelegation{
+    func usernameDelegate(username: String?)
+    func friendsListDelegate(friends: Array<String>?)
+}
+
+class CommunityViewController: UIViewController {
 class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
