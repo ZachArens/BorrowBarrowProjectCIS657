@@ -2,70 +2,62 @@
 //  AddItemController.swift
 //  BorrowBarrowProjectCIS657
 //
-//  Created by Andy Vong on 6/1/19.
+//  Created by Andy Vong on 6/2/19.
 //  Copyright © 2019 BarrelBox. All rights reserved.
 //
 
 import UIKit
 
-class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddItemController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
 
- 
-    @IBOutlet weak var itemImage: UICollectionView!
-    
-    @IBAction func cameraAddItemBtn(_ sender: Any) {
-        self.openCamera();
-    }
-    
-    
-    @IBAction func openLibBtn(_ sender: Any) {
-    }
-    
-    let imagePickerCtrl = UIImagePickerController();
+    var imgPickerCtrl: UIImagePickerController!;
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        imagePickerCtrl.delegate = self;
+        super.viewDidLoad();
+        imgPickerCtrl = UIImagePickerController();
 
         // Do any additional setup after loading the view.
     }
     
-    func openCamera() {
+    @IBOutlet weak var itemImageViewer: UIImageView!
+    
+    @IBAction func openCameraBtn(_ sender: UIButton) {
         
-        //imagePickerCtrl.delegate;
-        imagePickerCtrl.allowsEditing = true;
-        imagePickerCtrl.sourceType = .camera;
-        //imagePickerCtrl.mediaTypes = ["public.image"]
-        present(imagePickerCtrl, animated: true);
+        imgPickerCtrl.sourceType = .camera
+        imgPickerCtrl.allowsEditing = true
+        imgPickerCtrl.delegate = self
+        present(imgPickerCtrl, animated: true);
     }
     
-    /*
-     Code for camera from the following sources:
+    @IBAction func openPhotoLibBtn(_ sender: UIButton) {
+        
+        imgPickerCtrl.sourceType = .photoLibrary;
+        imgPickerCtrl.delegate = self;
+        present(imgPickerCtrl, animated: true);
+    }
+    
+    
+    /*Image Picker Code  from sources:
      
+        https://stackoverflow.com/questions/24625687/swift-uiimagepickercontroller-how-to-use-it
         https://theswiftdev.com/2019/01/30/picking-images-with-uiimagepickercontroller-in-swift-5/
-     https://makeapppie.com/2016/06/28/how-to-use-uiimagepickercontroller-for-a-camera-and-photo-library-in-swift-3-0/
+     https://www.hackingwithswift.com/example-code/uikit/how-to-take-a-photo-using-the-camera-and-uiimagepickercontroller
+     
      */
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-    {
-        guard let image = info[.editedImage] as? UIImage else{
-            
-            return self.pickerController(picker, didSelect: nil);
-        }
-        self.pickerController(picker, didSelect: image);
-    }
-    
-    
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+        
+        let chosenImg: UIImage = image;
+        
+        //Set Image View to image
+        
+        itemImageViewer.image = chosenImg;
+        
+
         
     }
     
-    private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?){
-        controller.dismiss(animated: true, completion: nil);
-    }
-
     /*
     // MARK: - Navigation
 
@@ -75,8 +67,5 @@ class AddItemController: UIViewController, UIImagePickerControllerDelegate, UINa
         // Pass the selected object to the new view controller.
     }
     */
+
 }
-
-
-
-
