@@ -15,7 +15,7 @@ class ComItemModel {
         createComItems()
     }
     
-    func getTSItems() -> [CommunityFriend]
+    func getComItems() -> [CommunityFriend]
     {
         return self.items
     }
