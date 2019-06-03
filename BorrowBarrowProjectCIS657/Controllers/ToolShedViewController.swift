@@ -62,17 +62,21 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             if let item = self.TSItems?[indexPath.row] {
                 cell.itemName?.text = item.itemName
                 //TODO need logic to select user lent to or place "in Shed"
-                cell.userThatHas?.text = "in Shed"
-                cell.itemPicture?.image = UIImage(named: "Kayak")
+                let personLentTo = item.lentTo ?? "in Shed"
+                cell.userThatHas?.text = personLentTo
+                cell.itemPicture?.image = UIImage(named: item.photo!) ?? UIImage(named: "emptyPhoto")
                 cell.itemDetails?.text = item.itemDescription
+                if personLentTo == "in Shed" {
+                    cell.signalImage?.image = UIImage(named: "greenSignal")
+                } else {
+                    cell.signalImage?.image = UIImage(named: "redSignal")
+                }
                 
 //                Image by OpenClipart-Vectors
 //                "https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
 //                 from Pixabay
 //                "https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
-                
-                cell.signalImage?.image = UIImage(named: "greenSignal")
-                
+                                
              }
             return cell
     }

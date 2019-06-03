@@ -39,4 +39,8 @@ struct ToolShedItem {
         self.init(key: nil, itemName: nil, owner: nil, itemDescription: nil, reqYesNo: nil, requirements: nil, photo: nil, lentTo: nil)
     }
     
+    mutating func lend(lentTo: String?) {
+        self.lentTo = lentTo
+    }
+    
 }
