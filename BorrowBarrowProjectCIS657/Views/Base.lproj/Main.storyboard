@@ -1253,7 +1253,7 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Gv-ri-Qnh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="itemImageViewer" translatesAutoresizingMaskIntoConstraints="NO" id="4Gv-ri-Qnh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="199"/>
                             </imageView>
                         </subviews>
@@ -1314,19 +1314,14 @@
                                 <exclude reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8vo-8r-334"/>
-                                <exclude reference="A0R-bL-6yL"/>
-                                <exclude reference="J5t-HZ-izx"/>
-                                <exclude reference="NUD-ol-kUF"/>
-                                <exclude reference="jof-dU-Mar"/>
                                 <exclude reference="Wfb-uL-mCH"/>
                                 <exclude reference="BHn-YK-HRk"/>
                                 <exclude reference="6TJ-dQ-HhZ"/>
                                 <exclude reference="cHp-hd-uZg"/>
-                                <exclude reference="2DL-Lc-rIG"/>
-                                <exclude reference="i4b-zn-zqS"/>
                                 <exclude reference="HkJ-3p-p3O"/>
                                 <exclude reference="gff-FB-yJi"/>
+                                <exclude reference="2DL-Lc-rIG"/>
+                                <exclude reference="i4b-zn-zqS"/>
                                 <exclude reference="Nee-UV-8pB"/>
                                 <exclude reference="V0W-SI-29d"/>
                                 <exclude reference="XtF-bb-Axk"/>
@@ -1334,6 +1329,11 @@
                                 <exclude reference="mrr-cK-bij"/>
                                 <exclude reference="HW8-tX-YI1"/>
                                 <exclude reference="Ivc-qv-C8f"/>
+                                <exclude reference="8vo-8r-334"/>
+                                <exclude reference="A0R-bL-6yL"/>
+                                <exclude reference="J5t-HZ-izx"/>
+                                <exclude reference="NUD-ol-kUF"/>
+                                <exclude reference="jof-dU-Mar"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1348,19 +1348,14 @@
                                 <include reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8vo-8r-334"/>
-                                <include reference="A0R-bL-6yL"/>
-                                <include reference="J5t-HZ-izx"/>
-                                <include reference="NUD-ol-kUF"/>
-                                <include reference="jof-dU-Mar"/>
                                 <include reference="Wfb-uL-mCH"/>
                                 <include reference="BHn-YK-HRk"/>
                                 <include reference="6TJ-dQ-HhZ"/>
                                 <include reference="cHp-hd-uZg"/>
-                                <include reference="2DL-Lc-rIG"/>
-                                <include reference="i4b-zn-zqS"/>
                                 <include reference="HkJ-3p-p3O"/>
                                 <include reference="gff-FB-yJi"/>
+                                <include reference="2DL-Lc-rIG"/>
+                                <include reference="i4b-zn-zqS"/>
                                 <include reference="Nee-UV-8pB"/>
                                 <include reference="V0W-SI-29d"/>
                                 <include reference="XtF-bb-Axk"/>
@@ -1368,6 +1363,11 @@
                                 <include reference="mrr-cK-bij"/>
                                 <include reference="HW8-tX-YI1"/>
                                 <include reference="Ivc-qv-C8f"/>
+                                <include reference="8vo-8r-334"/>
+                                <include reference="A0R-bL-6yL"/>
+                                <include reference="J5t-HZ-izx"/>
+                                <include reference="NUD-ol-kUF"/>
+                                <include reference="jof-dU-Mar"/>
                             </mask>
                         </variation>
                     </view>
@@ -1384,7 +1384,7 @@
         <!--Add a Friend-->
         <scene sceneID="bGb-7q-Jf6">
             <objects>
-                <viewController title="Add a Friend" id="hMP-3d-KaW" sceneMemberID="viewController">
+                <viewController title="Add a Friend" id="hMP-3d-KaW" customClass="AddFriendViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0uQ-kV-cqj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1596,6 +1596,9 @@
                                 <rect key="frame" x="340" y="295" width="54" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraFriendBtn:" destination="hMP-3d-KaW" eventType="touchUpInside" id="1sX-hO-kIm"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Uf-wS-D1a">
                                 <rect key="frame" x="20" y="44" width="374" height="210"/>
@@ -1617,6 +1620,9 @@
                                         <include reference="4v2-IN-hOr"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="photoLibFriendBtn:" destination="hMP-3d-KaW" eventType="touchUpInside" id="hiz-yP-JmJ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sPt-jl-WNR" userLabel="State">
                                 <rect key="frame" x="20" y="599" width="80" height="30"/>
@@ -1732,6 +1738,7 @@
                                 <exclude reference="sPt-jl-WNR"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="W47-xT-OiF"/>
                                 <exclude reference="19A-cG-hjs"/>
                                 <exclude reference="8EE-Ly-hdw"/>
                                 <exclude reference="L16-JV-rrJ"/>
@@ -1743,7 +1750,6 @@
                                 <exclude reference="ha3-Nc-mSY"/>
                                 <exclude reference="qbc-3x-buh"/>
                                 <exclude reference="zgY-Mf-zgQ"/>
-                                <exclude reference="W47-xT-OiF"/>
                                 <exclude reference="Lwv-gg-l4d"/>
                                 <exclude reference="SJq-Tq-Puv"/>
                                 <exclude reference="NJG-aS-6fg"/>
@@ -1752,23 +1758,23 @@
                                 <exclude reference="wwD-Ya-sSB"/>
                                 <exclude reference="UI3-0a-cuR"/>
                                 <exclude reference="xPE-cD-lj2"/>
-                                <exclude reference="JcE-bK-FAt"/>
-                                <exclude reference="RfE-FE-S95"/>
-                                <exclude reference="oOQ-Gv-GSh"/>
                                 <exclude reference="QOu-3x-zew"/>
                                 <exclude reference="o5s-fA-f5o"/>
                                 <exclude reference="45B-nw-6nH"/>
                                 <exclude reference="uXh-d5-aCc"/>
                                 <exclude reference="jDI-HQ-ury"/>
                                 <exclude reference="pFU-Kk-34V"/>
-                                <exclude reference="MFB-V5-6Er"/>
-                                <exclude reference="we1-86-BEJ"/>
                                 <exclude reference="a1M-ed-KLc"/>
                                 <exclude reference="pQB-Zy-McY"/>
                                 <exclude reference="J71-NX-Ogd"/>
                                 <exclude reference="Vlj-2b-Pa4"/>
                                 <exclude reference="Pl3-Ik-3ya"/>
                                 <exclude reference="Sff-JR-PyE"/>
+                                <exclude reference="JcE-bK-FAt"/>
+                                <exclude reference="RfE-FE-S95"/>
+                                <exclude reference="oOQ-Gv-GSh"/>
+                                <exclude reference="MFB-V5-6Er"/>
+                                <exclude reference="we1-86-BEJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1780,6 +1786,7 @@
                                 <include reference="sPt-jl-WNR"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="W47-xT-OiF"/>
                                 <include reference="19A-cG-hjs"/>
                                 <include reference="8EE-Ly-hdw"/>
                                 <include reference="L16-JV-rrJ"/>
@@ -1791,7 +1798,6 @@
                                 <include reference="ha3-Nc-mSY"/>
                                 <include reference="qbc-3x-buh"/>
                                 <include reference="zgY-Mf-zgQ"/>
-                                <include reference="W47-xT-OiF"/>
                                 <include reference="Lwv-gg-l4d"/>
                                 <include reference="SJq-Tq-Puv"/>
                                 <include reference="NJG-aS-6fg"/>
@@ -1800,26 +1806,29 @@
                                 <include reference="wwD-Ya-sSB"/>
                                 <include reference="UI3-0a-cuR"/>
                                 <include reference="xPE-cD-lj2"/>
-                                <exclude reference="JcE-bK-FAt"/>
-                                <include reference="RfE-FE-S95"/>
-                                <include reference="oOQ-Gv-GSh"/>
                                 <include reference="QOu-3x-zew"/>
                                 <include reference="o5s-fA-f5o"/>
                                 <include reference="45B-nw-6nH"/>
                                 <include reference="uXh-d5-aCc"/>
                                 <include reference="jDI-HQ-ury"/>
                                 <include reference="pFU-Kk-34V"/>
-                                <include reference="MFB-V5-6Er"/>
-                                <include reference="we1-86-BEJ"/>
                                 <include reference="a1M-ed-KLc"/>
                                 <include reference="pQB-Zy-McY"/>
                                 <include reference="J71-NX-Ogd"/>
                                 <include reference="Vlj-2b-Pa4"/>
                                 <include reference="Pl3-Ik-3ya"/>
                                 <include reference="Sff-JR-PyE"/>
+                                <exclude reference="JcE-bK-FAt"/>
+                                <include reference="RfE-FE-S95"/>
+                                <include reference="oOQ-Gv-GSh"/>
+                                <include reference="MFB-V5-6Er"/>
+                                <include reference="we1-86-BEJ"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="friendImageViewer" destination="XFN-TF-T62" id="sfx-Q6-5N5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIt-e2-NUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
