@@ -13,15 +13,9 @@ protocol ToolShedViewControllerDelegate
     func selectEntry(item: ToolShedItem);
 }
 
-class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation {
+class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    func lendItemDelegate(item: ToolShedItem?) {
-        //Perhaps change the status of item here
-        
-        
-    }
-    
-    
+    var toolShedDelegate: ToolShedViewControllerDelegate?;
 
     @IBOutlet weak var addItem: UIBarButtonItem!
     
@@ -31,9 +25,6 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var selectedToolItem: ToolShedItem!
     
-    var lendItemDelegate: LendItemDelegation?;
-    
-    var toolShedDelegate: ToolShedViewControllerDelegate?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +33,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         self.tsItemTableView.dataSource = self
         let model: TSItemModel = TSItemModel()
         self.TSItems = model.getTSItems()
-        self.setNeedsStatusBarAppearanceUpdate()
+        self.setNeedsStatusBarAppearanceUpdate();
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,8 +43,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             let lendViewCtrl = segue.destination as? LendItemViewController;
             
             
-            lendViewCtrl?.selectedToolItem = selectedToolItem;
-            lendViewCtrl.
+//            lendViewCtrl?.selectedToolItem = selectedToolItem;
+//            lendViewCtrl?.lendItemDelegate = self;
           
             
         }
@@ -85,10 +77,11 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let tempDel = self.selectedToolItem {
+        if let del = self.toolShedDelegate
+        {
             let tempItem = TSItems![indexPath.row];
-            lendItemDelegate?.lendItemDelegate(item: tempItem);
-
+            //lendItemDelegate?.lendItemDelegate(item: tempItem);
+            del.selectEntry(item: tempItem)
         }
     }
     

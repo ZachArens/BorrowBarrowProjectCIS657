@@ -13,10 +13,18 @@ protocol LendItemDelegation{
 }
 
 class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
+    func selectEntry(item: ToolShedItem) {
+        print("Delegated")
+        selectedToolItem = item;
+        setInfo();
+        
+    }
+    
 
     @IBOutlet weak var LendImageView: UIImageView!
     
     @IBOutlet weak var itemNameLabel: UILabel!
+    
     var item: ToolShedItem?;
     
     @IBOutlet weak var itemStatusLabel: UILabel!
@@ -39,11 +47,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
     }
     
     var selectedToolItem: ToolShedItem?;
-    
-    var toolShedDelegate: ToolShedViewControllerDelegate?;
-    
-    var lendItemDelegate: LendItemDelegation?;
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad();
         
@@ -69,20 +73,17 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
         
     }
     
-    func selectEntry(item: ToolShedItem) {
-        selectedToolItem = item;
-        setInfo();
-    }
+
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        if(segue.identifier == "toolshedToLendItem")
-        {
-            print("Yes?")
-            let toolShed = segue.destination as? ToolShedViewController
-            toolShed?.toolShedDelegate = self;
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if(segue.identifier == "toolshedToLendItem")
+//        {
+//            print("Yes?")
+//            let toolShed = segue.destination as? ToolShedViewController
+//            toolShed?.toolShedDelegate = self;
+//        }
+//    }
 
     /*
     // MARK: - Navigation
