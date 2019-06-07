@@ -26,12 +26,12 @@
 		1AACD8A522A9C3440022AC73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AACD8A422A9C3430022AC73 /* GoogleService-Info.plist */; };
 		1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */; };
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
-		436E0C46B2E1EC7BD2CD3EEB /* Pods_BorrowBarrowProjectCIS657.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E476D92FC53788C9274D27C7 /* Pods_BorrowBarrowProjectCIS657.framework */; };
+		3FAA9A24950249E2215EDD6A /* Pods_BorrowBarrowProjectCIS657.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97780839E128845D1234FFE /* Pods_BorrowBarrowProjectCIS657.framework */; };
 		49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */; };
 		49903B22229DE4F100D4CF68 /* CFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */; };
-		5D50C6F46962C068BC449620 /* Pods_BorrowBarrowProjectCIS657UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2583E43CE9548A34514E01F1 /* Pods_BorrowBarrowProjectCIS657UITests.framework */; };
-		61C67ECFFA7DC965CC5F2560 /* Pods_BorrowBarrowProjectCIS657Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B97E1C6EF1E9F0C4F30BA9 /* Pods_BorrowBarrowProjectCIS657Tests.framework */; };
 		9F572B5422A45C3700DC45B2 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F572B5322A45C3700DC45B2 /* AddItemController.swift */; };
+		B4147116993FB831CD36C177 /* Pods_BorrowBarrowProjectCIS657UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F41126921BDB8799455F86C /* Pods_BorrowBarrowProjectCIS657UITests.framework */; };
+		CBDB50F642882011009B3C66 /* Pods_BorrowBarrowProjectCIS657Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CCCBBC7D9BDBBC4AA83E00 /* Pods_BorrowBarrowProjectCIS657Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DAC0FAB96FC40BA16EF9242 /* Pods-BorrowBarrowProjectCIS657.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657.debug.xcconfig"; sourceTree = "<group>"; };
+		00CCCBBC7D9BDBBC4AA83E00 /* Pods_BorrowBarrowProjectCIS657Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorrowBarrowProjectCIS657Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F41126921BDB8799455F86C /* Pods_BorrowBarrowProjectCIS657UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorrowBarrowProjectCIS657UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		113BA51D1283458D9791F3C6 /* Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657Tests/Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A4A84E92297732800CCC4A3 /* BorrowBarrowProjectCIS657.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BorrowBarrowProjectCIS657.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4A84EC2297732800CCC4A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A4A84EE2297732800CCC4A3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -78,17 +80,15 @@
 		1AACD8A422A9C3430022AC73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedViewController.swift; sourceTree = "<group>"; };
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
-		2583E43CE9548A34514E01F1 /* Pods_BorrowBarrowProjectCIS657UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorrowBarrowProjectCIS657UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A6A0568B13107AB0BD14BB7 /* Pods-BorrowBarrowProjectCIS657.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657.release.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657.release.xcconfig"; sourceTree = "<group>"; };
 		49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFriend.swift; sourceTree = "<group>"; };
 		49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFriendTableViewCell.swift; sourceTree = "<group>"; };
-		6DE6F66510D6B1BC6DE332E6 /* Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657UITests/Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig"; sourceTree = "<group>"; };
-		78C63350C5827E1DDF688DF1 /* Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657Tests/Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8819C80043433C01FE6A81F4 /* Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657UITests/Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		92B97E1C6EF1E9F0C4F30BA9 /* Pods_BorrowBarrowProjectCIS657Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorrowBarrowProjectCIS657Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D3F81998D9EE031C340F96C /* Pods-BorrowBarrowProjectCIS657.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657.release.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657.release.xcconfig"; sourceTree = "<group>"; };
+		61CA4F911245B5A79518BA75 /* Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657UITests/Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F572B5322A45C3700DC45B2 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
-		D4B32512BB1AA2556A91A424 /* Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657Tests/Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E476D92FC53788C9274D27C7 /* Pods_BorrowBarrowProjectCIS657.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorrowBarrowProjectCIS657.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A13BE1109C1DD8B649B37B9F /* Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657Tests/Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B97780839E128845D1234FFE /* Pods_BorrowBarrowProjectCIS657.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorrowBarrowProjectCIS657.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC40DBAC75889B5C9C6EC3BF /* Pods-BorrowBarrowProjectCIS657.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657.debug.xcconfig"; sourceTree = "<group>"; };
+		F965EE6B6B9C1CA693210108 /* Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657UITests/Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				436E0C46B2E1EC7BD2CD3EEB /* Pods_BorrowBarrowProjectCIS657.framework in Frameworks */,
+				3FAA9A24950249E2215EDD6A /* Pods_BorrowBarrowProjectCIS657.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61C67ECFFA7DC965CC5F2560 /* Pods_BorrowBarrowProjectCIS657Tests.framework in Frameworks */,
+				CBDB50F642882011009B3C66 /* Pods_BorrowBarrowProjectCIS657Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,13 +112,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D50C6F46962C068BC449620 /* Pods_BorrowBarrowProjectCIS657UITests.framework in Frameworks */,
+				B4147116993FB831CD36C177 /* Pods_BorrowBarrowProjectCIS657UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		171E759437B8FC245B391194 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B97780839E128845D1234FFE /* Pods_BorrowBarrowProjectCIS657.framework */,
+				00CCCBBC7D9BDBBC4AA83E00 /* Pods_BorrowBarrowProjectCIS657Tests.framework */,
+				0F41126921BDB8799455F86C /* Pods_BorrowBarrowProjectCIS657UITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1A4A84E02297732800CCC4A3 = {
 			isa = PBXGroup;
 			children = (
@@ -127,7 +137,7 @@
 				1A4A850B2297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests */,
 				1A4A84EA2297732800CCC4A3 /* Products */,
 				30EF1DC4D3CB5DBE73CFB737 /* Pods */,
-				31A60B18DEB7204EB5046C90 /* Frameworks */,
+				171E759437B8FC245B391194 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,24 +224,14 @@
 		30EF1DC4D3CB5DBE73CFB737 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0DAC0FAB96FC40BA16EF9242 /* Pods-BorrowBarrowProjectCIS657.debug.xcconfig */,
-				2A6A0568B13107AB0BD14BB7 /* Pods-BorrowBarrowProjectCIS657.release.xcconfig */,
-				78C63350C5827E1DDF688DF1 /* Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig */,
-				D4B32512BB1AA2556A91A424 /* Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig */,
-				8819C80043433C01FE6A81F4 /* Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig */,
-				6DE6F66510D6B1BC6DE332E6 /* Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig */,
+				CC40DBAC75889B5C9C6EC3BF /* Pods-BorrowBarrowProjectCIS657.debug.xcconfig */,
+				4D3F81998D9EE031C340F96C /* Pods-BorrowBarrowProjectCIS657.release.xcconfig */,
+				113BA51D1283458D9791F3C6 /* Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig */,
+				A13BE1109C1DD8B649B37B9F /* Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig */,
+				61CA4F911245B5A79518BA75 /* Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig */,
+				F965EE6B6B9C1CA693210108 /* Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		31A60B18DEB7204EB5046C90 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E476D92FC53788C9274D27C7 /* Pods_BorrowBarrowProjectCIS657.framework */,
-				92B97E1C6EF1E9F0C4F30BA9 /* Pods_BorrowBarrowProjectCIS657Tests.framework */,
-				2583E43CE9548A34514E01F1 /* Pods_BorrowBarrowProjectCIS657UITests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A4A85112297732900CCC4A3 /* Build configuration list for PBXNativeTarget "BorrowBarrowProjectCIS657" */;
 			buildPhases = (
-				5C6619BF4111858B9B7D27A1 /* [CP] Check Pods Manifest.lock */,
+				A183B7503C8A7B03F151C5E1 /* [CP] Check Pods Manifest.lock */,
 				1A4A84E52297732800CCC4A3 /* Sources */,
 				1A4A84E62297732800CCC4A3 /* Frameworks */,
 				1A4A84E72297732800CCC4A3 /* Resources */,
@@ -279,7 +279,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A4A85172297732900CCC4A3 /* Build configuration list for PBXNativeTarget "BorrowBarrowProjectCIS657UITests" */;
 			buildPhases = (
-				01261D9FFAD68FD5E2178D9A /* [CP] Check Pods Manifest.lock */,
+				31F425897BDED1C74AACF5CB /* [CP] Check Pods Manifest.lock */,
 				1A4A85042297732900CCC4A3 /* Sources */,
 				1A4A85052297732900CCC4A3 /* Frameworks */,
 				1A4A85062297732900CCC4A3 /* Resources */,
@@ -369,7 +369,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01261D9FFAD68FD5E2178D9A /* [CP] Check Pods Manifest.lock */ = {
+		31F425897BDED1C74AACF5CB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -647,7 +647,7 @@
 		};
 		1A4A85122297732900CCC4A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DAC0FAB96FC40BA16EF9242 /* Pods-BorrowBarrowProjectCIS657.debug.xcconfig */;
+			baseConfigurationReference = CC40DBAC75889B5C9C6EC3BF /* Pods-BorrowBarrowProjectCIS657.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -666,7 +666,7 @@
 		};
 		1A4A85132297732900CCC4A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A6A0568B13107AB0BD14BB7 /* Pods-BorrowBarrowProjectCIS657.release.xcconfig */;
+			baseConfigurationReference = 4D3F81998D9EE031C340F96C /* Pods-BorrowBarrowProjectCIS657.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -685,7 +685,7 @@
 		};
 		1A4A85152297732900CCC4A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78C63350C5827E1DDF688DF1 /* Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig */;
+			baseConfigurationReference = 113BA51D1283458D9791F3C6 /* Pods-BorrowBarrowProjectCIS657Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -707,7 +707,7 @@
 		};
 		1A4A85162297732900CCC4A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4B32512BB1AA2556A91A424 /* Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig */;
+			baseConfigurationReference = A13BE1109C1DD8B649B37B9F /* Pods-BorrowBarrowProjectCIS657Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -729,7 +729,7 @@
 		};
 		1A4A85182297732900CCC4A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8819C80043433C01FE6A81F4 /* Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig */;
+			baseConfigurationReference = 61CA4F911245B5A79518BA75 /* Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -750,7 +750,7 @@
 		};
 		1A4A85192297732900CCC4A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DE6F66510D6B1BC6DE332E6 /* Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig */;
+			baseConfigurationReference = F965EE6B6B9C1CA693210108 /* Pods-BorrowBarrowProjectCIS657UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

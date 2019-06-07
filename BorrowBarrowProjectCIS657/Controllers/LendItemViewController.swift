@@ -47,6 +47,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad();
         
+        setInfo();
         // Do any additional setup after loading the view.
     }
     
@@ -56,7 +57,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
         
         itemNameLabel.text = selectedToolItem?.itemName!;
         
-        print(itemNameLabel.text);
+        print(selectedToolItem);
 
         
         itemStatusLabel.text = selectedToolItem?.lentTo; //Need to inditcate who it is lent to.
@@ -74,16 +75,6 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
         setInfo();
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        if(segue.identifier == "toolshedToLendItem")
-        {
-            print("Yes?")
-            let toolShed = segue.destination as? ToolShedViewController
-            toolShed?.toolShedDelegate = self;
-        }
-    }
-
     /*
     // MARK: - Navigation
 
