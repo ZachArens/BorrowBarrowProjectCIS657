@@ -466,7 +466,7 @@
         <!--Lend Item-->
         <scene sceneID="NZX-7m-59j">
             <objects>
-                <viewController title="Lend Item" id="qYz-yY-e6e" sceneMemberID="viewController">
+                <viewController title="Lend Item" id="qYz-yY-e6e" customClass="LendItemViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e7d-ve-mhd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -589,6 +589,9 @@
                                         <include reference="KCq-iN-qRC"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="toggleReminder:" destination="qYz-yY-e6e" eventType="valueChanged" id="trB-xf-6mK"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oay-0V-qou">
                                 <rect key="frame" x="299" y="300" width="99" height="26"/>
@@ -653,6 +656,9 @@
                                         <include reference="PEJ-WH-dHw"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="lendItemBtn:" destination="qYz-yY-e6e" eventType="touchUpInside" id="Wa5-FZ-XOu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMo-gI-wU1">
                                 <rect key="frame" x="73" y="629" width="325" height="31"/>
@@ -780,6 +786,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="LendImageView" destination="XSY-bT-unM" id="Eqz-W1-6Ep"/>
+                        <outlet property="dateTextField" destination="CdB-6F-8dx" id="IQJ-I0-Nl1"/>
+                        <outlet property="descriptionTextView" destination="RX5-0o-SWe" id="Etp-Ae-akr"/>
+                        <outlet property="friendPickerView" destination="Y99-Eo-0h9" id="b1B-oH-aBh"/>
+                        <outlet property="itemNameLabel" destination="Zwt-sD-3MT" id="SjQ-52-VVd"/>
+                        <outlet property="itemStatusLabel" destination="oay-0V-qou" id="35c-OB-Lkr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rim-LF-Xpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -807,10 +821,15 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Zi-Ga-cch">
                                                     <rect key="frame" x="0.0" y="0.0" width="151" height="163.5"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="itemImage"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="151" id="0Bw-Oj-KBM"/>
+                                                        <constraint firstAttribute="height" constant="163.5" id="AYT-FN-dxD"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-US-9wT">
+                                                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-US-9wT">
                                                     <rect key="frame" x="154" y="48.5" width="260" height="115"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="itemDescription"/>
+                                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
                                                     <string key="text">Item details.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -882,7 +901,7 @@
                                             <outlet property="itemPicture" destination="1Zi-Ga-cch" id="dcX-cm-fEr"/>
                                             <outlet property="signalImage" destination="MkK-ft-Vo3" id="9KW-al-rW8"/>
                                             <outlet property="userThatHas" destination="aaB-l4-8p3" id="cRG-fQ-X4t"/>
-                                            <segue destination="qYz-yY-e6e" kind="show" id="rzD-7o-hku"/>
+                                            <segue destination="qYz-yY-e6e" kind="show" identifier="toolshedToLendItem" id="rzD-7o-hku"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1253,7 +1272,7 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Gv-ri-Qnh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="itemImageViewer" translatesAutoresizingMaskIntoConstraints="NO" id="4Gv-ri-Qnh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="199"/>
                             </imageView>
                         </subviews>
@@ -1314,19 +1333,14 @@
                                 <exclude reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8vo-8r-334"/>
-                                <exclude reference="A0R-bL-6yL"/>
-                                <exclude reference="J5t-HZ-izx"/>
-                                <exclude reference="NUD-ol-kUF"/>
-                                <exclude reference="jof-dU-Mar"/>
                                 <exclude reference="Wfb-uL-mCH"/>
                                 <exclude reference="BHn-YK-HRk"/>
                                 <exclude reference="6TJ-dQ-HhZ"/>
                                 <exclude reference="cHp-hd-uZg"/>
-                                <exclude reference="2DL-Lc-rIG"/>
-                                <exclude reference="i4b-zn-zqS"/>
                                 <exclude reference="HkJ-3p-p3O"/>
                                 <exclude reference="gff-FB-yJi"/>
+                                <exclude reference="2DL-Lc-rIG"/>
+                                <exclude reference="i4b-zn-zqS"/>
                                 <exclude reference="Nee-UV-8pB"/>
                                 <exclude reference="V0W-SI-29d"/>
                                 <exclude reference="XtF-bb-Axk"/>
@@ -1334,6 +1348,11 @@
                                 <exclude reference="mrr-cK-bij"/>
                                 <exclude reference="HW8-tX-YI1"/>
                                 <exclude reference="Ivc-qv-C8f"/>
+                                <exclude reference="8vo-8r-334"/>
+                                <exclude reference="A0R-bL-6yL"/>
+                                <exclude reference="J5t-HZ-izx"/>
+                                <exclude reference="NUD-ol-kUF"/>
+                                <exclude reference="jof-dU-Mar"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1348,19 +1367,14 @@
                                 <include reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8vo-8r-334"/>
-                                <include reference="A0R-bL-6yL"/>
-                                <include reference="J5t-HZ-izx"/>
-                                <include reference="NUD-ol-kUF"/>
-                                <include reference="jof-dU-Mar"/>
                                 <include reference="Wfb-uL-mCH"/>
                                 <include reference="BHn-YK-HRk"/>
                                 <include reference="6TJ-dQ-HhZ"/>
                                 <include reference="cHp-hd-uZg"/>
-                                <include reference="2DL-Lc-rIG"/>
-                                <include reference="i4b-zn-zqS"/>
                                 <include reference="HkJ-3p-p3O"/>
                                 <include reference="gff-FB-yJi"/>
+                                <include reference="2DL-Lc-rIG"/>
+                                <include reference="i4b-zn-zqS"/>
                                 <include reference="Nee-UV-8pB"/>
                                 <include reference="V0W-SI-29d"/>
                                 <include reference="XtF-bb-Axk"/>
@@ -1368,6 +1382,11 @@
                                 <include reference="mrr-cK-bij"/>
                                 <include reference="HW8-tX-YI1"/>
                                 <include reference="Ivc-qv-C8f"/>
+                                <include reference="8vo-8r-334"/>
+                                <include reference="A0R-bL-6yL"/>
+                                <include reference="J5t-HZ-izx"/>
+                                <include reference="NUD-ol-kUF"/>
+                                <include reference="jof-dU-Mar"/>
                             </mask>
                         </variation>
                     </view>
@@ -1384,7 +1403,7 @@
         <!--Add a Friend-->
         <scene sceneID="bGb-7q-Jf6">
             <objects>
-                <viewController title="Add a Friend" id="hMP-3d-KaW" sceneMemberID="viewController">
+                <viewController title="Add a Friend" id="hMP-3d-KaW" customClass="AddFriendViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0uQ-kV-cqj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1596,6 +1615,9 @@
                                 <rect key="frame" x="340" y="295" width="54" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraFriendBtn:" destination="hMP-3d-KaW" eventType="touchUpInside" id="1sX-hO-kIm"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Uf-wS-D1a">
                                 <rect key="frame" x="20" y="44" width="374" height="210"/>
@@ -1617,6 +1639,9 @@
                                         <include reference="4v2-IN-hOr"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="photoLibFriendBtn:" destination="hMP-3d-KaW" eventType="touchUpInside" id="hiz-yP-JmJ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sPt-jl-WNR" userLabel="State">
                                 <rect key="frame" x="20" y="599" width="80" height="30"/>
@@ -1732,6 +1757,7 @@
                                 <exclude reference="sPt-jl-WNR"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="W47-xT-OiF"/>
                                 <exclude reference="19A-cG-hjs"/>
                                 <exclude reference="8EE-Ly-hdw"/>
                                 <exclude reference="L16-JV-rrJ"/>
@@ -1743,7 +1769,6 @@
                                 <exclude reference="ha3-Nc-mSY"/>
                                 <exclude reference="qbc-3x-buh"/>
                                 <exclude reference="zgY-Mf-zgQ"/>
-                                <exclude reference="W47-xT-OiF"/>
                                 <exclude reference="Lwv-gg-l4d"/>
                                 <exclude reference="SJq-Tq-Puv"/>
                                 <exclude reference="NJG-aS-6fg"/>
@@ -1752,23 +1777,23 @@
                                 <exclude reference="wwD-Ya-sSB"/>
                                 <exclude reference="UI3-0a-cuR"/>
                                 <exclude reference="xPE-cD-lj2"/>
-                                <exclude reference="JcE-bK-FAt"/>
-                                <exclude reference="RfE-FE-S95"/>
-                                <exclude reference="oOQ-Gv-GSh"/>
                                 <exclude reference="QOu-3x-zew"/>
                                 <exclude reference="o5s-fA-f5o"/>
                                 <exclude reference="45B-nw-6nH"/>
                                 <exclude reference="uXh-d5-aCc"/>
                                 <exclude reference="jDI-HQ-ury"/>
                                 <exclude reference="pFU-Kk-34V"/>
-                                <exclude reference="MFB-V5-6Er"/>
-                                <exclude reference="we1-86-BEJ"/>
                                 <exclude reference="a1M-ed-KLc"/>
                                 <exclude reference="pQB-Zy-McY"/>
                                 <exclude reference="J71-NX-Ogd"/>
                                 <exclude reference="Vlj-2b-Pa4"/>
                                 <exclude reference="Pl3-Ik-3ya"/>
                                 <exclude reference="Sff-JR-PyE"/>
+                                <exclude reference="JcE-bK-FAt"/>
+                                <exclude reference="RfE-FE-S95"/>
+                                <exclude reference="oOQ-Gv-GSh"/>
+                                <exclude reference="MFB-V5-6Er"/>
+                                <exclude reference="we1-86-BEJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1780,6 +1805,7 @@
                                 <include reference="sPt-jl-WNR"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="W47-xT-OiF"/>
                                 <include reference="19A-cG-hjs"/>
                                 <include reference="8EE-Ly-hdw"/>
                                 <include reference="L16-JV-rrJ"/>
@@ -1791,7 +1817,6 @@
                                 <include reference="ha3-Nc-mSY"/>
                                 <include reference="qbc-3x-buh"/>
                                 <include reference="zgY-Mf-zgQ"/>
-                                <include reference="W47-xT-OiF"/>
                                 <include reference="Lwv-gg-l4d"/>
                                 <include reference="SJq-Tq-Puv"/>
                                 <include reference="NJG-aS-6fg"/>
@@ -1800,26 +1825,29 @@
                                 <include reference="wwD-Ya-sSB"/>
                                 <include reference="UI3-0a-cuR"/>
                                 <include reference="xPE-cD-lj2"/>
-                                <exclude reference="JcE-bK-FAt"/>
-                                <include reference="RfE-FE-S95"/>
-                                <include reference="oOQ-Gv-GSh"/>
                                 <include reference="QOu-3x-zew"/>
                                 <include reference="o5s-fA-f5o"/>
                                 <include reference="45B-nw-6nH"/>
                                 <include reference="uXh-d5-aCc"/>
                                 <include reference="jDI-HQ-ury"/>
                                 <include reference="pFU-Kk-34V"/>
-                                <include reference="MFB-V5-6Er"/>
-                                <include reference="we1-86-BEJ"/>
                                 <include reference="a1M-ed-KLc"/>
                                 <include reference="pQB-Zy-McY"/>
                                 <include reference="J71-NX-Ogd"/>
                                 <include reference="Vlj-2b-Pa4"/>
                                 <include reference="Pl3-Ik-3ya"/>
                                 <include reference="Sff-JR-PyE"/>
+                                <exclude reference="JcE-bK-FAt"/>
+                                <include reference="RfE-FE-S95"/>
+                                <include reference="oOQ-Gv-GSh"/>
+                                <include reference="MFB-V5-6Er"/>
+                                <include reference="we1-86-BEJ"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="friendImageViewer" destination="XFN-TF-T62" id="sfx-Q6-5N5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIt-e2-NUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -22,17 +22,34 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     
     @IBOutlet weak var itemImageViewer: UIImageView!
     
+    
+    /*
+        Camera code and alert based on the following sources:
+        https://stackoverflow.com/questions/41717115/how-to-uiimagepickercontroller-for-camera-and-photo-library-in-the-same-time-in
+     */
     @IBAction func openCameraBtn(_ sender: UIButton) {
         
-        imgPickerCtrl.sourceType = .camera
-        imgPickerCtrl.allowsEditing = true
-        imgPickerCtrl.delegate = self
-        present(imgPickerCtrl, animated: true);
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
+        {
+            imgPickerCtrl.sourceType = .camera
+            imgPickerCtrl.allowsEditing = true
+            imgPickerCtrl.delegate = self
+            present(imgPickerCtrl, animated: true);
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+
     }
     
     @IBAction func openPhotoLibBtn(_ sender: UIButton) {
         
-        imgPickerCtrl.sourceType = .photoLibrary;
+        imgPickerCtrl.sourceType = UIImagePickerController.SourceType.photoLibrary;
+        imgPickerCtrl.allowsEditing = true;
         imgPickerCtrl.delegate = self;
         present(imgPickerCtrl, animated: true);
     }
@@ -46,17 +63,19 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
      
      */
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
-        
-        let chosenImg: UIImage = image;
-        
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        itemImageViewer.image = chosenImage;
+        dismiss(animated: true, completion: nil)
         //Set Image View to image
         
-        itemImageViewer.image = chosenImg;
+    }
+
         
 
         
-    }
+    
     
     /*
     // MARK: - Navigation

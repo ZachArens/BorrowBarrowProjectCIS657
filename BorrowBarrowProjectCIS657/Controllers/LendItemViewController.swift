@@ -8,14 +8,81 @@
 
 import UIKit
 
-class LendItemViewController: UIViewController {
+protocol LendItemDelegation{
+    func lendItemDelegate(item: ToolShedItem?);
+}
 
+class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
+
+    @IBOutlet weak var LendImageView: UIImageView!
+    
+    @IBOutlet weak var itemNameLabel: UILabel!
+    var item: ToolShedItem?;
+    
+    @IBOutlet weak var itemStatusLabel: UILabel!
+    
+    
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    
+    @IBOutlet weak var friendPickerView: UIPickerView!
+    
+    
+    @IBAction func toggleReminder(_ sender: UISwitch) {
+        sender.isOn = selectedToolItem?.reqYesNo ?? false;
+    }
+    
+    @IBOutlet weak var dateTextField: UITextField!
+    
+    
+    @IBAction func lendItemBtn(_ sender: UIButton) {
+    }
+    
+    var selectedToolItem: ToolShedItem?;
+    
+    var toolShedDelegate: ToolShedViewControllerDelegate?;
+    
+    var lendItemDelegate: LendItemDelegation?;
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        super.viewDidLoad();
+        
         // Do any additional setup after loading the view.
     }
     
+    func setInfo() -> Void
+    {
+        
+        
+        itemNameLabel.text = selectedToolItem?.itemName!;
+        
+        print(itemNameLabel.text);
+
+        
+        itemStatusLabel.text = selectedToolItem?.lentTo; //Need to inditcate who it is lent to.
+        //LendImageView.image = UIImage(named: selectedToolItem?.photo!) ?? UIImage(named: "emptyPhoto")
+        descriptionTextView.text = selectedToolItem?.itemDescription;
+        
+        //Picker view here or function that populates picker here
+        
+        
+        
+    }
+    
+    func selectEntry(item: ToolShedItem) {
+        selectedToolItem = item;
+        setInfo();
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if(segue.identifier == "toolshedToLendItem")
+        {
+            print("Yes?")
+            let toolShed = segue.destination as? ToolShedViewController
+            toolShed?.toolShedDelegate = self;
+        }
+    }
 
     /*
     // MARK: - Navigation

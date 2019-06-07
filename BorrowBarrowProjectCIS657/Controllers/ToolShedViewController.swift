@@ -9,7 +9,19 @@
 import UIKit
 import Firebase
 
-class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol ToolShedViewControllerDelegate
+{
+    func selectEntry(item: ToolShedItem);
+}
+
+class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation {
+    
+    func lendItemDelegate(item: ToolShedItem?) {
+        //Perhaps change the status of item here
+        
+        
+    }
+    
     
 
     @IBOutlet weak var addItem: UIBarButtonItem!
@@ -19,21 +31,36 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     var TSItems : [ToolShedItem]?
     
     fileprivate var ref : DatabaseReference?
+    var selectedToolItem: ToolShedItem!
+    
+    var lendItemDelegate: LendItemDelegation?;
+    
+    var toolShedDelegate: ToolShedViewControllerDelegate?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
-        
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
-        let model = TSItemModel()
+        let model: TSItemModel = TSItemModel()
         self.TSItems = model.getTSItems()
         self.setNeedsStatusBarAppearanceUpdate()
         
         self.ref = Database.database().reference()
         self.registerForFireBaseUpdates()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toolshedToLendItem")
+        {
+            let lendViewCtrl = segue.destination as? LendItemViewController;
+            
+            
+            lendViewCtrl?.selectedToolItem = selectedToolItem;
+            //lendViewCtrl.
+          
+            
+        }
     }
     
     
@@ -61,6 +88,15 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let tempDel = self.selectedToolItem {
+            let tempItem = TSItems![indexPath.row];
+            lendItemDelegate?.lendItemDelegate(item: tempItem);
+
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
             let cell = self.tsItemTableView.dequeueReusableCell(withIdentifier: "tsItemCell", for: indexPath) as! TSItemTableViewCell
@@ -82,8 +118,13 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
 //                "https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
 //                 from Pixabay
 //                "https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
-                                
+                
+                
+                //Set global variable to selected item so we can delegate it properly
+                selectedToolItem = item;
              }
+            
+            
             return cell
     }
     
@@ -116,7 +157,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             "itemName": NSString(string: itms.itemName ?? ""),
             "owner": NSString(string: itms.owner ?? ""),
             "itemDescription": NSString(string: itms.itemDescription ?? ""),
-            "reqYesNo": Bool(string: itms.reqYesNo ?? ""),
+            "reqYesNo": Bool(booleanLiteral: itms.reqYesNo!),
             "requirements": NSString(string: itms.requirements ?? ""),
             "photo": NSString(string: itms.photo ?? ""),
             "lentTo": NSString(string: itms.lentTo ?? "")
@@ -128,7 +169,9 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         //let addedItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
         let addedItem = ToolShedItem(itemName: "Kayak", owner: "Barrel Box", itemDescription: "River kayak, 250 lb capacity, 10' long", reqYesNo: true, requirements: "Must provide transportation to/from water, responsible for fixing any damage or replacement if needed.", photo: "kayak", lentTo: "Barack")
         let newChild = self.ref?.child("toolshed").childByAutoId()
-        newChild?.setValue(self.toDictionary(vals: addedItem))
+        newChild?.setValue(self.toDictionary(itms: addedItem))
     }
 
 }
+
+
