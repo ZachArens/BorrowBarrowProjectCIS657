@@ -8,7 +8,19 @@
 
 import UIKit
 
-class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol ToolShedViewControllerDelegate
+{
+    func selectEntry(item: ToolShedItem);
+}
+
+class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation {
+    
+    func lendItemDelegate(item: ToolShedItem?) {
+        //Perhaps change the status of item here
+        
+        
+    }
+    
     
 
     @IBOutlet weak var addItem: UIBarButtonItem!
@@ -17,17 +29,33 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var TSItems : [ToolShedItem]?
     
+    var selectedToolItem: ToolShedItem!
+    
+    var lendItemDelegate: LendItemDelegation?;
+    
+    var toolShedDelegate: ToolShedViewControllerDelegate?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
-        
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
-        let model = TSItemModel()
+        let model: TSItemModel = TSItemModel()
         self.TSItems = model.getTSItems()
         self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toolshedToLendItem")
+        {
+            let lendViewCtrl = segue.destination as? LendItemViewController;
+            
+            
+            lendViewCtrl?.selectedToolItem = selectedToolItem;
+            lendViewCtrl.
+          
+            
+        }
     }
     
     
@@ -55,6 +83,15 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let tempDel = self.selectedToolItem {
+            let tempItem = TSItems![indexPath.row];
+            lendItemDelegate?.lendItemDelegate(item: tempItem);
+
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
             let cell = self.tsItemTableView.dequeueReusableCell(withIdentifier: "tsItemCell", for: indexPath) as! TSItemTableViewCell
@@ -76,8 +113,17 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
 //                "https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
 //                 from Pixabay
 //                "https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
-                                
+                
+                
+                //Set global variable to selected item so we can delegate it properly
+                selectedToolItem = item;
              }
+            
+            
             return cell
     }
+    
+    
 }
+
+

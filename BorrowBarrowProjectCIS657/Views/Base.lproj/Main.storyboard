@@ -466,7 +466,7 @@
         <!--Lend Item-->
         <scene sceneID="NZX-7m-59j">
             <objects>
-                <viewController title="Lend Item" id="qYz-yY-e6e" sceneMemberID="viewController">
+                <viewController title="Lend Item" id="qYz-yY-e6e" customClass="LendItemViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e7d-ve-mhd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -589,6 +589,9 @@
                                         <include reference="KCq-iN-qRC"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="toggleReminder:" destination="qYz-yY-e6e" eventType="valueChanged" id="trB-xf-6mK"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oay-0V-qou">
                                 <rect key="frame" x="299" y="300" width="99" height="26"/>
@@ -653,6 +656,9 @@
                                         <include reference="PEJ-WH-dHw"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="lendItemBtn:" destination="qYz-yY-e6e" eventType="touchUpInside" id="Wa5-FZ-XOu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMo-gI-wU1">
                                 <rect key="frame" x="73" y="629" width="325" height="31"/>
@@ -780,6 +786,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="LendImageView" destination="XSY-bT-unM" id="Eqz-W1-6Ep"/>
+                        <outlet property="dateTextField" destination="CdB-6F-8dx" id="IQJ-I0-Nl1"/>
+                        <outlet property="descriptionTextView" destination="RX5-0o-SWe" id="Etp-Ae-akr"/>
+                        <outlet property="friendPickerView" destination="Y99-Eo-0h9" id="b1B-oH-aBh"/>
+                        <outlet property="itemNameLabel" destination="Zwt-sD-3MT" id="SjQ-52-VVd"/>
+                        <outlet property="itemStatusLabel" destination="oay-0V-qou" id="35c-OB-Lkr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rim-LF-Xpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -807,10 +821,15 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Zi-Ga-cch">
                                                     <rect key="frame" x="0.0" y="0.0" width="151" height="163.5"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="itemImage"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="151" id="0Bw-Oj-KBM"/>
+                                                        <constraint firstAttribute="height" constant="163.5" id="AYT-FN-dxD"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-US-9wT">
+                                                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-US-9wT">
                                                     <rect key="frame" x="154" y="48.5" width="260" height="115"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="itemDescription"/>
+                                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
                                                     <string key="text">Item details.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -882,7 +901,7 @@
                                             <outlet property="itemPicture" destination="1Zi-Ga-cch" id="dcX-cm-fEr"/>
                                             <outlet property="signalImage" destination="MkK-ft-Vo3" id="9KW-al-rW8"/>
                                             <outlet property="userThatHas" destination="aaB-l4-8p3" id="cRG-fQ-X4t"/>
-                                            <segue destination="qYz-yY-e6e" kind="show" id="rzD-7o-hku"/>
+                                            <segue destination="qYz-yY-e6e" kind="show" identifier="toolshedToLendItem" id="rzD-7o-hku"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
