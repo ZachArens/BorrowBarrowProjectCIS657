@@ -63,19 +63,6 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "toolshedToLendItem")
-        {
-            let lendViewCtrl = segue.destination as? LendItemViewController;
-            
-            
-            lendViewCtrl?.selectedToolItem = selectedToolItem;
-            lendViewCtrl.
-          
-            
-        }
-    }
-    
     
     
 
