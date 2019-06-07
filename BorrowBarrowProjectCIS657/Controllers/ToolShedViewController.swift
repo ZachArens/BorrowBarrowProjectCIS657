@@ -35,6 +35,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var toolShedDelegate: ToolShedViewControllerDelegate?;
     
+    var lendViewCtrl: LendItemViewController?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,15 +48,12 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "toolshedToLendItem")
+        if let lend = segue.destination as? LendItemViewController
         {
-            let lendViewCtrl = segue.destination as? LendItemViewController;
-            
-            
-            lendViewCtrl?.selectedToolItem = selectedToolItem;
-            lendViewCtrl.
-          
-            
+            lendViewCtrl = lend;
+            lend.selectedToolItem = selectedToolItem;
+            lend.lendItemDelegate = self;
+
         }
     }
     
@@ -85,11 +84,13 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let tempDel = self.selectedToolItem {
-            let tempItem = TSItems![indexPath.row];
-            lendItemDelegate?.lendItemDelegate(item: tempItem);
-
-        }
+        lendViewCtrl?.selectedToolItem = TSItems![indexPath.row];
+//        if let d = self.lendItemDelegate{
+//            print("Delegating...")
+//            d.lendItemDelegate(item: nil);
+//        }
+ 
+  
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
