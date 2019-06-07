@@ -22,6 +22,8 @@
 		1AACD88D22A494750022AC73 /* RequestItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD88C22A494750022AC73 /* RequestItemViewController.swift */; };
 		1AACD88F22A4948E0022AC73 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD88E22A4948E0022AC73 /* CreateAccountViewController.swift */; };
 		1AACD89122A494AF0022AC73 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD89022A494AF0022AC73 /* AddFriendViewController.swift */; };
+		1AACD89922A6B6CB0022AC73 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD89822A6B6CB0022AC73 /* APIKeys.swift */; };
+		1AACD8A522A9C3440022AC73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AACD8A422A9C3430022AC73 /* GoogleService-Info.plist */; };
 		1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */; };
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
 		49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49903B1F229DDF6500D4CF68 /* CommunityFriend.swift */; };
@@ -72,6 +74,8 @@
 		1AACD88C22A494750022AC73 /* RequestItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestItemViewController.swift; sourceTree = "<group>"; };
 		1AACD88E22A4948E0022AC73 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		1AACD89022A494AF0022AC73 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		1AACD89822A6B6CB0022AC73 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIKeys.swift; path = /Users/zacharyarens/Desktop/CIS657/BorrowBarrowProjectCIS657/BorrowBarrowProjectCIS657/APIKeys.swift; sourceTree = "<absolute>"; };
+		1AACD8A422A9C3430022AC73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedViewController.swift; sourceTree = "<group>"; };
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		26C18469338A8FEC0E0BCF74 /* Pods-BorrowBarrowProjectCIS657.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,7 +144,9 @@
 		1A4A84EB2297732800CCC4A3 /* BorrowBarrowProjectCIS657 */ = {
 			isa = PBXGroup;
 			children = (
+				1AACD89822A6B6CB0022AC73 /* APIKeys.swift */,
 				1A4A84EC2297732800CCC4A3 /* AppDelegate.swift */,
+				1AACD8A422A9C3430022AC73 /* GoogleService-Info.plist */,
 				1AE69DEC229A2DF900686EB6 /* Controllers */,
 				1A9A8CBC229DE8370010D824 /* Views */,
 				1A4A84F82297732900CCC4A3 /* Info.plist */,
@@ -240,7 +246,6 @@
 				1A4A84E62297732800CCC4A3 /* Frameworks */,
 				1A4A84E72297732800CCC4A3 /* Resources */,
 				28636531E246C8A764015A66 /* [CP] Embed Pods Frameworks */,
-				7DBCCCFC75DE96451EAF5A71 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -340,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AACD8A522A9C3440022AC73 /* GoogleService-Info.plist in Resources */,
 				1A4A84F72297732900CCC4A3 /* LaunchScreen.storyboard in Resources */,
 				1A4A84F42297732900CCC4A3 /* Assets.xcassets in Resources */,
 				1A4A84F22297732800CCC4A3 /* Main.storyboard in Resources */,
@@ -400,23 +406,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7DBCCCFC75DE96451EAF5A71 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BorrowBarrowProjectCIS657/Pods-BorrowBarrowProjectCIS657-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BBA28648962790A56EA186B4 /* [CP] Check Pods Manifest.lock */ = {
@@ -484,6 +473,7 @@
 				1A9A8CB3229C593A0010D824 /* ToolShedItem.swift in Sources */,
 				1AACD89122A494AF0022AC73 /* AddFriendViewController.swift in Sources */,
 				1A4A84ED2297732800CCC4A3 /* AppDelegate.swift in Sources */,
+				1AACD89922A6B6CB0022AC73 /* APIKeys.swift in Sources */,
 				1A9A8CB5229C90FC0010D824 /* TSItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

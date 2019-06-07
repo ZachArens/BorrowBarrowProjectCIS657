@@ -7,7 +7,9 @@ target 'BorrowBarrowProjectCIS657' do
 
   # Pods for BorrowBarrowProjectCIS657
   pod 'Eureka'
-  pod 'GooglePlaces'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
   target 'BorrowBarrowProjectCIS657Tests' do
     inherit! :search_paths

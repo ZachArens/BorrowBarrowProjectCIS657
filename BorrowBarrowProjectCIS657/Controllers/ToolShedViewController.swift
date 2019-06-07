@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,6 +17,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tsItemTableView: UITableView!
     
     var TSItems : [ToolShedItem]?
+    
+    fileprivate var ref : DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,9 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         let model = TSItemModel()
         self.TSItems = model.getTSItems()
         self.setNeedsStatusBarAppearanceUpdate()
+        
+        self.ref = Database.database().reference()
+        self.registerForFireBaseUpdates()
     }
     
     
@@ -80,4 +86,49 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
              }
             return cell
     }
+    
+    fileprivate func registerForFireBaseUpdates()
+    {
+        self.ref!.child("toolshed").observe(.value, with: { snapshot in
+            if let postDict = snapshot.value as? [String : AnyObject] {
+                var tmpItems = [ToolShedItem]()
+                for (_,val) in postDict.enumerated() {
+                    let item = val.1 as! Dictionary<String,AnyObject>
+                    let itemName = item["itemName"] as! String?
+                    let owner = item["owner"] as! String?
+                    let itemDescription = item["itemDescription"] as! String?
+                    let reqYesNo = item["reqYesNo"] as! Bool?
+                    let requirements = item["requirements"] as! String?
+                    let photo = item["photo"] as! String?
+                    let lentTo = item["lentTo"] as! String?
+                    
+                    
+                    tmpItems.append(ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
+                }
+                self.TSItems = tmpItems
+            }
+        })
+        
+    }
+    
+    func toDictionary(itms: ToolShedItem) -> NSDictionary {
+        return [
+            "itemName": NSString(string: itms.itemName ?? ""),
+            "owner": NSString(string: itms.owner ?? ""),
+            "itemDescription": NSString(string: itms.itemDescription ?? ""),
+            "reqYesNo": Bool(string: itms.reqYesNo ?? ""),
+            "requirements": NSString(string: itms.requirements ?? ""),
+            "photo": NSString(string: itms.photo ?? ""),
+            "lentTo": NSString(string: itms.lentTo ?? "")
+        ]
+    }
+    
+    func addItemToDB() {
+        // save history to firebase
+        //let addedItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
+        let addedItem = ToolShedItem(itemName: "Kayak", owner: "Barrel Box", itemDescription: "River kayak, 250 lb capacity, 10' long", reqYesNo: true, requirements: "Must provide transportation to/from water, responsible for fixing any damage or replacement if needed.", photo: "kayak", lentTo: "Barack")
+        let newChild = self.ref?.child("toolshed").childByAutoId()
+        newChild?.setValue(self.toDictionary(vals: addedItem))
+    }
+
 }
