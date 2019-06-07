@@ -1,0 +1,6 @@
+framework module Pods_BorrowBarrowProjectCIS657 {
+  umbrella header "Pods-BorrowBarrowProjectCIS657-umbrella.h"
+
+  export *
+  module * { export * }
+}
