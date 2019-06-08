@@ -136,7 +136,7 @@
         <!--Request Item-->
         <scene sceneID="yDK-kb-efp">
             <objects>
-                <viewController title="Request Item" id="her-4D-cMu" sceneMemberID="viewController">
+                <viewController title="Request Item" id="her-4D-cMu" customClass="RequestItemViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BZW-ml-Yvz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,7 +247,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="rFc-HP-GFF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="28"/>
-                                <state key="normal" title="Lend Item">
+                                <state key="normal" title="Request Item">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -267,6 +267,9 @@
                                         <include reference="rFc-HP-GFF"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="requestItemBtn:" destination="her-4D-cMu" eventType="touchUpInside" id="nzu-Q6-YZn"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J7U-BO-Voa">
                                 <rect key="frame" x="20" y="596" width="374" height="120"/>
@@ -441,6 +444,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="contactImageView" destination="BJa-Rb-b87" id="eHc-mG-KPx"/>
+                        <outlet property="contactNameLabel" destination="OME-8L-ye3" id="Gbj-jd-4L3"/>
+                        <outlet property="itemNameLabel" destination="5D2-B3-lEg" id="NnY-bW-SF3"/>
+                        <outlet property="itemPicker" destination="e24-cd-V1c" id="QV2-aq-LDb"/>
+                        <outlet property="specialRequestsTxt" destination="8No-8K-Nbi" id="zP6-5H-c5M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXe-QE-55A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

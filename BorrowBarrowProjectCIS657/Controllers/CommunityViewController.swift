@@ -14,7 +14,11 @@ protocol CommunityDelegation{
     func friendsListDelegate(friends: Array<String>?)
 }
 
-class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RequestItemViewControllerDelegate {
+    func requestItemDelegate(friend: CommunityFriend) {
+        //Add code here to adjust anything that needs to be on the community page
+    }
+    
 
 
     
@@ -23,6 +27,10 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var communityTableView: UITableView!
     
     var communityFriends : [CommunityFriend]?
+    
+    var selectedFriend: CommunityFriend?;
+    
+    var requestViewCtrl: RequestItemViewController?;
     
     fileprivate var ref : DatabaseReference?
     
@@ -40,6 +48,28 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
         self.registerForFireBaseUpdates()
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let request = segue.destination as? RequestItemViewController
+        {
+            requestViewCtrl = request;
+            request.communityFriend = selectedFriend;
+            request.requestDelegation = self;
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        requestViewCtrl?.communityFriend = communityFriends![indexPath.row];
+        selectedFriend = communityFriends![indexPath.row];
+        //        if let d = self.lendItemDelegate{
+        //            print("Delegating...")
+        //            d.lendItemDelegate(item: nil);
+        //        }
+        
+        
+    }
     
     
     

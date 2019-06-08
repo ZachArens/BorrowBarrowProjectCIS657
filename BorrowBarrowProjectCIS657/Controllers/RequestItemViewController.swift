@@ -8,14 +8,50 @@
 
 import UIKit
 
-class RequestItemViewController: UIViewController {
+protocol RequestItemViewControllerDelegate{
+    func requestItemDelegate(friend: CommunityFriend);
+}
 
+class RequestItemViewController: UIViewController {
+    
+
+    @IBOutlet weak var itemImageView: UIImageView!
+    
+    @IBOutlet weak var contactImageView: UIImageView!
+    @IBOutlet weak var contactNameLabel: UILabel!
+    
+    @IBOutlet weak var itemNameLabel: UILabel!
+    
+    @IBOutlet weak var itemPicker: UIPickerView!
+    
+    @IBOutlet weak var specialRequestsTxt: UITextView!
+    
+    
+    var communityFriend: CommunityFriend?;
+    
+    @IBAction func requestItemBtn(_ sender: UIButton) {
+        
+        //Request Item action here
+    }
+    
+    var requestDelegation: RequestItemViewControllerDelegate?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setContactInfo();
         // Do any additional setup after loading the view.
     }
     
+    
+    func setContactInfo(){
+        
+        contactNameLabel.text = communityFriend?.firstName!;
+        
+        contactImageView.image = UIImage(named: (communityFriend?.friendPhoto)!) ?? UIImage(named: "emptyPhoto");
+        
+        print(communityFriend?.friendPhoto);
+        
+    }
 
     /*
     // MARK: - Navigation
