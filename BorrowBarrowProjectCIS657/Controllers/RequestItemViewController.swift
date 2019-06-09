@@ -49,7 +49,7 @@ class RequestItemViewController: UIViewController {
         
         contactImageView.image = UIImage(named: (communityFriend?.friendPhoto)!) ?? UIImage(named: "emptyPhoto");
         
-        print(communityFriend?.friendPhoto);
+      
         
     }
 
