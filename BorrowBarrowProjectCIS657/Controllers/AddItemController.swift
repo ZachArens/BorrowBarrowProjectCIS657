@@ -55,6 +55,14 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     }
     
     
+    @IBAction func addItemBtn(_ sender: UIButton) {
+        
+        //Add item here
+        
+    navigationController?.popViewController(animated: true);
+
+    }
+    
     /*Image Picker Code  from sources:
      
         https://stackoverflow.com/questions/24625687/swift-uiimagepickercontroller-how-to-use-it

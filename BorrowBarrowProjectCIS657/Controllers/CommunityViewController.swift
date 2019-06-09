@@ -14,7 +14,12 @@ protocol CommunityDelegation{
     func friendsListDelegate(friends: Array<String>?)
 }
 
-class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RequestItemViewControllerDelegate {
+class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RequestItemViewControllerDelegate, EditFriendViewControllerDelegate {
+   
+    func editFriendViewControllerDelegation(friend: CommunityFriend) {
+        //Add code here to update item info
+    }
+    
     func requestItemDelegate(friend: CommunityFriend) {
         //Add code here to adjust anything that needs to be on the community page
     }
@@ -31,6 +36,9 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     var selectedFriend: CommunityFriend?;
     
     var requestViewCtrl: RequestItemViewController?;
+    
+    var editViewCtrl: EditItemViewController?;
+
     
     fileprivate var ref : DatabaseReference?
     
@@ -55,6 +63,11 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             requestViewCtrl = request;
             request.communityFriend = selectedFriend;
             request.requestDelegation = self;
+            
+        }
+        else
+        {
+           //Add else if statement to check if the edit segue is the one picked
             
         }
     }

@@ -36,6 +36,9 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
     
     
     @IBAction func lendItemBtn(_ sender: UIButton) {
+        
+        navigationController?.popViewController(animated: true);
+
     }
     
     var selectedToolItem: ToolShedItem?;

@@ -14,7 +14,12 @@ protocol ToolShedViewControllerDelegate
     func selectEntry(item: ToolShedItem);
 }
 
-class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation {
+class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate {
+    
+    func editItemViewControllerDelegation(item: ToolShedItem) {
+        
+    }
+    
     
     func lendItemDelegate(item: ToolShedItem?) {
         //Perhaps change the status of item here
@@ -39,6 +44,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var lendViewCtrl: LendItemViewController?;
     
+    var editViewCtrl: EditItemViewController?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +66,10 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             lend.selectedToolItem = selectedToolItem;
             lend.lendItemDelegate = self;
 
+        }
+        else
+        {
+            //Check for edit segue and if so, initiate the editItemView variables.
         }
     }
     

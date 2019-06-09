@@ -42,6 +42,18 @@ class EditFriendViewController: UIViewController {
     
     @IBOutlet weak var friendDescriptionTxtView: UITextView!
     
+    @IBAction func saveFriendBtn(_ sender: UIButton) {
+        
+        navigationController?.popViewController(animated: true);
+    }
+    
+    
+    @IBAction func deleteFriend(_ sender: UIButton) {
+        
+        navigationController?.popViewController(animated: true);
+    }
+    
+    
     var friend: CommunityFriend?;
     
     var editFriendDelegation: EditItemViewControllerDelegate?;
@@ -61,8 +73,10 @@ class EditFriendViewController: UIViewController {
         emailTxtView.text = friend?.email;
         addressTxtView.text = friend?.address1;
         address2TxtView.text = friend?.address2;
+        cityTxtView.text = friend?.friendPhoto;
         stateTxtView.text = friend?.state;
         zipCodeTxtView.text = friend?.zipcode;
+        
         
     }
     /*

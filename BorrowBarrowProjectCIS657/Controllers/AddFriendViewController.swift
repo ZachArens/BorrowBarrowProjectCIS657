@@ -41,6 +41,14 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBOutlet weak var friendImageViewer: UIImageView!
     
+    
+    @IBAction func addFriendBtn(_ sender: UIButton) {
+        
+        //Add friend here
+    navigationController?.popViewController(animated: true);
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imgPickerCtrl = UIImagePickerController();
