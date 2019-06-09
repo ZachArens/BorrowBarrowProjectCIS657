@@ -41,6 +41,8 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
 
     }
     
+    var pickerData: [String] = [String]()
+    
     var selectedToolItem: ToolShedItem?;
     
     var toolShedDelegate: ToolShedViewControllerDelegate?;
@@ -49,7 +51,8 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        
+        self.pickerData = ["Barack", "Darth", "Luke", "Jude"]
+        self.refreshPicker();
         setInfo();
         // Do any additional setup after loading the view.
     }
@@ -74,6 +77,11 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
         setInfo();
     }
     
+    func refreshPicker () {
+        self.friendPickerView.delegate = self
+        self.friendPickerView.dataSource = self
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -83,5 +91,41 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
+}
+
+
+extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    // The number of columns of data
+    func numberOfComponents(in: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    //The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        return self.pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+//        if activeSetting == "Distance" {
+//            distanceUnitLabel.text = self.pickerData[row]
+//            self.selectionDistance = self.pickerData[row]
+//        } else if activeSetting == "Bearing" {
+//            bearingUnitLabel.text = self.pickerData[row]
+//            self.selectionBearing = self.pickerData[row]
+//        } else {
+//            print("Active setting invalid")
+//        }
+        
+    }
 }

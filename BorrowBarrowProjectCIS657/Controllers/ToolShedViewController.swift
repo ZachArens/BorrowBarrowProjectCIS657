@@ -14,18 +14,8 @@ protocol ToolShedViewControllerDelegate
     func selectEntry(item: ToolShedItem);
 }
 
-class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate {
-    
-    func editItemViewControllerDelegation(item: ToolShedItem) {
-        
-    }
-    
-    
-    func lendItemDelegate(item: ToolShedItem?) {
-        //Perhaps change the status of item here
-        
-        
-    }
+class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate, AddItemControllerDelegate {
+
     
     
 
@@ -54,6 +44,12 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         let model: TSItemModel = TSItemModel()
         self.TSItems = model.getTSItems()
         self.setNeedsStatusBarAppearanceUpdate()
+        if DEBUG {
+            print("new TSItems from model")
+            for item in TSItems! {
+                print(item.itemName ?? "")
+            }
+        }
         
         self.ref = Database.database().reference()
         self.registerForFireBaseUpdates()
@@ -66,6 +62,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             lend.selectedToolItem = selectedToolItem;
             lend.lendItemDelegate = self;
 
+        } else if let addItems = segue.destination as? AddItemController {
+            addItems.delegate = self;
         }
         else
         {
@@ -74,7 +72,28 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
+    func addItem(newTSItem: ToolShedItem) {
+        TSItems?.append(newTSItem)
+        if DEBUG {
+            print("added item to TSItems array")
+            for item in TSItems! {
+                print(item.itemName ?? "")
+            }
+        }
+        tsItemTableView.reloadData()
+    }
     
+    
+    func editItemViewControllerDelegation(item: ToolShedItem) {
+        
+    }
+    
+    
+    func lendItemDelegate(item: ToolShedItem?) {
+        //Perhaps change the status of item here
+        
+        
+    }
 
     /*
     // MARK: - Navigation

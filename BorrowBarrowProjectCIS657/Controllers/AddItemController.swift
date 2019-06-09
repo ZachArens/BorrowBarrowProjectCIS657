@@ -8,9 +8,20 @@
 
 import UIKit
 
+protocol AddItemControllerDelegate: class {
+    func addItem(newTSItem: ToolShedItem)
+}
+
 class AddItemController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
 
+    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var itemDetailsUITextField: UITextView!
+    @IBOutlet weak var restrictYNToggle: UISwitch!
+    @IBOutlet weak var restrictDetailsTextField: UITextView!
+    
+    
+    weak var delegate: AddItemControllerDelegate?;
     var imgPickerCtrl: UIImagePickerController!;
     
     override func viewDidLoad() {
@@ -56,10 +67,12 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     
     
     @IBAction func addItemBtn(_ sender: UIButton) {
+        let newTSItem = ToolShedItem(itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photo: "photo", lentTo: "")
+        if let d = self.delegate {
+            d.addItem(newTSItem : newTSItem)
+        }
         
-        //Add item here
-        
-    navigationController?.popViewController(animated: true);
+        navigationController?.popViewController(animated: true);
 
     }
     

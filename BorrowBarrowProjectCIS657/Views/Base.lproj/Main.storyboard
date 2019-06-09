@@ -1406,7 +1406,11 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="itemDetailsUITextField" destination="Q2m-Mi-3MU" id="af2-YV-WGS"/>
                         <outlet property="itemImageViewer" destination="4Gv-ri-Qnh" id="QlX-Bn-6Ia"/>
+                        <outlet property="itemNameTextField" destination="95Q-9B-75Q" id="65V-Ms-NhG"/>
+                        <outlet property="restrictDetailsTextField" destination="enR-23-tf9" id="Smj-F7-dWP"/>
+                        <outlet property="restrictYNToggle" destination="AVA-Ku-xBt" id="mnk-LG-Zfc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJU-W2-hhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

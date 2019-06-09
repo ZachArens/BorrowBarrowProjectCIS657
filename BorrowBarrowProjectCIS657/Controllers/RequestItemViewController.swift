@@ -26,6 +26,7 @@ class RequestItemViewController: UIViewController {
     
     @IBOutlet weak var specialRequestsTxt: UITextView!
     
+    var itemPickerData: [String] = [String]()
     
     var communityFriend: CommunityFriend?;
     
@@ -38,6 +39,10 @@ class RequestItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.itemPickerData = ["Cordless Drill", "Kayak", "Lightsaber", "Tile Saw", "Leafblower"]
+        self.refreshPicker();
+        
         setContactInfo();
         // Do any additional setup after loading the view.
     }
@@ -52,6 +57,11 @@ class RequestItemViewController: UIViewController {
       
         
     }
+    
+    func refreshPicker () {
+        self.itemPicker.delegate = self
+        self.itemPicker.dataSource = self
+    }
 
     /*
     // MARK: - Navigation
@@ -63,4 +73,37 @@ class RequestItemViewController: UIViewController {
     }
     */
 
+}
+
+extension RequestItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    // The number of columns of data
+    func numberOfComponents(in: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    //The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return itemPickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        return self.itemPickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+//        if activeSetting == "Distance" {
+//            distanceUnitLabel.text = self.itemPickerData[row]
+//            self.selectionDistance = self.itemPickerData[row]
+//        } else if activeSetting == "Bearing" {
+//            bearingUnitLabel.text = self.itemPickerData[row]
+//            self.selectionBearing = self.itemPickerData[row]
+//        } else {
+//            print("Active setting invalid")
+//        }
+        
+    }
 }
