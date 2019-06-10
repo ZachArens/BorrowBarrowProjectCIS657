@@ -23,7 +23,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tsItemTableView: UITableView!
     
-    var TSItems : [ToolShedItem]?
+    var tsItems : [ToolShedItem]?
     
     fileprivate var ref : DatabaseReference?
     var selectedToolItem: ToolShedItem!
@@ -36,23 +36,36 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var editViewCtrl: EditItemViewController?;
     
+//    var tsItemTableViewData: [(sectionHeader: String,  tsItems: [ToolShedItem])]? {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.tsItemTableView.reloadData()
+//            }
+//        }
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
-        let model: TSItemModel = TSItemModel()
-        self.TSItems = model.getTSItems()
-        self.setNeedsStatusBarAppearanceUpdate()
-        if DEBUG {
-            print("new TSItems from model")
-            for item in TSItems! {
-                print(item.itemName ?? "")
-            }
-        }
+//        let model: TSItemModel = TSItemModel()
+//        self.tsItems = model.getTSItems()
+
+        
+//        if DEBUG {
+//            print("new TSItems from model")
+//            for item in tsItems! {
+//                print(item.itemName ?? "")
+//            }
+//        }
         
         self.ref = Database.database().reference()
         self.registerForFireBaseUpdates()
+        ref?.child("toolshed").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+        })
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,14 +86,14 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func addItem(newTSItem: ToolShedItem) {
-        TSItems?.append(newTSItem)
+        tsItems?.append(newTSItem)
         if DEBUG {
             print("added item to TSItems array")
-            for item in TSItems! {
+            for item in tsItems! {
                 print(item.itemName ?? "")
             }
         }
-        tsItemTableView.reloadData()
+        self.addItemToDB(newTSItem: newTSItem)
     }
     
     
@@ -110,7 +123,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if let items = self.TSItems {
+        if let items = self.tsItems {
             return items.count
         } else {
             return 0
@@ -119,7 +132,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        lendViewCtrl?.selectedToolItem = TSItems![indexPath.row];
+        lendViewCtrl?.selectedToolItem = tsItems![indexPath.row];
 //        if let d = self.lendItemDelegate{
 //            print("Delegating...")
 //            d.lendItemDelegate(item: nil);
@@ -132,7 +145,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         UITableViewCell {
             let cell = self.tsItemTableView.dequeueReusableCell(withIdentifier: "tsItemCell", for: indexPath) as! TSItemTableViewCell
             
-            if let item = self.TSItems?[indexPath.row] {
+            if let item = self.tsItems?[indexPath.row] {
                 cell.itemName?.text = item.itemName
                 //TODO need logic to select user lent to or place "in Shed"
                 let personLentTo = item.lentTo ?? "in Shed"
@@ -177,7 +190,15 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     tmpItems.append(ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
                 }
-                self.TSItems = tmpItems
+                self.tsItems = tmpItems
+                
+                self.tsItemTableView.reloadData()
+//                if DEBUG {
+//                    print("new TSItems from model")
+//                    for item in self.tsItems! {
+//                        print(item.itemName ?? "")
+//                    }
+//                }
             }
         })
         
@@ -195,12 +216,11 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         ]
     }
     
-    func addItemToDB() {
+    func addItemToDB(newTSItem : ToolShedItem) {
         // save history to firebase
         //let addedItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
-        let addedItem = ToolShedItem(itemName: "Kayak", owner: "Barrel Box", itemDescription: "River kayak, 250 lb capacity, 10' long", reqYesNo: true, requirements: "Must provide transportation to/from water, responsible for fixing any damage or replacement if needed.", photo: "kayak", lentTo: "Barack")
         let newChild = self.ref?.child("toolshed").childByAutoId()
-        newChild?.setValue(self.toDictionary(itms: addedItem))
+        newChild?.setValue(self.toDictionary(itms: newTSItem))
     }
 
 }
