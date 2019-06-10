@@ -37,7 +37,7 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var requestViewCtrl: RequestItemViewController?;
     
-    var editViewCtrl: EditItemViewController?;
+    var editViewCtrl: EditFriendViewController?;
 
     
     fileprivate var ref : DatabaseReference?
@@ -65,9 +65,15 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             request.requestDelegation = self;
             
         }
-        else
+        else if segue.identifier == "editFriendSegue"
         {
            //Add else if statement to check if the edit segue is the one picked
+            let editView = segue.destination as? EditFriendViewController;
+            
+            editView?.friend = selectedFriend;
+            editView?.editFriendDelegation = self;
+            
+            editViewCtrl = editView;
             
         }
     }
@@ -134,6 +140,30 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             return cell
             
             
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit", handler: {(action, view, completionHandler) in
+            //Move to edit page here
+            self.selectedFriend = self.communityFriends![indexPath.row];
+            
+            self.editViewCtrl?.friend = self.communityFriends![indexPath.row];
+            self.performSegue(withIdentifier: "editFriendSegue", sender: nil);
+            
+            completionHandler(true);
+        })
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {(action, view, deletionHandler) in
+            //Code to delete item here
+            deletionHandler(true);
+        })
+        
+        editAction.backgroundColor = .green;
+        deleteAction.backgroundColor = .red
+        
+        let configuration = UISwipeActionsConfiguration(actions: [editAction, deleteAction]);
+        return configuration;
     }
     
     fileprivate func registerForFireBaseUpdates()

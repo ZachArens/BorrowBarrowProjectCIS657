@@ -60,7 +60,7 @@ class EditItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setItemInfo();
         // Do any additional setup after loading the view.
     }
     

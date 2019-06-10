@@ -56,12 +56,12 @@ class EditFriendViewController: UIViewController {
     
     var friend: CommunityFriend?;
     
-    var editFriendDelegation: EditItemViewControllerDelegate?;
+    var editFriendDelegation: EditFriendViewControllerDelegate?;
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setFriendInfo();
         // Do any additional setup after loading the view.
     }
     
@@ -76,6 +76,8 @@ class EditFriendViewController: UIViewController {
         cityTxtView.text = friend?.friendPhoto;
         stateTxtView.text = friend?.state;
         zipCodeTxtView.text = friend?.zipcode;
+        
+        friendImageView.image = UIImage(named: ((friend?.friendPhoto!)!)) ?? UIImage(named: "emptyPhoto");
         
         
     }

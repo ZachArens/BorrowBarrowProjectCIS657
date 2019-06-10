@@ -78,8 +78,13 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         } else if let addItems = segue.destination as? AddItemController {
             addItems.delegate = self;
         }
-        else
+        else if segue.identifier == "editItemSegue"
         {
+            let edit = segue.destination as? EditItemViewController;            
+            edit?.item = selectedToolItem;
+            edit?.editItemDelegate = self;
+            editViewCtrl = edit;
+
             //Check for edit segue and if so, initiate the editItemView variables.
         }
     }
@@ -106,6 +111,30 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         //Perhaps change the status of item here
         
         
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit", handler: {(action, view, completionHandler) in
+            //Move to edit page here
+            self.selectedToolItem = self.tsItems![indexPath.row];
+            
+            self.editViewCtrl?.item = self.tsItems![indexPath.row];
+            self.performSegue(withIdentifier: "editItemSegue", sender: nil);
+            
+            completionHandler(true);
+        })
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {(action, view, deletionHandler) in
+            //Code to delete item here
+            deletionHandler(true);
+        })
+        
+        editAction.backgroundColor = .green;
+        deleteAction.backgroundColor = .red
+        
+        let configuration = UISwipeActionsConfiguration(actions: [editAction, deleteAction]);
+        return configuration;
     }
 
     /*
