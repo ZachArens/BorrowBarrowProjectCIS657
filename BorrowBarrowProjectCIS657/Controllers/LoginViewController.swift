@@ -13,6 +13,12 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBAction func usernameTextField(_ sender: Any) {
+    }
+    @IBAction func passwordTextField(_ sender: Any) {
+    }
+    @IBAction func signInBtn(_ sender: Any) {
+    }
     
     var toolshedViewController: ToolShedViewController?;
     

@@ -40,6 +40,7 @@
                                 </state>
                                 <connections>
                                     <action selector="SignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bpo-GR-qBc"/>
+                                    <action selector="signInBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Xe-uM-zBr"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Zpk-pf-fKM">
@@ -48,6 +49,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="usernameTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="KSo-ZE-bG7"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fc5-L4-sgb">
                                 <rect key="frame" x="20" y="504" width="374" height="30"/>
@@ -55,7 +59,18 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="passwordTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="JXb-sc-lW1"/>
+                                </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKB-Hj-9aP">
+                                <rect key="frame" x="154" y="657" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Account"/>
+                                <connections>
+                                    <segue destination="lho-Kz-ZbI" kind="show" id="PrS-Hk-bvl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -86,7 +101,7 @@
         <!--CreateAccount-->
         <scene sceneID="LTw-BD-PlG">
             <objects>
-                <viewController title="CreateAccount" id="lho-Kz-ZbI" sceneMemberID="viewController">
+                <viewController title="CreateAccount" id="lho-Kz-ZbI" customClass="CreateAccountViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bu8-wI-yQt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,6 +116,7 @@
                                 </state>
                                 <connections>
                                     <action selector="SignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UMN-eh-sSw"/>
+                                    <action selector="createAccountBtn:" destination="lho-Kz-ZbI" eventType="touchUpInside" id="Fcb-Ev-3fi"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ip-1j-wpQ">
@@ -128,10 +144,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ZHn-t2-bvn"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmPswdTxtFld" destination="38p-OI-ecY" id="Jyi-SP-2yX"/>
+                        <outlet property="createAccountBtn" destination="8Lq-zF-PXw" id="cej-D4-kUK"/>
+                        <outlet property="passwordTxtFld" destination="6Ip-1j-wpQ" id="lPZ-OT-QfS"/>
+                        <outlet property="usernameTxtFld" destination="iBw-HN-0yA" id="rBx-d7-faC"/>
+                        <segue destination="fCp-Cc-jdH" kind="show" identifier="segueToTabFromSignUp" id="Mho-pN-Lyq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZ6-Dp-r12" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-255" y="807"/>
+            <point key="canvasLocation" x="-299" y="807"/>
         </scene>
         <!--Request Item-->
         <scene sceneID="yDK-kb-efp">
@@ -928,6 +951,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Tool Shed" id="9bQ-iT-wRd"/>
                     <navigationItem key="navigationItem" title="Tool Shed" id="UXc-5R-IAF">
+                        <barButtonItem key="leftBarButtonItem" title="Login" id="kmK-lf-BG9">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="2sa-KS-wvf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="s02-2l-JlA">
                             <connections>
                                 <action selector="addItem:" destination="NjF-ke-IJ9" id="Emh-lF-uqt"/>
