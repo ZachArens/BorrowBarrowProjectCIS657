@@ -659,7 +659,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JBRUU3P5R2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BorrowBarrowProjectCIS657/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -678,7 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JBRUU3P5R2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BorrowBarrowProjectCIS657/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

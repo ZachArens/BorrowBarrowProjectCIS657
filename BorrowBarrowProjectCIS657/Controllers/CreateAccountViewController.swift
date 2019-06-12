@@ -29,7 +29,7 @@ class CreateAccountViewController: UIViewController {
         if self.validateFields() {
             Auth.auth().createUser(withEmail: self.usernameTxtFld.text!, password: self.passwordTxtFld.text!) { (user, error) in
                 if let _ = user {
-                    self.performSegue(withIdentifier: "segueToTabFromSignUp", sender: self)
+                    self.dismiss(animated: false, completion: nil)
                 } else {
                     self.passwordTxtFld.text = ""
                     self.confirmPswdTxtFld.text = ""

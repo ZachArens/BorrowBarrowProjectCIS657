@@ -8,7 +8,7 @@ target 'BorrowBarrowProjectCIS657' do
   # Pods for BorrowBarrowProjectCIS657
   pod 'Eureka'
   pod 'Firebase/Core'
- pod 'Firebase/Database'
+  pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
 

@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Account"/>
                                 <connections>
-                                    <segue destination="lho-Kz-ZbI" kind="show" id="PrS-Hk-bvl"/>
+                                    <segue destination="lho-Kz-ZbI" kind="show" identifier="segueToCreateAccountView" id="bq3-6F-hzn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -101,7 +101,7 @@
         <!--CreateAccount-->
         <scene sceneID="LTw-BD-PlG">
             <objects>
-                <viewController title="CreateAccount" id="lho-Kz-ZbI" customClass="CreateAccountViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="CreateAccount" providesPresentationContextTransitionStyle="YES" id="lho-Kz-ZbI" customClass="CreateAccountViewController" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bu8-wI-yQt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,25 +115,24 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="SignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UMN-eh-sSw"/>
                                     <action selector="createAccountBtn:" destination="lho-Kz-ZbI" eventType="touchUpInside" id="Fcb-Ev-3fi"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ip-1j-wpQ">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Ip-1j-wpQ">
                                 <rect key="frame" x="20" y="437" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38p-OI-ecY">
                                 <rect key="frame" x="20" y="488" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iBw-HN-0yA">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iBw-HN-0yA">
                                 <rect key="frame" x="20" y="379" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -146,10 +145,8 @@
                     </view>
                     <connections>
                         <outlet property="confirmPswdTxtFld" destination="38p-OI-ecY" id="Jyi-SP-2yX"/>
-                        <outlet property="createAccountBtn" destination="8Lq-zF-PXw" id="cej-D4-kUK"/>
                         <outlet property="passwordTxtFld" destination="6Ip-1j-wpQ" id="lPZ-OT-QfS"/>
                         <outlet property="usernameTxtFld" destination="iBw-HN-0yA" id="rBx-d7-faC"/>
-                        <segue destination="fCp-Cc-jdH" kind="show" identifier="segueToTabFromSignUp" id="Mho-pN-Lyq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZ6-Dp-r12" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -483,7 +480,7 @@
         <scene sceneID="KDV-KB-ObG">
             <objects>
                 <navigationController id="rFC-E2-Tkw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Community" id="qq9-IH-T60"/>
+                    <tabBarItem key="tabBarItem" title="Community" image="communityIcon" selectedImage="communityIcon" id="qq9-IH-T60"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sTZ-cc-Goy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2714,6 +2711,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="communityIcon" width="25" height="25"/>
         <image name="toolShedIcon" width="25" height="25"/>
     </resources>
 </document>
