@@ -13,10 +13,8 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func usernameTextField(_ sender: Any) {
-    }
-    @IBAction func passwordTextField(_ sender: Any) {
-    }
+    @IBOutlet weak var usernameTxtFld: UITextField!
+    
     @IBAction func signInBtn(_ sender: Any) {
     }
     
@@ -46,10 +44,41 @@ class LoginViewController: UIViewController {
 
     @IBAction func SignIn(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "LoginToToolShed", sender: nil);
-        
+//        //performSegue(withIdentifier: "LoginToToolShed", sender: nil);
+//        if self.validateFields() {
+//            Auth.auth().createUser(withEmail: self.usernameTxtFld.text!, password: self.passwordTxtFld.text!) { (user, error) in
+//                if let _ = user {
+//                    self.dismiss(animated: false, completion: nil)
+//                } else {
+//                    self.passwordTxtFld.text = ""
+//                    self.confirmPswdTxtFld.text = ""
+//                    self.passwordTxtFld.becomeFirstResponder()
+//                    self.reportError(msg: self.validationErrors)
+//                }
+//            }
+//        }
         
         
     }
+    
+//    func validateFields() -> Bool {
+//        
+//        let pwOk = self.isEmptyOrNil(password: self.passwordTxtFld.text)
+//        if !pwOk {
+//            self.validationErrors += "Password cannot be blank. "
+//        }
+//        
+//        let pwMatch = self.passwordTxtFld.text == self.confirmPswdTxtFld.text
+//        if !pwMatch {
+//            self.validationErrors += "Passwords do not match. "
+//        }
+//        
+//        let emailOk = self.isValidEmail(email: self.usernameTxtFld.text)
+//        if !emailOk {
+//            self.validationErrors += "Invalid email address."
+//        }
+//        
+//        return emailOk && pwOk && pwMatch
+//    }
 }
 

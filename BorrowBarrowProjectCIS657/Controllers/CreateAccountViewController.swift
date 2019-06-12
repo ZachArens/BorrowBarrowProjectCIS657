@@ -29,7 +29,8 @@ class CreateAccountViewController: UIViewController {
         if self.validateFields() {
             Auth.auth().createUser(withEmail: self.usernameTxtFld.text!, password: self.passwordTxtFld.text!) { (user, error) in
                 if let _ = user {
-                    self.dismiss(animated: false, completion: nil)
+                    //unwind segue need
+                    self.navigationController?.popViewController(animated: true)
                 } else {
                     self.passwordTxtFld.text = ""
                     self.confirmPswdTxtFld.text = ""
@@ -46,12 +47,12 @@ class CreateAccountViewController: UIViewController {
     func validateFields() -> Bool {
         
         let pwOk = self.isEmptyOrNil(password: self.passwordTxtFld.text)
-        if !pwOk {
+        if pwOk {
             self.validationErrors += "Password cannot be blank. "
         }
         
         let pwMatch = self.passwordTxtFld.text == self.confirmPswdTxtFld.text
-        if !pwMatch {
+        if pwMatch {
             self.validationErrors += "Passwords do not match. "
         }
         
@@ -60,7 +61,7 @@ class CreateAccountViewController: UIViewController {
             self.validationErrors += "Invalid email address."
         }
         
-        return emailOk && pwOk && pwMatch
+        return emailOk && !pwOk && pwMatch
     }
     /*
     // MARK: - Navigation
