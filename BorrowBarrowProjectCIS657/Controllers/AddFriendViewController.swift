@@ -41,14 +41,6 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBOutlet weak var friendImageViewer: UIImageView!
     
-    
-    @IBAction func addFriendBtn(_ sender: UIButton) {
-        
-        //Add friend here
-    navigationController?.popViewController(animated: true);
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         imgPickerCtrl = UIImagePickerController();
@@ -66,7 +58,7 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
-        let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         friendImageViewer.image = chosenImage;
         dismiss(animated: true, completion: nil)
         //Set Image View to image
@@ -83,5 +75,26 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func addFriendBtn(_ sender: UIButton) {
+        
+        //Add if statement to check if logged in
+        
+        let accountAlert = UIAlertController(title: "Do you have an account?", message: "In order to save your list of friends, you need to login or create an account", preferredStyle: .alert);
+        
+        accountAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
+            accountAlert.dismiss(animated: true, completion: nil);
+        }))
+        
+        accountAlert.addAction(UIAlertAction(title: "Login", style: .cancel, handler: {action in
+            let signInView = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendView");
+            self.present(signInView!, animated: true, completion: nil);
+        }))
+        
+        navigationController?.popViewController(animated: true);
+
+        
+    }
+    
 
 }

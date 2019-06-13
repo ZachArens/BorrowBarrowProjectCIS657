@@ -14,7 +14,7 @@ protocol CommunityDelegation{
     func friendsListDelegate(friends: Array<String>?)
 }
 
-class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RequestItemViewControllerDelegate, EditFriendViewControllerDelegate {
+class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, RequestItemViewControllerDelegate, EditFriendViewControllerDelegate {
    
     func editFriendViewControllerDelegation(friend: CommunityFriend) {
         //Add code here to update item info
@@ -31,6 +31,8 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var communityTableView: UITableView!
     
+        @IBOutlet weak var searchBar: UISearchBar!
+    
     var communityFriends : [CommunityFriend]?
     
     var selectedFriend: CommunityFriend?;
@@ -38,7 +40,6 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     var requestViewCtrl: RequestItemViewController?;
     
     var editViewCtrl: EditFriendViewController?;
-
     
     fileprivate var ref : DatabaseReference?
     
@@ -54,6 +55,10 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.ref = Database.database().reference()
         self.registerForFireBaseUpdates()
+        
+        
+        searchBar.delegate = self
+
     }
     
     
@@ -218,4 +223,26 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
         let newChild = self.ref?.child("community").childByAutoId()
         newChild?.setValue(self.toDictionary(itms: addedItem))
     }
+    
+    
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+        
+//        var filteredData: [String]!;
+//        
+//        filteredData = searchText.isEmpty ? data : data.filter { (item: String) -> Bool in
+//            // If dataItem matches the searchText, return true to include it
+//            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+//        }
+        
+        communityTableView?.reloadData()
+    }
+
+    
+    
 }
