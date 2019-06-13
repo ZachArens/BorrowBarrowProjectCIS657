@@ -40,7 +40,6 @@
                                 </state>
                                 <connections>
                                     <action selector="SignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bpo-GR-qBc"/>
-                                    <action selector="signInBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Xe-uM-zBr"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Zpk-pf-fKM">
@@ -49,9 +48,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="usernameTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="KSo-ZE-bG7"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fc5-L4-sgb">
                                 <rect key="frame" x="20" y="504" width="374" height="30"/>
@@ -59,9 +55,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="passwordTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="JXb-sc-lW1"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKB-Hj-9aP">
                                 <rect key="frame" x="154" y="657" width="107" height="30"/>
@@ -77,7 +70,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="uxj-27-RAZ"/>
                     <connections>
-                        <outlet property="usernameTxtFld" destination="Zpk-pf-fKM" id="9zn-ed-6mY"/>
+                        <outlet property="passwordTxtFld" destination="Fc5-L4-sgb" id="tzm-gD-RGs"/>
+                        <outlet property="usernameTxtFld" destination="Zpk-pf-fKM" id="gZT-dC-eqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -121,26 +115,26 @@
                                     <action selector="createAccountBtn:" destination="lho-Kz-ZbI" eventType="touchUpInside" id="Fcb-Ev-3fi"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Ip-1j-wpQ">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ip-1j-wpQ">
                                 <rect key="frame" x="20" y="437" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38p-OI-ecY">
                                 <rect key="frame" x="20" y="488" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iBw-HN-0yA">
                                 <rect key="frame" x="20" y="379" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,6 +144,7 @@
                         <outlet property="confirmPswdTxtFld" destination="38p-OI-ecY" id="Jyi-SP-2yX"/>
                         <outlet property="passwordTxtFld" destination="6Ip-1j-wpQ" id="lPZ-OT-QfS"/>
                         <outlet property="usernameTxtFld" destination="iBw-HN-0yA" id="rBx-d7-faC"/>
+                        <segue destination="fCp-Cc-jdH" kind="show" identifier="segueToTabFromSignUp" id="Mho-pN-Lyq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZ6-Dp-r12" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -483,7 +478,7 @@
         <scene sceneID="KDV-KB-ObG">
             <objects>
                 <navigationController id="rFC-E2-Tkw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Community" image="communityIcon" selectedImage="communityIcon" id="qq9-IH-T60"/>
+                    <tabBarItem key="tabBarItem" title="Community" id="qq9-IH-T60"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sTZ-cc-Goy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1441,6 +1436,7 @@
                         <outlet property="itemNameTextField" destination="95Q-9B-75Q" id="65V-Ms-NhG"/>
                         <outlet property="restrictDetailsTextField" destination="enR-23-tf9" id="Smj-F7-dWP"/>
                         <outlet property="restrictYNToggle" destination="AVA-Ku-xBt" id="mnk-LG-Zfc"/>
+                        <outlet property="tsImageView" destination="4Gv-ri-Qnh" id="hOM-TJ-t59"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJU-W2-hhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2714,7 +2710,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="communityIcon" width="25" height="25"/>
         <image name="toolShedIcon" width="25" height="25"/>
     </resources>
 </document>

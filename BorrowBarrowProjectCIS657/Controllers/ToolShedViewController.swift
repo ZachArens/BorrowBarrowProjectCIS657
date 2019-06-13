@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 protocol ToolShedViewControllerDelegate
 {
@@ -26,6 +27,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     var tsItems : [ToolShedItem]?
     
     fileprivate var ref : DatabaseReference?
+    fileprivate var userId : String? = ""
+    
     var selectedToolItem: ToolShedItem!
     
     var lendItemDelegate: LendItemDelegation?;
@@ -36,21 +39,23 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var editViewCtrl: EditItemViewController?;
     
-//    var tsItemTableViewData: [(sectionHeader: String,  tsItems: [ToolShedItem])]? {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.tsItemTableView.reloadData()
-//            }
-//        }
-//    }
+    
+    //TODO - need to create alternating button to add function
+    @IBAction func logout(segue: UIStoryboardSegue) {
+        do { try Auth.auth().signOut()
+            print ("Logged out")
+            } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+            }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
-//        let model: TSItemModel = TSItemModel()
-//        self.tsItems = model.getTSItems()
+        let model: TSItemModel = TSItemModel()
+        self.tsItems = model.getTSItems()
 
         
 //        if DEBUG {
@@ -59,10 +64,14 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
 //                print(item.itemName ?? "")
 //            }
 //        }
-        
-        self.ref = Database.database().reference()
-        self.registerForFireBaseUpdates()
-        ref?.child("toolshed").observeSingleEvent(of: .value, with: { (snapshot) in
+        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
+                self.userId = user.uid
+                self.ref = Database.database().reference()
+                self.registerForFireBaseUpdates()
+            }
+        }
+
+        ref?.child(self.userId!).child("toolshed").observeSingleEvent(of: .value, with: { (snapshot) in
             
         })
         self.setNeedsStatusBarAppearanceUpdate()
@@ -92,6 +101,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func addItem(newTSItem: ToolShedItem) {
         tsItems?.append(newTSItem)
+        
+        //DEBUG
         if DEBUG {
             print("added item to TSItems array")
             for item in tsItems! {
@@ -118,7 +129,6 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         let editAction = UIContextualAction(style: .normal, title: "Edit", handler: {(action, view, completionHandler) in
             //Move to edit page here
             self.selectedToolItem = self.tsItems![indexPath.row];
-            
             self.editViewCtrl?.item = self.tsItems![indexPath.row];
             self.performSegue(withIdentifier: "editItemSegue", sender: nil);
             
@@ -203,7 +213,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     fileprivate func registerForFireBaseUpdates()
     {
-        self.ref!.child("toolshed").observe(.value, with: { snapshot in
+        self.ref!.child(self.userId!).child("toolshed").observe(.value, with: { snapshot in
             if let postDict = snapshot.value as? [String : AnyObject] {
                 var tmpItems = [ToolShedItem]()
                 for (_,val) in postDict.enumerated() {
@@ -246,9 +256,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func addItemToDB(newTSItem : ToolShedItem) {
-        // save history to firebase
         //let addedItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
-        let newChild = self.ref?.child("toolshed").childByAutoId()
+        let newChild = self.ref?.child(self.userId!).child("toolshed").childByAutoId()
         newChild?.setValue(self.toDictionary(itms: newTSItem))
     }
 

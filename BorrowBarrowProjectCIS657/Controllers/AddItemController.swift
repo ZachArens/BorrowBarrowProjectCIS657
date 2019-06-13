@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseAuth
 
 protocol AddItemControllerDelegate: class {
     func addItem(newTSItem: ToolShedItem)
@@ -19,7 +21,13 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var itemDetailsUITextField: UITextView!
     @IBOutlet weak var restrictYNToggle: UISwitch!
     @IBOutlet weak var restrictDetailsTextField: UITextView!
+    @IBOutlet weak var tsImageView: UIImageView!
     
+    var storageRef: StorageReference?
+    var tsStoragePath: StorageReference?
+    fileprivate var userId : String? = ""
+    var chosenImage: UIImage?
+
     
     weak var delegate: AddItemControllerDelegate?;
     var imgPickerCtrl: UIImagePickerController!;
@@ -27,8 +35,16 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     override func viewDidLoad() {
         super.viewDidLoad();
         imgPickerCtrl = UIImagePickerController();
+        
+        tsImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
 
-        // Do any additional setup after loading the view.
+        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
+            self.userId = user.uid
+            self.storageRef = Storage.storage().reference().child(self.userId!)
+            self.tsStoragePath = self.storageRef!.child("toolShedPics")
+            //self.registerForFireBaseUpdates()
+            }
+        }
     }
     
     @IBOutlet weak var itemImageViewer: UIImageView!
@@ -67,11 +83,14 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     
     
     @IBAction func addItemBtn(_ sender: UIButton) {
+        
+        
         let newTSItem = ToolShedItem(itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photo: "photo", lentTo: "")
         if let d = self.delegate {
             d.addItem(newTSItem : newTSItem)
         }
         
+        self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: chosenImage)
         navigationController?.popViewController(animated: true);
 
     }
@@ -86,10 +105,17 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
-        let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        itemImageViewer.image = chosenImage;
+        if case self.chosenImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage {
+            
+        }
+        else if case self.chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage {
+            
+        }
+        
         dismiss(animated: true, completion: nil)
         //Set Image View to image
+        
+        tsImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
         
     }
 

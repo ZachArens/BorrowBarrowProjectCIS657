@@ -46,13 +46,13 @@ class CreateAccountViewController: UIViewController {
     
     func validateFields() -> Bool {
         
-        let pwOk = self.isEmptyOrNil(password: self.passwordTxtFld.text)
-        if pwOk {
+        let pwOk = !self.isEmptyOrNil(password: self.passwordTxtFld.text)
+        if !pwOk {
             self.validationErrors += "Password cannot be blank. "
         }
         
         let pwMatch = self.passwordTxtFld.text == self.confirmPswdTxtFld.text
-        if pwMatch {
+        if !pwMatch {
             self.validationErrors += "Passwords do not match. "
         }
         
@@ -61,7 +61,7 @@ class CreateAccountViewController: UIViewController {
             self.validationErrors += "Invalid email address."
         }
         
-        return emailOk && !pwOk && pwMatch
+        return emailOk && pwOk && pwMatch
     }
     /*
     // MARK: - Navigation
