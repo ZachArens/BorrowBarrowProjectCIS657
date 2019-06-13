@@ -105,18 +105,11 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
-        if case self.chosenImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage {
-            
-        }
-        else if case self.chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage {
-            
-        }
-        
+        let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        itemImageViewer.image = chosenImage;
         dismiss(animated: true, completion: nil)
         //Set Image View to image
-        
-        tsImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
-        
+        self.itemImageViewer.image = chosenImage;
     }
 
         

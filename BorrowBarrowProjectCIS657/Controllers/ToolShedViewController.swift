@@ -260,6 +260,16 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         let newChild = self.ref?.child(self.userId!).child("toolshed").childByAutoId()
         newChild?.setValue(self.toDictionary(itms: newTSItem))
     }
+    
+    @IBAction func createToToolshedUnwind(segue: UIStoryboardSegue)
+    {
+        //Store user account information from new account here
+    }
+    
+    @IBAction func loginToToolshedUnwind(segue: UIStoryboardSegue)
+    {
+        //Obtain user information of new account here
+    }
 
 }
 

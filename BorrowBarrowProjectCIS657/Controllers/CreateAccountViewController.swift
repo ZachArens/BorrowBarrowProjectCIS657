@@ -30,7 +30,8 @@ class CreateAccountViewController: UIViewController {
             Auth.auth().createUser(withEmail: self.usernameTxtFld.text!, password: self.passwordTxtFld.text!) { (user, error) in
                 if let _ = user {
                     //unwind segue need
-                    self.navigationController?.popViewController(animated: true)
+                    //self.navigationController?.popViewController(animated: true)
+                    
                 } else {
                     self.passwordTxtFld.text = ""
                     self.confirmPswdTxtFld.text = ""
