@@ -28,6 +28,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    @IBOutlet weak var friendPickerText: UILabel!
     
     @IBOutlet weak var friendPickerView: UIPickerView!
     
@@ -52,6 +53,8 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         navigationController?.popViewController(animated: true);
 
     }
+    
+    @IBOutlet weak var lendBtn: UIButton!
     
     var pickerData: [String] = [String]()
     
@@ -78,6 +81,20 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         
         self.store = EKEventStore();
         // Do any additional setup after loading the view.
+                
+        if (selectedToolItem?.lentTo != "in Shed")
+        {
+            lendBtn.isEnabled = false;
+            lendBtn.titleLabel?.text = "Item is not in shed";
+            lendBtn.setTitle("Item is not in the shed", for: .normal);
+            lendBtn.backgroundColor = .red;
+            
+            friendPickerView.isUserInteractionEnabled = false;
+            friendPickerText.text = "Item is currently lent to: ";
+            let friendLentTo = selectedToolItem?.lentTo;
+            self.pickerData = [friendLentTo] as! [String];
+            self.refreshPicker();
+        }
     }
     
     func setInfo() -> Void
@@ -153,9 +170,9 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         self.friendName = self.pickerData[row];
         
         //return self.pickerData[row]
-        
-        
     }
+    
+    
     
 //    func setupCalendar()
 //    {
@@ -202,7 +219,7 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     {
         let reminder = EKReminder(eventStore: store);
         
-        reminder.title = "\(selectedToolItem?.itemName! ?? "Tool") is due on this date";
+        reminder.title = "\(selectedToolItem?.itemName! ?? "Tool")";
         reminder.priority = 2; //I think this means low priority
         
         reminder.notes = "\(selectedToolItem?.itemName! ?? "Tool") should be returning to you today from \(self.friendName!)"; //Add friend name here
