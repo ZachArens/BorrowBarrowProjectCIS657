@@ -31,7 +31,7 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var communityTableView: UITableView!
     
-        @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var communityFriends : [CommunityFriend]?
     
@@ -239,6 +239,9 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
 //            // If dataItem matches the searchText, return true to include it
 //            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
 //        }
+        
+        var filteredData: [CommunityFriend]?;
+        
         
         communityTableView?.reloadData()
     }

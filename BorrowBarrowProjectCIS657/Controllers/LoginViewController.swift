@@ -17,11 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTxtFld: UITextField!
     @IBOutlet weak var passwordTxtFld: UITextField!
     
-    @IBAction func signInBtn(_ sender: Any) {
-    }
-    
-
-    
     var toolshedViewController: ToolShedViewController?;
     
     var validationErrors = ""
@@ -51,8 +46,7 @@ class LoginViewController: UIViewController {
         if self.validateFields() {
             Auth.auth().signIn(withEmail: self.usernameTxtFld.text!, password: self.passwordTxtFld.text!) { (user, error) in
                 if let _ = user {
-                    //self.unwind(for: <#T##UIStoryboardSegue#>, towards: <#T##UIViewController#>)
-                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "loginToShed", sender: self)
                 } else {
                     self.passwordTxtFld.text = ""
                 self.passwordTxtFld.becomeFirstResponder()

@@ -31,6 +31,8 @@ class CreateAccountViewController: UIViewController {
                 if let _ = user {
                     //unwind segue need
                     //self.navigationController?.popViewController(animated: true)
+                    self.performSegue(withIdentifier: "createToShed", sender: self);
+
                     
                 } else {
                     self.passwordTxtFld.text = ""

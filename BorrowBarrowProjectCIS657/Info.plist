@@ -42,8 +42,12 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app wants to access your pictures</string>
+	<string>This app needs access to your pictures</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app wants to use your phone&apos;s camera</string>
+	<string>This app needs access to your phone&apos;s camera</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app needs access to the calendar</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>This app needs acccess to the reminders </string>
 </dict>
 </plist>

@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import EventKit
 
 protocol LendItemDelegation{
     func lendItemDelegate(item: ToolShedItem?);
 }
 
-class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
+class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
+{
 
+    
     @IBOutlet weak var LendImageView: UIImageView!
+    
     
     @IBOutlet weak var itemNameLabel: UILabel!
     var item: ToolShedItem?;
@@ -30,18 +34,31 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
     
     @IBAction func toggleReminder(_ sender: UISwitch) {
         sender.isOn = selectedToolItem?.reqYesNo ?? false;
+        toggledReminder = sender.isOn;
     }
     
-    @IBOutlet weak var dateTextField: UITextField!
     
+    @IBAction func datePicker(_ sender: UIDatePicker) {
+        reminderDate = sender.date;
+        
+    }
     
     @IBAction func lendItemBtn(_ sender: UIButton) {
         
+        requestCalendarAccess(store: store);
         navigationController?.popViewController(animated: true);
 
     }
     
     var pickerData: [String] = [String]()
+    
+    var toggledReminder: Bool!;
+    
+    var reminderDate: Date?;
+    
+    var store: EKEventStore!;
+    
+    var friendName: String?;
     
     var selectedToolItem: ToolShedItem?;
     
@@ -54,6 +71,8 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate {
         self.pickerData = ["Barack", "Darth", "Luke", "Jude"]
         self.refreshPicker();
         setInfo();
+        
+        self.store = EKEventStore();
         // Do any additional setup after loading the view.
     }
     
@@ -126,6 +145,80 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 //        } else {
 //            print("Active setting invalid")
 //        }
+        
+        self.friendName = self.pickerData[row];
+        
+        //return self.pickerData[row]
+        
+        
+    }
+    
+//    func setupCalendar()
+//    {
+//        let eventStore = EKEventStore();
+//
+//        switch EKEventStore.authorizationStatus(for: .event) {
+//        case .authorized:
+//            //Create calendar and access it
+//            print("Authorized");
+//        case .denied:
+//            print("Access Denied")
+//        case .notDetermined:
+//            requestCalendarAccess(store: eventStore)
+//        default:
+//            print("Default");
+//        }
+//    }
+    
+    func requestCalendarAccess(store: EKEventStore)
+    {
+        store.requestAccess(to: EKEntityType.reminder, completion: {
+            (accessGranted: Bool, error: Error?) in
+            if accessGranted == true {
+                DispatchQueue.main.async(execute: {
+                    //do things
+                    self.addReminder(store: store);
+                })
+            }
+            else
+            {
+                //Need permission
+            }
+        })
+    }
+    
+    /*
+     Reminder code based on the following sources:
+     https://stackoverflow.com/questions/42821348/swift-3-create-reminder-ekeventstore
+     https://stackoverflow.com/questions/31235356/set-a-reminder-in-ios-swift
+     https://www.ioscreator.com/tutorials/add-event-calendar-ios-tutorial
+     */
+    
+    func addReminder(store: EKEventStore)
+    {
+        let reminder = EKReminder(eventStore: store);
+        
+        reminder.title = "\(selectedToolItem?.itemName! ?? "Tool") is due on this date";
+        reminder.priority = 2; //I think this means low priority
+        
+        reminder.notes = "\(selectedToolItem?.itemName! ?? "Tool") should be returning to you today from \(self.friendName!)"; //Add friend name here
+        
+        reminder.calendar = store.defaultCalendarForNewReminders();
+        
+//        let alarmTime = Date().addingTimeInterval(1*60*24*3);
+//
+//        let dateAlarm = NSDate.init().
+//
+//        let alarm = EKAlarm(absoluteDate: alarmTime);
+        
+        reminder.addAlarm(EKAlarm(absoluteDate: reminderDate!));
+//
+//        reminder.addAlarm(alarm);
+        do{
+            try store.save(reminder, commit: true)
+        } catch let error {
+            print("Error occurred when creating and adding the reminder - \(error.localizedDescription)");
+        }
         
     }
 }
