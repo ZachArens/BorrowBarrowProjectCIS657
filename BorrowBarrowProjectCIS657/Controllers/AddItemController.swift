@@ -84,13 +84,14 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     
     @IBAction func addItemBtn(_ sender: UIButton) {
         
+        let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: tsImageView?.image)
         
-        let newTSItem = ToolShedItem(itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photo: "photo", lentTo: "")
+        let newTSItem = ToolShedItem(itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "")
         if let d = self.delegate {
             d.addItem(newTSItem : newTSItem)
         }
         
-        self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: chosenImage)
+        
         navigationController?.popViewController(animated: true);
 
     }
@@ -109,7 +110,7 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
         itemImageViewer.image = chosenImage;
         dismiss(animated: true, completion: nil)
         //Set Image View to image
-        self.itemImageViewer.image = chosenImage;
+//        self.itemImageViewer.image = chosenImage;
     }
 
         

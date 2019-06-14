@@ -11,10 +11,11 @@ import FirebaseStorage
 
 extension UIViewController {
     // userId:
-    func uploadMediaToFireStorage(userId: String?, storageRefWithChilds: StorageReference?, imageToSave : UIImage?) {
+    func uploadMediaToFireStorage(userId: String?, storageRefWithChilds: StorageReference?, imageToSave : UIImage?) -> String {
+        var imagePath: String = ""
         if let image = imageToSave {
             let imageData = image.jpegData(compressionQuality: 0.8)
-            let imagePath = "\(userId!)/photos/\(Int(Date.timeIntervalSinceReferenceDate*1000)).jpg"
+            imagePath = "\(userId!)/photos/\(Int(Date.timeIntervalSinceReferenceDate*1000)).jpg"
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             if let sr = storageRefWithChilds {
@@ -31,12 +32,12 @@ extension UIViewController {
 //                        if let str = url?.absoluteString {
 //                            saveRefClosure(str)
 //                        }
-                        
                         }
                         })
                 }
             }
         }
+        return imagePath
     }
 
 }

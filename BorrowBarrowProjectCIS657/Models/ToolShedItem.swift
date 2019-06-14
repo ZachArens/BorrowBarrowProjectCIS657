@@ -15,10 +15,11 @@ struct ToolShedItem {
     var itemDescription: String?
     var reqYesNo: Bool?
     var requirements: String?
-    var photo: String?
+    var photoURL: String?
+    var thumbnailURL: String?
     var lentTo: String?
     
-    init(key: String?, itemName: String?, owner: String?, itemDescription: String?, reqYesNo: Bool?, requirements: String?, photo: String?, lentTo: String?)
+    init(key: String?, itemName: String?, owner: String?, itemDescription: String?, reqYesNo: Bool?, requirements: String?, photoURL: String?, thumbnailURL: String?, lentTo: String?)
     {
         self.key = key
         self.itemName = itemName
@@ -26,17 +27,18 @@ struct ToolShedItem {
         self.itemDescription = itemDescription
         self.reqYesNo = reqYesNo
         self.requirements = requirements
-        self.photo = photo
+        self.photoURL = photoURL
+        self.thumbnailURL = thumbnailURL
         self.lentTo = lentTo
     }
     
-    init(itemName: String?, owner: String?, itemDescription: String?, reqYesNo: Bool?, requirements: String?, photo: String?, lentTo: String?)
+    init(itemName: String?, owner: String?, itemDescription: String?, reqYesNo: Bool?, requirements: String?, photoURL: String?, thumbnailURL: String?, lentTo: String?)
     {
-        self.init(key: nil, itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo)
+        self.init(key: nil, itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photoURL: photoURL, thumbnailURL: thumbnailURL, lentTo: lentTo)
     }
     
     init() {
-        self.init(key: nil, itemName: nil, owner: nil, itemDescription: nil, reqYesNo: nil, requirements: nil, photo: nil, lentTo: nil)
+        self.init(key: nil, itemName: nil, owner: nil, itemDescription: nil, reqYesNo: nil, requirements: nil, photoURL: nil, thumbnailURL: nil, lentTo: nil)
     }
     
     mutating func lend(lentTo: String?) {

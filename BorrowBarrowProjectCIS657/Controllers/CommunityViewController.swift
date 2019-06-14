@@ -57,7 +57,7 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
         self.registerForFireBaseUpdates()
         
         
-        searchBar.delegate = self
+//        searchBar.delegate = self
 
     }
     

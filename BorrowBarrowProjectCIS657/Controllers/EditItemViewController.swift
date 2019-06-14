@@ -67,7 +67,7 @@ class EditItemViewController: UIViewController {
     
     func setItemInfo() {
         
-        itemImageView.image = UIImage(named: (item?.photo!)!) ?? UIImage(named: "emptyPhoto");
+        itemImageView.image = UIImage(named: (item?.photoURL!)!) ?? UIImage(named: "emptyPhoto");
         itemNameTextView.text = item?.itemName;
         itemDetailsTextView.text = item?.itemDescription;
 
