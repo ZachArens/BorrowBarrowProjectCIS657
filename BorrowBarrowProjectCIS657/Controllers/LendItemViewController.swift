@@ -33,7 +33,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     
     
     @IBAction func toggleReminder(_ sender: UISwitch) {
-        sender.isOn = selectedToolItem?.reqYesNo ?? false;
+        //sender.isOn = selectedToolItem?.reqYesNo ?? false;
         toggledReminder = sender.isOn;
     }
     
@@ -45,7 +45,10 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     
     @IBAction func lendItemBtn(_ sender: UIButton) {
         
-        requestCalendarAccess(store: store);
+        if(toggledReminder)
+        {
+            requestCalendarAccess(store: store);
+        }
         navigationController?.popViewController(animated: true);
 
     }
@@ -71,6 +74,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         self.pickerData = ["Barack", "Darth", "Luke", "Jude"]
         self.refreshPicker();
         setInfo();
+        
         
         self.store = EKEventStore();
         // Do any additional setup after loading the view.
