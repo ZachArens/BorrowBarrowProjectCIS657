@@ -12,19 +12,20 @@ import FirebaseStorage
 extension UIViewController {
     // userId:
     func uploadMediaToFireStorage(userId: String?, storageRefWithChilds: StorageReference?, imageToSave : UIImage?) -> String {
-        var imagePath: String = ""
+        var imageURL: String = "gs://"
         if let image = imageToSave {
             let imageData = image.jpegData(compressionQuality: 0.8)
-            imagePath = "\(userId!)/photos/\(Int(Date.timeIntervalSinceReferenceDate*1000)).jpg"
+            let imageName = "\(Int(Date.timeIntervalSinceReferenceDate*1000)).jpg"
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             if let sr = storageRefWithChilds {
-                sr.child(imagePath).putData(imageData!, metadata: metadata) {
+                let imageRef = sr.child(imageName)
+                imageURL += "\(imageRef.bucket)/\(imageRef.fullPath)"
+                imageRef.putData(imageData!, metadata: metadata) {
                     (metadata, error) in if let error = error {
                         print("Error uploading: \(error)")
                         return
                     }
-                    let imageRef = sr.child(imagePath)
                     imageRef.downloadURL(completion: { (url, error) in if let error = error {
                         // Handle any errors
                         print("Error getting url to uploaded image: \(error)")
@@ -37,7 +38,7 @@ extension UIViewController {
                 }
             }
         }
-        return imagePath
+        return imageURL
     }
 
 }

@@ -37,4 +37,18 @@ extension UIViewController {
 
 }
 
+extension String {
+    func isValidStorageURL() -> Bool {
+        if self.starts(with: "gs://") {
+            return true
+        } else if self.starts(with: "http://") {
+            return true
+        } else if self.starts(with: "https://") {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 

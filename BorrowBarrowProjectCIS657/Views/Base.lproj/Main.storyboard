@@ -805,9 +805,11 @@
                     <connections>
                         <outlet property="LendImageView" destination="XSY-bT-unM" id="Eqz-W1-6Ep"/>
                         <outlet property="descriptionTextView" destination="RX5-0o-SWe" id="Etp-Ae-akr"/>
+                        <outlet property="friendPickerText" destination="mD6-NZ-tJW" id="e1W-bW-4lp"/>
                         <outlet property="friendPickerView" destination="Y99-Eo-0h9" id="b1B-oH-aBh"/>
                         <outlet property="itemNameLabel" destination="Zwt-sD-3MT" id="SjQ-52-VVd"/>
                         <outlet property="itemStatusLabel" destination="oay-0V-qou" id="35c-OB-Lkr"/>
+                        <outlet property="lendBtn" destination="BiF-pr-ymQ" id="uCp-Ek-4nF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rim-LF-Xpu" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,6 +9,9 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
+import FirebaseUI
+import SDWebImage
 
 protocol ToolShedViewControllerDelegate
 {
@@ -189,10 +192,17 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                 //TODO need logic to select user lent to or place "in Shed"
                 let personLentTo = item.lentTo ?? "in Shed"
                 cell.userThatHas?.text = personLentTo
-                if item.photoURL != nil {
-                    cell.itemPicture?.image = UIImage(named: item.photoURL!)
+//                if item.photoURL != nil {
+//                    cell.itemPicture?.image = UIImage(named: item.photoURL!)
+//                } else {
+//                    cell.itemPicture?.image = UIImage(named: "emptyPhoto")
+//                }
+                let placeholderImage = UIImage(named: "emptyPhoto")
+                if item.photoURL!.isValidStorageURL() && item.photoURL != nil {
+                    let imageRef = Storage.storage().reference(forURL: item.photoURL!)
+                    cell.itemPicture?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
                 } else {
-                    cell.itemPicture?.image = UIImage(named: "emptyPhoto")
+                    cell.itemPicture?.image = placeholderImage
                 }
                 cell.itemDetails?.text = item.itemDescription
                 if personLentTo == "in Shed" {
