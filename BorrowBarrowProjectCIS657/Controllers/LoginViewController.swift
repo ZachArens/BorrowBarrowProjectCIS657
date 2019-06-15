@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
         if self.validateFields() {
             Auth.auth().signIn(withEmail: self.usernameTxtFld.text!, password: self.passwordTxtFld.text!) { (user, error) in
                 if let _ = user {
-                    self.performSegue(withIdentifier: "loginToShed", sender: self)
+                    self.performSegue(withIdentifier: "loginToShedUnwind", sender: self)
                 } else {
                     self.passwordTxtFld.text = ""
                 self.passwordTxtFld.becomeFirstResponder()

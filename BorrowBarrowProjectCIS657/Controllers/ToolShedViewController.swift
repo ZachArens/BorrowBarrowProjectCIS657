@@ -45,7 +45,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     //TODO - need to create alternating button to add function
-    @IBAction func logoutBtn(segue: UIStoryboardSegue) {
+    @IBAction func logoutBtn(sender: UIButton) {
         do { try Auth.auth().signOut()
             print ("Logged out")
             } catch let signOutError as NSError {
