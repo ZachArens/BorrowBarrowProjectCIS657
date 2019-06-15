@@ -22,6 +22,7 @@ class TSItemModel {
     
     fileprivate func createTSItems()
     {
+
         items.append(ToolShedItem(itemName: "Kayak", owner: "Barrel Box", itemDescription: "River kayak, 250 lb capacity, 10' long", reqYesNo: true, requirements: "Must provide transportation to/from water, responsible for fixing any damage or replacement if needed.", photoURL: "kayak", thumbnailURL: "kayak", lentTo: "Barack"))
         items.append(ToolShedItem(itemName: "Light Saber", owner: "Barrel Box", itemDescription: "green light-side saber", reqYesNo: true, requirements: "", photoURL: "lightsaber", thumbnailURL: "lightsaber", lentTo: "Luke"))
         items.append(ToolShedItem(itemName: "Cordless Drill", owner: "Barrel Box", itemDescription: "Lithium charging, charger provided", reqYesNo: true, requirements: "Must provide pick up/drop off, does not come with bits, responsible for fixing any damage or replacement if needed.", photoURL: "drill", thumbnailURL: "drill", lentTo: "in Shed"))
