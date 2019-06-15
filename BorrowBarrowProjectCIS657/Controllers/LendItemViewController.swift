@@ -103,7 +103,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         
         itemNameLabel.text = selectedToolItem?.itemName!;
         itemStatusLabel.text = selectedToolItem?.lentTo; //Need to inditcate who it is lent to.
-        LendImageView.image = UIImage(named: (selectedToolItem?.photo!)!) ?? UIImage(named: "emptyPhoto")
+        LendImageView.image = UIImage(named: (selectedToolItem?.photoURL)!) ?? UIImage(named: "emptyPhoto")
         descriptionTextView.text = selectedToolItem?.itemDescription;
         
         //Picker view here or function that populates picker here

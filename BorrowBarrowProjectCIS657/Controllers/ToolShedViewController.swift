@@ -9,6 +9,9 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
+import FirebaseUI
+import SDWebImage
 
 protocol ToolShedViewControllerDelegate
 {
@@ -54,8 +57,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
-        let model: TSItemModel = TSItemModel()
-        self.tsItems = model.getTSItems()
+//        let model: TSItemModel = TSItemModel()
+//        self.tsItems = model.getTSItems()
 
         
 //        if DEBUG {
@@ -189,7 +192,18 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                 //TODO need logic to select user lent to or place "in Shed"
                 let personLentTo = item.lentTo ?? "in Shed"
                 cell.userThatHas?.text = personLentTo
-                cell.itemPicture?.image = UIImage(named: item.photo!) ?? UIImage(named: "emptyPhoto")
+//                if item.photoURL != nil {
+//                    cell.itemPicture?.image = UIImage(named: item.photoURL!)
+//                } else {
+//                    cell.itemPicture?.image = UIImage(named: "emptyPhoto")
+//                }
+                let placeholderImage = UIImage(named: "emptyPhoto")
+                if item.photoURL!.isValidStorageURL() && item.photoURL != nil {
+                    let imageRef = Storage.storage().reference(forURL: item.photoURL!)
+                    cell.itemPicture?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
+                } else {
+                    cell.itemPicture?.image = placeholderImage
+                }
                 cell.itemDetails?.text = item.itemDescription
                 if personLentTo == "in Shed" {
                     cell.signalImage?.image = UIImage(named: "greenSignal")
@@ -223,11 +237,12 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                     let itemDescription = item["itemDescription"] as! String?
                     let reqYesNo = item["reqYesNo"] as! Bool?
                     let requirements = item["requirements"] as! String?
-                    let photo = item["photo"] as! String?
+                    let photoURL = item["photoURL"] as! String?
+                    let thumbnailURL = item["thumbnailURL"] as! String?
                     let lentTo = item["lentTo"] as! String?
                     
                     
-                    tmpItems.append(ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
+                    tmpItems.append(ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photoURL: photoURL, thumbnailURL: thumbnailURL, lentTo: lentTo))
                 }
                 self.tsItems = tmpItems
                 
@@ -250,7 +265,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             "itemDescription": NSString(string: itms.itemDescription ?? ""),
             "reqYesNo": Bool(booleanLiteral: itms.reqYesNo!),
             "requirements": NSString(string: itms.requirements ?? ""),
-            "photo": NSString(string: itms.photo ?? ""),
+            "photoURL": NSString(string: itms.photoURL ?? ""),
+            "thumbnailURL": NSString(string: itms.thumbnailURL ?? ""),
             "lentTo": NSString(string: itms.lentTo ?? "")
         ]
     }

@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/zacharyarens/Desktop/CIS657/BorrowBarrowProjectCIS657/BorrowBarrowProjectCIS657/APIKeys.swift">
-   </FileRef>
-   <FileRef
       location = "group:BorrowBarrowProjectCIS657.xcodeproj">
    </FileRef>
    <FileRef
