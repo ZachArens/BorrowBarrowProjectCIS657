@@ -24,9 +24,6 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
         //Add code here to adjust anything that needs to be on the community page
     }
     
-
-
-    
     @IBOutlet weak var addFriend: UIBarButtonItem!
     
     @IBOutlet weak var communityTableView: UITableView!
@@ -34,6 +31,8 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var searchBar: UISearchBar!
     
     var communityFriends : [CommunityFriend]?
+    
+    var filteredFriends : [CommunityFriend]?
     
     var selectedFriend: CommunityFriend?;
     
@@ -103,8 +102,6 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
         //            print("Delegating...")
         //            d.lendItemDelegate(item: nil);
         //        }
-        
-        
     }
     
     
@@ -214,8 +211,12 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
                     tmpItems.append(CommunityFriend(firstName: firstName, lastName: lastName, email: email, phoneNum: phoneNum, address1: address1, address2: address2, city: city, state: state, zipcode: zipcode, trustYesNo: trustYesNo, friendPhoto: friendPhoto, numLends: numLends, numItems: numItems))
                 }
                 self.communityFriends = tmpItems
+
                 
                 self.communityTableView.reloadData()
+
+                //self.filteredFriends = tmpItems;
+
             }
         })
         
@@ -264,8 +265,25 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
 //            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
 //        }
         
-        var filteredData: [CommunityFriend]?;
+        if(searchText.isEmpty)
+        {
+            communityFriends = filteredFriends;
+        }
+        else
+        {
+            communityFriends = filteredFriends?.filter({ (friend: CommunityFriend) -> Bool in
+                
+                var passed: Bool = false;
+                if(friend.firstName == searchText)
+                {
+                    passed = true;
+                }
+                
+                return passed;
+            })
+        }
         
+        communityTableView?.dataSource = communityFriends as! UITableViewDataSource;
         
         communityTableView?.reloadData()
     }

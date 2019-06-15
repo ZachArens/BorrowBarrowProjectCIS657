@@ -150,6 +150,25 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         return configuration;
     }
 
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let returnAction = UIContextualAction(style: .normal, title: "Item Return", handler: {(action, view, completionHandler) in
+            //Move to edit page here
+            self.selectedToolItem = self.tsItems![indexPath.row];
+            //self.editViewCtrl?.item = self.tsItems![indexPath.row];
+            //self.performSegue(withIdentifier: "editItemSegue", sender: nil);
+            self.tsItems![indexPath.row].lentTo = "in Shed";
+            self.tsItemTableView.reloadData();
+            
+            
+            completionHandler(true);
+        })
+        
+        returnAction.backgroundColor = .blue
+        
+        let configuration = UISwipeActionsConfiguration(actions: [returnAction]);
+        return configuration;
+    }
+    
     /*
     // MARK: - Navigation
 
