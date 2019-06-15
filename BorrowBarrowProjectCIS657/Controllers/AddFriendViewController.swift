@@ -61,6 +61,7 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         imgPickerCtrl.allowsEditing = true;
         imgPickerCtrl.delegate = self;
         present(imgPickerCtrl, animated: true);
+        
     }
     
     @IBOutlet weak var friendImageViewer: UIImageView!
