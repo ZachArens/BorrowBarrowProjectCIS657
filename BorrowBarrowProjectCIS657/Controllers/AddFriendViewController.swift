@@ -7,9 +7,33 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseAuth
+
+protocol AddFriendControllerDelegate: class {
+    func addFriend(newComFriend: CommunityFriend)
+}
 
 class AddFriendViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var firstNameTxtFld: UITextField!
+    @IBOutlet weak var lastNameTxtFld: UITextField!
+    @IBOutlet weak var emailTxtFld: UITextField!
+    @IBOutlet weak var phoneTxtField: UITextField!
+    @IBOutlet weak var cityTxtFld: UITextField!
+    @IBOutlet weak var address1TxtFld: UITextField!
+    @IBOutlet weak var address2TxtFld: UITextField!
+    @IBOutlet weak var stateTxtFld: UITextField!
+    @IBOutlet weak var zipTxtFld: UITextField!
+    @IBOutlet weak var friendImageView: UIImageView!
+    
+    
+    var storageRef: StorageReference?
+    var cfStoragePath: StorageReference?
+    fileprivate var userId: String? = ""
+    var chosenImage: UIImage?
+    
+    weak var delegate: AddFriendControllerDelegate?;
     var imgPickerCtrl: UIImagePickerController!;
 
     @IBAction func cameraFriendBtn(_ sender: UIButton) {
@@ -45,7 +69,15 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         super.viewDidLoad()
         imgPickerCtrl = UIImagePickerController();
 
-        // Do any additional setup after loading the view.
+//        tsImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
+        
+        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
+            self.userId = user.uid
+            self.storageRef = Storage.storage().reference().child(self.userId!)
+            self.cfStoragePath = self.storageRef!.child("comFriendPics")
+            //self.registerForFireBaseUpdates()
+            }
+        }
     }
     
     /*Image Picker Code  from sources:
@@ -90,6 +122,18 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
             let signInView = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendView");
             self.present(signInView!, animated: true, completion: nil);
         }))
+        
+        let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: cfStoragePath, imageToSave: friendImageView?.image)
+        //need to finish calculation logic for lends and items
+        let numLendsCalc = 2
+        let numItemsCalc = 3
+        
+        let newComFriend = CommunityFriend(firstName: firstNameTxtFld.text ?? "", lastName: lastNameTxtFld.text ?? "", email: emailTxtFld.text ?? "", phoneNum: phoneTxtField.text ?? "", address1: address1TxtFld.text ?? "", address2: address2TxtFld.text ?? "", city: cityTxtFld.text ?? "", state: stateTxtFld.text ?? "", zipcode: zipTxtFld.text ?? "", trustYesNo: true, friendPhoto: url, numLends: numLendsCalc, numItems: numItemsCalc)
+
+//        (itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "")
+        if let d = self.delegate {
+            d.addFriend(newComFriend: newComFriend)
+        }
         
         navigationController?.popViewController(animated: true);
 

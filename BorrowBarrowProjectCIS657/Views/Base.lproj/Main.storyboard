@@ -1894,7 +1894,17 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="address1TxtFld" destination="SZ3-v4-0MX" id="URn-Gj-cjy"/>
+                        <outlet property="address2TxtFld" destination="8Io-XB-rR3" id="gPY-JS-2PX"/>
+                        <outlet property="cityTxtFld" destination="eXF-4P-m0f" id="UMB-Bc-6AO"/>
+                        <outlet property="emailTxtFld" destination="ENa-fv-Pqw" id="41P-m9-ts2"/>
+                        <outlet property="firstNameTxtFld" destination="eP2-ah-XrV" id="1AJ-TF-lXV"/>
+                        <outlet property="friendImageView" destination="XFN-TF-T62" id="VXq-if-xEf"/>
                         <outlet property="friendImageViewer" destination="XFN-TF-T62" id="sfx-Q6-5N5"/>
+                        <outlet property="lastNameTxtFld" destination="cmi-yM-8uv" id="x89-wK-lIR"/>
+                        <outlet property="phoneTxtField" destination="COt-E4-HgL" id="zQ9-jl-hCJ"/>
+                        <outlet property="stateTxtFld" destination="sPt-jl-WNR" id="eam-yc-1w9"/>
+                        <outlet property="zipTxtFld" destination="Ggk-rt-tAa" id="cqg-Qz-pVx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIt-e2-NUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
