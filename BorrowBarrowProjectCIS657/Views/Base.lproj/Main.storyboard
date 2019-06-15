@@ -1135,7 +1135,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uOe-Bj-aHO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Community" id="v5S-Qs-sKi"/>
+                    <tabBarItem key="tabBarItem" title="Community" image="communityIcon" id="v5S-Qs-sKi"/>
                     <navigationItem key="navigationItem" title="Community" id="a4z-gz-6x4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YUO-Xk-lUH">
                             <connections>
@@ -2730,6 +2730,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="communityIcon" width="25" height="25"/>
         <image name="toolShedIcon" width="25" height="25"/>
     </resources>
 </document>
