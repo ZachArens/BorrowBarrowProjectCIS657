@@ -42,6 +42,7 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     var editViewCtrl: EditFriendViewController?;
     
     fileprivate var ref : DatabaseReference?
+    fileprivate var userId : String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +50,17 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.communityTableView.delegate = self
         self.communityTableView.dataSource = self
-        let model = ComItemModel()
-        self.communityFriends = model.getComItems()
-        self.setNeedsStatusBarAppearanceUpdate()
+//        let model = ComItemModel()
+//        self.communityFriends = model.getComItems()
         
-        self.ref = Database.database().reference()
-        self.registerForFireBaseUpdates()
+        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
+            self.userId = user.uid
+            self.ref = Database.database().reference()
+            self.registerForFireBaseUpdates()
+            }
+        }
+        
+        self.setNeedsStatusBarAppearanceUpdate()
         
         
 //        searchBar.delegate = self
@@ -81,6 +87,12 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             editViewCtrl = editView;
             
         }
+    }
+    
+    func addFriend(newComFriend: CommunityFriend) {
+        communityFriends?.append(newComFriend)
+        
+        self.addFriendToDB(newComFriend: newComFriend)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -126,14 +138,20 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             if let item = self.communityFriends?[indexPath.row] {
                 cell.name?.text = "\(item.firstName ?? "First") \(item.lastName ?? "Last")"
                 //TODO need to count number of items and lends from DBase
-                cell.numOfItems?.text = "7 items"
-                cell.numOfLends?.text = "5 lends"
+                cell.numOfItems?.text = "\(item.numItems)"
+                cell.numOfLends?.text = "\(item.numLends)"
                 if item.trustYesNo! {
                     cell.signalImage?.image = UIImage(named: "greenSignal")
                 } else {
                     cell.signalImage?.image = UIImage(named: "redSignal")
                 }
-                cell.userPicture?.image = UIImage(named: "luke")
+                let placeholderImage = UIImage(named: "emptyPhoto")
+                if item.friendPhoto!.isValidStorageURL() && item.friendPhoto != nil {
+                    let imageRef = Storage.storage().reference(forURL: item.friendPhoto!)
+                    cell.userPicture?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
+                } else {
+                    cell.userPicture?.image = placeholderImage
+                }
                 cell.userDetails?.text = "\(item.city ?? "City")"
                 
                 //                Image by OpenClipart-Vectors
@@ -173,7 +191,7 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     
     fileprivate func registerForFireBaseUpdates()
     {
-        self.ref!.child("community").observe(.value, with: { snapshot in
+        self.ref!.child(self.userId!).child("community").observe(.value, with: { snapshot in
             if let postDict = snapshot.value as? [String : AnyObject] {
                 var tmpItems = [CommunityFriend]()
                 for (_,val) in postDict.enumerated() {
@@ -189,39 +207,45 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
                     let zipcode = key["zipcode"] as! String?
                     let trustYesNo = key["trustYesNo"] as! Bool?
                     let friendPhoto = key["friendPhoto"] as! String?
+                    let numLends = key["numLends"] as! Int
+                    let numItems = key["numItems"] as! Int
                     
                     
-                    tmpItems.append(CommunityFriend(firstName: firstName, lastName: lastName, email: email, phoneNum: phoneNum, address1: address1, address2: address2, city: city, state: state, zipcode: zipcode, trustYesNo: trustYesNo, friendPhoto: friendPhoto))
+                    tmpItems.append(CommunityFriend(firstName: firstName, lastName: lastName, email: email, phoneNum: phoneNum, address1: address1, address2: address2, city: city, state: state, zipcode: zipcode, trustYesNo: trustYesNo, friendPhoto: friendPhoto, numLends: numLends, numItems: numItems))
                 }
                 self.communityFriends = tmpItems
+                
+                self.communityTableView.reloadData()
             }
         })
         
     }
     
-    func toDictionary(itms: CommunityFriend) -> NSDictionary {
+    func toDictionary(frnds: CommunityFriend) -> NSDictionary {
         return [
-            "firstName": NSString(string: itms.firstName ?? ""),
-            "lastName": NSString(string: itms.lastName ?? ""),
-            "email": NSString(string: itms.email ?? ""),
-            "phoneNum": NSString(string: itms.phoneNum ?? ""),
-            "address1": NSString(string: itms.address1 ?? ""),
-            "address2": NSString(string: itms.address2 ?? ""),
-            "city": NSString(string: itms.city ?? ""),
-            "state": NSString(string: itms.state ?? ""),
-            "zipcode": NSString(string: itms.zipcode ?? ""),
-            "trustYesNo": Bool(booleanLiteral: itms.trustYesNo ?? false),
-            "friendPhoto": NSString(string: itms.friendPhoto ?? ""),
+            "firstName": NSString(string: frnds.firstName ?? ""),
+            "lastName": NSString(string: frnds.lastName ?? ""),
+            "email": NSString(string: frnds.email ?? ""),
+            "phoneNum": NSString(string: frnds.phoneNum ?? ""),
+            "address1": NSString(string: frnds.address1 ?? ""),
+            "address2": NSString(string: frnds.address2 ?? ""),
+            "city": NSString(string: frnds.city ?? ""),
+            "state": NSString(string: frnds.state ?? ""),
+            "zipcode": NSString(string: frnds.zipcode ?? ""),
+            "trustYesNo": Bool(booleanLiteral: frnds.trustYesNo ?? false),
+            "friendPhoto": NSString(string: frnds.friendPhoto ?? ""),
+            "numLends": NSInteger(integerLiteral: frnds.numLends),
+            "numItems": NSInteger(integerLiteral: frnds.numItems)
             
         ]
     }
     
-    func addItemToDB() {
+    func addFriendToDB(newComFriend: CommunityFriend) {
         // save history to firebase
         //let addedItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
-        let addedItem = CommunityFriend(firstName: "Darth", lastName: "Vader", email: "darth@celebrity.com", phoneNum: "555-555-5555", address1: "555 Broadway Ave.", address2: "", city: "New York", state: "NY", zipcode: "99999",trustYesNo: true,friendPhoto: "darth")
-        let newChild = self.ref?.child("community").childByAutoId()
-        newChild?.setValue(self.toDictionary(itms: addedItem))
+//        let addedItem = CommunityFriend(firstName: "Darth", lastName: "Vader", email: "darth@celebrity.com", phoneNum: "555-555-5555", address1: "555 Broadway Ave.", address2: "", city: "New York", state: "NY", zipcode: "99999",trustYesNo: true,friendPhoto: "darth")
+        let newChild = self.ref?.child(self.userId!).child("community").childByAutoId()
+        newChild?.setValue(self.toDictionary(frnds: newComFriend))
     }
     
     

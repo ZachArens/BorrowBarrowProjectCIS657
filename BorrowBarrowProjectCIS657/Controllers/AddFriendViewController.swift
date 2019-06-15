@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseAuth
+
+protocol AddFriendControllerDelegate: class {
+    func addFriend(newComFriend: CommunityFriend)
+}
 
 class AddFriendViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    var storageRef: StorageReference?
+    var tsStoragePath: StorageReference?
+    fileprivate var userId: String? = ""
+    var chosenImage: UIImage?
+    
+    weak var delegate: AddFriendControllerDelegate?;
     var imgPickerCtrl: UIImagePickerController!;
 
     @IBAction func cameraFriendBtn(_ sender: UIButton) {
@@ -45,7 +57,15 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         super.viewDidLoad()
         imgPickerCtrl = UIImagePickerController();
 
-        // Do any additional setup after loading the view.
+//        tsImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
+        
+        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
+            self.userId = user.uid
+            self.storageRef = Storage.storage().reference().child(self.userId!)
+            self.tsStoragePath = self.storageRef!.child("comFriendPics")
+            //self.registerForFireBaseUpdates()
+            }
+        }
     }
     
     /*Image Picker Code  from sources:
@@ -90,6 +110,15 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
             let signInView = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendView");
             self.present(signInView!, animated: true, completion: nil);
         }))
+        
+//        let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: tsImageView?.image)
+        
+//        let newComFriend = CommunityFriend(firstName: String?, lastName: <#T##String?#>, email: <#T##String?#>, phoneNum: <#T##String?#>, address1: <#T##String?#>, address2: <#T##String?#>, city: <#T##String?#>, state: <#T##String?#>, zipcode: <#T##String?#>, trustYesNo: <#T##Bool?#>, friendPhoto: <#T##String?#>)
+//
+////        (itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "")
+        if let d = self.delegate {
+            d.addFriend(newComFriend: <#T##CommunityFriend#>)
+        }
         
         navigationController?.popViewController(animated: true);
 

@@ -21,9 +21,11 @@ struct CommunityFriend {
     var zipcode: String?
     var trustYesNo: Bool?
     var friendPhoto: String?
+    var numLends: Int
+    var numItems: Int
 
     
-    init(key: String?, firstName: String?, lastName: String?, email: String?, phoneNum: String?, address1: String?, address2: String?, city: String?, state: String?, zipcode: String?, trustYesNo: Bool?, friendPhoto: String?)
+    init(key: String?, firstName: String?, lastName: String?, email: String?, phoneNum: String?, address1: String?, address2: String?, city: String?, state: String?, zipcode: String?, trustYesNo: Bool?, friendPhoto: String?, numLends: Int, numItems: Int)
     {
         self.key = key;
         self.firstName = firstName;
@@ -39,13 +41,13 @@ struct CommunityFriend {
         self.friendPhoto = friendPhoto;
     }
     
-    init(firstName: String?, lastName: String?, email: String?, phoneNum: String?, address1: String?, address2: String?, city: String?, state: String?, zipcode: String?, trustYesNo: Bool?, friendPhoto: String?)
+    init(firstName: String?, lastName: String?, email: String?, phoneNum: String?, address1: String?, address2: String?, city: String?, state: String?, zipcode: String?, trustYesNo: Bool?, friendPhoto: String?, numLends: Int, numItems: Int)
     {
-        self.init(key: nil, firstName: firstName, lastName: lastName, email: email, phoneNum: phoneNum, address1: address1, address2: address2, city: city, state: state, zipcode: zipcode, trustYesNo: trustYesNo, friendPhoto: friendPhoto)
+        self.init(key: nil, firstName: firstName, lastName: lastName, email: email, phoneNum: phoneNum, address1: address1, address2: address2, city: city, state: state, zipcode: zipcode, trustYesNo: trustYesNo, friendPhoto: friendPhoto, numLends: numLends, numItems: numItems)
     }
     
     init() {
-        self.init(key: nil, firstName: nil, lastName: nil, email: nil, phoneNum: nil, address1: nil, address2: nil, city: nil, state: nil, zipcode: nil, trustYesNo: nil, friendPhoto: nil);
+        self.init(key: nil, firstName: nil, lastName: nil, email: nil, phoneNum: nil, address1: nil, address2: nil, city: nil, state: nil, zipcode: nil, trustYesNo: nil, friendPhoto: nil, numLends: 0, numItems: 0);
     }
     
 }
