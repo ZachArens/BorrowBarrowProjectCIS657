@@ -26,6 +26,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var addItem: UIBarButtonItem!
     
     @IBOutlet weak var tsItemTableView: UITableView!
+    @IBOutlet weak var loginStatusLbl: UILabel!
     
     var tsItems : [ToolShedItem]?
     
@@ -44,7 +45,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     //TODO - need to create alternating button to add function
-    @IBAction func logout(segue: UIStoryboardSegue) {
+    @IBAction func logoutBtn(segue: UIStoryboardSegue) {
         do { try Auth.auth().signOut()
             print ("Logged out")
             } catch let signOutError as NSError {
@@ -57,6 +58,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
+        
 //        let model: TSItemModel = TSItemModel()
 //        self.tsItems = model.getTSItems()
 
@@ -70,7 +72,10 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
                 self.userId = user.uid
                 self.ref = Database.database().reference()
+                self.loginStatusLbl.text = user.email
                 self.registerForFireBaseUpdates()
+            } else {
+                self.loginStatusLbl.text = "Not Logged In"
             }
         }
 
