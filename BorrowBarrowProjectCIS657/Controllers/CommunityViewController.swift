@@ -14,7 +14,7 @@ protocol CommunityDelegation{
     func friendsListDelegate(friends: Array<String>?)
 }
 
-class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, RequestItemViewControllerDelegate, EditFriendViewControllerDelegate {
+class CommunityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, AddFriendControllerDelegate, RequestItemViewControllerDelegate, EditFriendViewControllerDelegate {
    
     func editFriendViewControllerDelegation(friend: CommunityFriend) {
         //Add code here to update item info
