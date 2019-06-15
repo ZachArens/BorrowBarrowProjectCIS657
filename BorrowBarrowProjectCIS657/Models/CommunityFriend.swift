@@ -39,6 +39,8 @@ struct CommunityFriend {
         self.zipcode = zipcode;
         self.trustYesNo = trustYesNo;
         self.friendPhoto = friendPhoto;
+        self.numLends = numLends;
+        self.numItems = numItems;
     }
     
     init(firstName: String?, lastName: String?, email: String?, phoneNum: String?, address1: String?, address2: String?, city: String?, state: String?, zipcode: String?, trustYesNo: Bool?, friendPhoto: String?, numLends: Int, numItems: Int)

@@ -16,8 +16,20 @@ protocol AddFriendControllerDelegate: class {
 
 class AddFriendViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var firstNameTxtFld: UITextField!
+    @IBOutlet weak var lastNameTxtFld: UITextField!
+    @IBOutlet weak var emailTxtFld: UITextField!
+    @IBOutlet weak var phoneTxtField: UITextField!
+    @IBOutlet weak var cityTxtFld: UITextField!
+    @IBOutlet weak var address1TxtFld: UITextField!
+    @IBOutlet weak var address2TxtFld: UITextField!
+    @IBOutlet weak var stateTxtFld: UITextField!
+    @IBOutlet weak var zipTxtFld: UITextField!
+    @IBOutlet weak var friendImageView: UIImageView!
+    
+    
     var storageRef: StorageReference?
-    var tsStoragePath: StorageReference?
+    var cfStoragePath: StorageReference?
     fileprivate var userId: String? = ""
     var chosenImage: UIImage?
     
@@ -62,7 +74,7 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
             self.userId = user.uid
             self.storageRef = Storage.storage().reference().child(self.userId!)
-            self.tsStoragePath = self.storageRef!.child("comFriendPics")
+            self.cfStoragePath = self.storageRef!.child("comFriendPics")
             //self.registerForFireBaseUpdates()
             }
         }
@@ -111,13 +123,16 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
             self.present(signInView!, animated: true, completion: nil);
         }))
         
-//        let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: tsImageView?.image)
+        let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: cfStoragePath, imageToSave: friendImageView?.image)
+        //need to finish calculation logic for lends and items
+        let numLendsCalc = 2
+        let numItemsCalc = 3
         
-//        let newComFriend = CommunityFriend(firstName: String?, lastName: <#T##String?#>, email: <#T##String?#>, phoneNum: <#T##String?#>, address1: <#T##String?#>, address2: <#T##String?#>, city: <#T##String?#>, state: <#T##String?#>, zipcode: <#T##String?#>, trustYesNo: <#T##Bool?#>, friendPhoto: <#T##String?#>)
-//
-////        (itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "")
+        let newComFriend = CommunityFriend(firstName: firstNameTxtFld.text ?? "", lastName: lastNameTxtFld.text ?? "", email: emailTxtFld.text ?? "", phoneNum: phoneTxtField.text ?? "", address1: address1TxtFld.text ?? "", address2: address2TxtFld.text ?? "", city: cityTxtFld.text ?? "", state: stateTxtFld.text ?? "", zipcode: zipTxtFld.text ?? "", trustYesNo: true, friendPhoto: url, numLends: numLendsCalc, numItems: numItemsCalc)
+
+//        (itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "")
         if let d = self.delegate {
-            d.addFriend(newComFriend: <#T##CommunityFriend#>)
+            d.addFriend(newComFriend: newComFriend)
         }
         
         navigationController?.popViewController(animated: true);
