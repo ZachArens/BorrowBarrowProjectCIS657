@@ -125,13 +125,13 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         }))
         
         let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: cfStoragePath, imageToSave: friendImageView?.image)
-        //need to finish calculation logic for lends and items
+        
+        //TODO - need to finish calculation logic for lends and items
         let numLendsCalc = 2
         let numItemsCalc = 3
         
         let newComFriend = CommunityFriend(firstName: firstNameTxtFld.text ?? "", lastName: lastNameTxtFld.text ?? "", email: emailTxtFld.text ?? "", phoneNum: phoneTxtField.text ?? "", address1: address1TxtFld.text ?? "", address2: address2TxtFld.text ?? "", city: cityTxtFld.text ?? "", state: stateTxtFld.text ?? "", zipcode: zipTxtFld.text ?? "", trustYesNo: true, friendPhoto: url, numLends: numLendsCalc, numItems: numItemsCalc)
 
-//        (itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "")
         if let d = self.delegate {
             d.addFriend(newComFriend: newComFriend)
         }

@@ -85,6 +85,8 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             
             editViewCtrl = editView;
             
+        } else if let addFriends = segue.destination as? AddFriendViewController {
+            addFriends.delegate = self
         }
     }
     
