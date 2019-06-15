@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseUI
 import SDWebImage
+import EventKit;
 
 protocol ToolShedViewControllerDelegate
 {
@@ -165,6 +166,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             self.tsItemTableView.reloadData();
             
             
+            
+            
             completionHandler(true);
         })
         
@@ -173,6 +176,32 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         let configuration = UISwipeActionsConfiguration(actions: [returnAction]);
         return configuration;
     }
+    
+    func findAndRemoveReminder(){
+        let eventStore = EKEventStore();
+        let reminder = eventStore.calendarItem(withIdentifier: "\(selectedToolItem.itemName) - \(selectedToolItem.lentTo)") as! EKReminder?;
+        eventStore.requestAccess(to: EKEntityType.reminder, completion: { (accessGranted: Bool, error: Error?) in
+            
+                if(accessGranted)
+                {
+                    DispatchQueue.main.async(execute:
+                    {
+                        self.removeReminder(eventStore: eventStore, reminder: reminder!)
+                    })
+                }
+            }
+        
+)}
+    
+    func removeReminder(eventStore: EKEventStore, reminder: EKReminder)
+    {
+        do{
+            try eventStore.remove(reminder, commit: true)
+        } catch let error {
+            print("Error occurred when deleting the reminder - \(error.localizedDescription)");
+        }
+    }
+    
     
     /*
     // MARK: - Navigation

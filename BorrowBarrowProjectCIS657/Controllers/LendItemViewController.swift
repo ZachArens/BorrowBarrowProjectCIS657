@@ -219,7 +219,7 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     {
         let reminder = EKReminder(eventStore: store);
         
-        reminder.title = "\(selectedToolItem?.itemName! ?? "Tool")";
+        reminder.title = "\(selectedToolItem?.itemName! ?? "Tool") - \(self.friendName!)";
         reminder.priority = 2; //I think this means low priority
         
         reminder.notes = "\(selectedToolItem?.itemName! ?? "Tool") should be returning to you today from \(self.friendName!)"; //Add friend name here

@@ -25,7 +25,6 @@
 		1AACD88F22A4948E0022AC73 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD88E22A4948E0022AC73 /* CreateAccountViewController.swift */; };
 		1AACD89122A494AF0022AC73 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD89022A494AF0022AC73 /* AddFriendViewController.swift */; };
 		1ACA975B22B3DA1200B50C88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA975A22B3DA1200B50C88 /* GoogleService-Info.plist */; };
-		1ACA975D22B3DA1B00B50C88 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA975C22B3DA1B00B50C88 /* APIKeys.swift */; };
 		1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */; };
 		1AE69DEE229A2F4500686EB6 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */; };
 		35F78DAA22AC73F600A259A2 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F78DA922AC73F600A259A2 /* EditItemViewController.swift */; };
@@ -81,7 +80,6 @@
 		1AACD88E22A4948E0022AC73 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		1AACD89022A494AF0022AC73 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		1ACA975A22B3DA1200B50C88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1ACA975C22B3DA1B00B50C88 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		1AE69DEA229A2DC000686EB6 /* ToolShedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedViewController.swift; sourceTree = "<group>"; };
 		1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		2F3B8280705D5D3980945991 /* Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig"; path = "Target Support Files/Pods-BorrowBarrowProjectCIS657UITests/Pods-BorrowBarrowProjectCIS657UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		1A4A84EB2297732800CCC4A3 /* BorrowBarrowProjectCIS657 */ = {
 			isa = PBXGroup;
 			children = (
-				1ACA975C22B3DA1B00B50C88 /* APIKeys.swift */,
 				1ACA975A22B3DA1200B50C88 /* GoogleService-Info.plist */,
 				1A4A84EC2297732800CCC4A3 /* AppDelegate.swift */,
 				1AE69DEC229A2DF900686EB6 /* Controllers */,
@@ -477,7 +474,6 @@
 				49903B20229DDF6500D4CF68 /* CommunityFriend.swift in Sources */,
 				1AE69DEB229A2DC000686EB6 /* ToolShedViewController.swift in Sources */,
 				1AACD88D22A494750022AC73 /* RequestItemViewController.swift in Sources */,
-				1ACA975D22B3DA1B00B50C88 /* APIKeys.swift in Sources */,
 				35F78DAC22AC7EC900A259A2 /* EditFriendViewController.swift in Sources */,
 				1A9A8CB9229CBD680010D824 /* TSItemTableViewCell.swift in Sources */,
 				9F572B5422A45C3700DC45B2 /* AddItemController.swift in Sources */,
