@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseUI
 import SDWebImage
+import EventKit;
 
 protocol ToolShedViewControllerDelegate
 {
@@ -19,7 +20,6 @@ protocol ToolShedViewControllerDelegate
 }
 
 class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate, AddItemControllerDelegate {
-
 
     @IBOutlet weak var addItem: UIBarButtonItem!
     
@@ -42,22 +42,44 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var editViewCtrl: EditItemViewController?;
     
+    @IBOutlet weak var logoutBtnRef: UIButton!
     
     //TODO - need to create alternating button to add function
-    @IBAction func logoutBtn(sender: UIButton) {
+
+    @IBAction func logoutBtn(_ sender: UIButton) {
         do { try Auth.auth().signOut()
             print ("Logged out")
-            //TODO - OR this button .disable
+            self.tsItemTableView.reloadData();
+
             } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
             }
+        
+        logoutBtnRef.isUserInteractionEnabled = false;
+        logoutBtnRef.isHidden = true;
+        
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
+        
+        self.tsItems = [ToolShedItem]();
+        
+        if(self.loginStatusLbl.text == "Not Logged In")
+        {
+            logoutBtnRef.isUserInteractionEnabled = false;
+            logoutBtnRef.isHidden = true;
+        }
+        else
+        {
+            logoutBtnRef.isUserInteractionEnabled = true;
+            logoutBtnRef.isHidden = false;
+        }
         
 //        let model: TSItemModel = TSItemModel()
 //        self.tsItems = model.getTSItems()
@@ -74,6 +96,9 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                 self.ref = Database.database().reference()
                 self.loginStatusLbl.text = user.email
                 self.registerForFireBaseUpdates()
+            
+                self.logoutBtnRef.isHidden = false;
+            self.logoutBtnRef.isUserInteractionEnabled = true;
             } else {
                 self.loginStatusLbl.text = "Not Logged In"
             }
@@ -176,6 +201,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             self.tsItemTableView.reloadData();
             
             
+            
+            
             completionHandler(true);
         })
         
@@ -184,6 +211,32 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         let configuration = UISwipeActionsConfiguration(actions: [returnAction]);
         return configuration;
     }
+    
+    func findAndRemoveReminder(){
+        let eventStore = EKEventStore();
+        let reminder = eventStore.calendarItem(withIdentifier: "\(selectedToolItem.itemName) - \(selectedToolItem.lentTo)") as! EKReminder?;
+        eventStore.requestAccess(to: EKEntityType.reminder, completion: { (accessGranted: Bool, error: Error?) in
+            
+                if(accessGranted)
+                {
+                    DispatchQueue.main.async(execute:
+                    {
+                        self.removeReminder(eventStore: eventStore, reminder: reminder!)
+                    })
+                }
+            }
+        
+)}
+    
+    func removeReminder(eventStore: EKEventStore, reminder: EKReminder)
+    {
+        do{
+            try eventStore.remove(reminder, commit: true)
+        } catch let error {
+            print("Error occurred when deleting the reminder - \(error.localizedDescription)");
+        }
+    }
+    
     
     /*
     // MARK: - Navigation

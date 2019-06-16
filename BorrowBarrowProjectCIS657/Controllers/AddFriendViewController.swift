@@ -70,7 +70,7 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         super.viewDidLoad()
         imgPickerCtrl = UIImagePickerController();
 
-//        tsImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
+        friendImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
         
         Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
             self.userId = user.uid
