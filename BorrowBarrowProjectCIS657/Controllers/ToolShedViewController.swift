@@ -21,7 +21,6 @@ protocol ToolShedViewControllerDelegate
 
 class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate, AddItemControllerDelegate {
 
-    
     @IBOutlet weak var addItem: UIBarButtonItem!
     
     @IBOutlet weak var tsItemTableView: UITableView!
@@ -33,6 +32,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     fileprivate var userId : String? = ""
     
     var selectedToolItem: ToolShedItem!
+    var selectedToolIndex: Int?
     
     var lendItemDelegate: LendItemDelegation?;
     
@@ -45,6 +45,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var logoutBtnRef: UIButton!
     
     //TODO - need to create alternating button to add function
+
     @IBAction func logoutBtn(_ sender: UIButton) {
         do { try Auth.auth().signOut()
             print ("Logged out")
@@ -118,13 +119,13 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
 
         } else if let addItems = segue.destination as? AddItemController {
             addItems.delegate = self;
-        }
-        else if segue.identifier == "editItemSegue"
-        {
-            let edit = segue.destination as? EditItemViewController;            
-            edit?.item = selectedToolItem;
-            edit?.editItemDelegate = self;
-            editViewCtrl = edit;
+            
+        } else if let edit = segue.destination as? EditItemViewController {
+            //attached ToolShedItem to pass to EditItemVC
+            edit.item = selectedToolItem;
+            edit.itemIndex = selectedToolIndex
+            edit.editItemDelegate = self;
+            //editViewCtrl = edit;
 
             //Check for edit segue and if so, initiate the editItemView variables.
         }
@@ -132,8 +133,6 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func addItem(newTSItem: ToolShedItem) {
-        tsItems?.append(newTSItem)
-        
         //DEBUG
         if DEBUG {
             print("added item to TSItems array")
@@ -141,18 +140,30 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                 print(item.itemName ?? "")
             }
         }
-        self.addItemToDB(newTSItem: newTSItem)
-    }
-    
-    
-    func editItemViewControllerDelegation(item: ToolShedItem) {
+        let keyedTSItem = self.addItemToDB(newTSItem: newTSItem)
+        tsItems?.append(keyedTSItem)
         
     }
     
     
-    func lendItemDelegate(item: ToolShedItem?) {
+    func returnEditedItemDelegation(item: ToolShedItem, index: Int?) {
+        self.editItemInDB(newTSItem: item)
+        if index != nil {
+            tsItems?[index!] = item
+        } else {
+            tsItems?.append(item)
+        }
+    }
+    
+    
+    func lendItemDelegate(item: ToolShedItem, index: Int?) {
         //Perhaps change the status of item here
-        
+        self.editItemInDB(newTSItem: item)
+        if index != nil {
+            tsItems?[index!] = item
+        } else {
+            tsItems?.append(item)
+        }
         
     }
     
@@ -162,13 +173,14 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             //Move to edit page here
             self.selectedToolItem = self.tsItems![indexPath.row];
             self.editViewCtrl?.item = self.tsItems![indexPath.row];
+            //self.editViewCtrl
             self.performSegue(withIdentifier: "editItemSegue", sender: nil);
             
             completionHandler(true);
         })
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {(action, view, deletionHandler) in
-            //Code to delete item here
+            self.deleteItemFromDB(tsItemToDelete: self.tsItems![indexPath.row])
             deletionHandler(true);
         })
         
@@ -307,6 +319,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             if let postDict = snapshot.value as? [String : AnyObject] {
                 var tmpItems = [ToolShedItem]()
                 for (_,val) in postDict.enumerated() {
+                    let dbID = val.key
                     let item = val.1 as! Dictionary<String,AnyObject>
                     let itemName = item["itemName"] as! String?
                     let owner = item["owner"] as! String?
@@ -318,7 +331,9 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                     let lentTo = item["lentTo"] as! String?
                     
                     
-                    tmpItems.append(ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photoURL: photoURL, thumbnailURL: thumbnailURL, lentTo: lentTo))
+                    var tmpTSItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photoURL: photoURL, thumbnailURL: thumbnailURL, lentTo: lentTo)
+                    tmpTSItem.addDBID(dbId: dbID)
+                    tmpItems.append(tmpTSItem)
                 }
                 self.tsItems = tmpItems
                 
@@ -347,10 +362,41 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         ]
     }
     
-    func addItemToDB(newTSItem : ToolShedItem) {
-        //let addedItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
+    func addItemToDB(newTSItem : ToolShedItem) -> ToolShedItem {
         let newChild = self.ref?.child(self.userId!).child("toolshed").childByAutoId()
         newChild?.setValue(self.toDictionary(itms: newTSItem))
+        if let key = newChild?.key {
+            var returnTSItem = newTSItem
+            returnTSItem.addDBID(dbId: key)
+            return returnTSItem
+        } else {
+            return newTSItem
+        }
+    }
+    
+    func editItemInDB(newTSItem : ToolShedItem) {
+        if let newChild = self.ref?.child(self.userId!).child("toolshed").child(newTSItem.dbId!) {
+            newChild.setValue(self.toDictionary(itms: newTSItem))
+//            if let key = newChild?.key {
+//                var returnTSItem = newTSItem
+//                returnTSItem.addDBID(dbId: key)
+//                return returnTSItem
+//            } else {
+//                return newTSItem
+//            }
+        } else {
+            //TODO - add error code
+            print("Item not edited: something went wrong")
+        }
+    }
+    
+    func deleteItemFromDB(tsItemToDelete: ToolShedItem) {
+        if let childToDelete = self.ref?.child(self.userId!).child("toolshed").child(tsItemToDelete.dbId!) {
+            childToDelete.removeValue()
+        } else {
+            //TODO - add error code
+            print("Item not deleted: something went wrong")
+        }
     }
     
     @IBAction func createToToolshedUnwind(segue: UIStoryboardSegue)

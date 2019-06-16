@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseUI
 
 protocol EditFriendViewControllerDelegate{
     func editFriendViewControllerDelegation(friend: CommunityFriend);
@@ -77,8 +78,16 @@ class EditFriendViewController: UIViewController {
         stateTxtView.text = friend?.state;
         zipCodeTxtView.text = friend?.zipcode;
         
-        friendImageView.image = UIImage(named: ((friend?.friendPhoto!)!)) ?? UIImage(named: "emptyPhoto");
+        //friendImageView.image = UIImage(named: ((friend?.friendPhoto!)!)) ?? UIImage(named: "emptyPhoto");
         
+        ////Below is the SDWebImage code that just needs to be customized for this page
+//        let placeholderImage = UIImage(named: "emptyPhoto")
+//        if item.photoURL!.isValidStorageURL() && item.photoURL != nil {
+//            let imageRef = Storage.storage().reference(forURL: item.photoURL!)
+//            cell.itemPicture?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
+//        } else {
+//            cell.itemPicture?.image = placeholderImage
+//        }
         
     }
     /*
