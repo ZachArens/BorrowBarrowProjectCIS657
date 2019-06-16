@@ -22,8 +22,6 @@ protocol ToolShedViewControllerDelegate
 class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate, AddItemControllerDelegate {
 
     
-    
-
     @IBOutlet weak var addItem: UIBarButtonItem!
     
     @IBOutlet weak var tsItemTableView: UITableView!
@@ -44,21 +42,43 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var editViewCtrl: EditItemViewController?;
     
+    @IBOutlet weak var logoutBtnRef: UIButton!
     
     //TODO - need to create alternating button to add function
-    @IBAction func logoutBtn(segue: UIStoryboardSegue) {
+    @IBAction func logoutBtn(_ sender: UIButton) {
         do { try Auth.auth().signOut()
             print ("Logged out")
+            self.tsItemTableView.reloadData();
+
             } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
             }
+        
+        logoutBtnRef.isUserInteractionEnabled = false;
+        logoutBtnRef.isHidden = true;
+        
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tsItemTableView.delegate = self
         self.tsItemTableView.dataSource = self
+        
+        self.tsItems = [ToolShedItem]();
+        
+        if(self.loginStatusLbl.text == "Not Logged In")
+        {
+            logoutBtnRef.isUserInteractionEnabled = false;
+            logoutBtnRef.isHidden = true;
+        }
+        else
+        {
+            logoutBtnRef.isUserInteractionEnabled = true;
+            logoutBtnRef.isHidden = false;
+        }
         
 //        let model: TSItemModel = TSItemModel()
 //        self.tsItems = model.getTSItems()
@@ -75,6 +95,9 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                 self.ref = Database.database().reference()
                 self.loginStatusLbl.text = user.email
                 self.registerForFireBaseUpdates()
+            
+                self.logoutBtnRef.isHidden = false;
+            self.logoutBtnRef.isUserInteractionEnabled = true;
             } else {
                 self.loginStatusLbl.text = "Not Logged In"
             }

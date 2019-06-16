@@ -8,6 +8,8 @@
 
 import UIKit
 import EventKit
+import SDWebImage
+import Firebase
 
 protocol LendItemDelegation{
     func lendItemDelegate(item: ToolShedItem?);
@@ -72,9 +74,20 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     
     var lendItemDelegate: LendItemDelegation?;
     
+    var listOfFriends: [String] = [String]();
+    
+    fileprivate var userId : String? = ""
+
+    fileprivate var ref : DatabaseReference?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.pickerData = ["Barack", "Darth", "Luke", "Jude"]
+        listOfFriends = [String]();
+        self.pickerData = ["You have no friends! Go and add some!"];
+        self.getFriends();
+        
+
         self.refreshPicker();
         setInfo();
         
@@ -95,15 +108,17 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
             self.pickerData = [friendLentTo] as! [String];
             self.refreshPicker();
         }
+        
+            self.pickerData = self.listOfFriends;
+        
     }
     
     func setInfo() -> Void
     {
-        
-        
+        LendImageView.sd_setImage(with: URL(string: (selectedToolItem?.photoURL!)!), placeholderImage: UIImage(named: "emptyPhoto"));
         itemNameLabel.text = selectedToolItem?.itemName!;
         itemStatusLabel.text = selectedToolItem?.lentTo; //Need to inditcate who it is lent to.
-        LendImageView.image = UIImage(named: (selectedToolItem?.photoURL)!) ?? UIImage(named: "emptyPhoto")
+        //LendImageView.image = UIImage(named: (selectedToolItem?.photoURL)!) ?? UIImage(named: "emptyPhoto")
         descriptionTextView.text = selectedToolItem?.itemDescription;
         
         //Picker view here or function that populates picker here
@@ -242,4 +257,63 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         }
         
     }
+    
+    func getFriends(){
+        userId = Auth.auth().currentUser?.uid;
+        ref = Database.database().reference();
+        registerForFireBaseUpdates();
+
+    }
+    
+    fileprivate func registerForFireBaseUpdates()
+    {
+        self.ref!.child(self.userId!).child("community").observe(.value, with: { snapshot in
+            if let postDict = snapshot.value as? [String : AnyObject] {
+                var tmpItems = [ToolShedItem]()
+                for (_,val) in postDict.enumerated() {
+//                    let item = val.1 as! Dictionary<String,AnyObject>
+//                    let itemName = item["itemName"] as! String?
+//                    let owner = item["owner"] as! String?
+//                    let itemDescription = item["itemDescription"] as! String?
+//                    let reqYesNo = item["reqYesNo"] as! Bool?
+//                    let requirements = item["requirements"] as! String?
+//                    let photoURL = item["photoURL"] as! String?
+//                    let thumbnailURL = item["thumbnailURL"] as! String?
+//                    let lentTo = item["lentTo"] as! String?
+                    
+                    let friend = val.1 as! Dictionary<String, AnyObject>;
+//                    let address1 = friend["address1"];
+//                    let address2 = friend["address2"];
+//                    let city = friend["city"];
+//                    let email = friend["email"];
+                    let firstName = friend["firstName"];
+//                    let lastName = friend["lastName"];
+//                    let numItems = friend["numItems"];
+//                    let numLends = friend["numLends"];
+//                    let phoneNum = friend["phoneNum"];
+//                    let state = friend["state"];
+//                    let trustYesNo = friend["trustYesNo"];
+//                    let zipcode = friend["zipcode"];
+                    self.listOfFriends.append(firstName as! String? ?? "John Doe");
+                }
+               // self.tsItems = tmpItems
+                self.pickerData = self.listOfFriends;
+                self.friendPickerView.reloadAllComponents();
+                self.refreshPicker();
+
+               // self.tsItemTableView.reloadData()
+                //                if DEBUG {"
+                //                    print("new TSItems from model")
+                //                    for item in self.tsItems! {
+                //                        print(item.itemName ?? "")
+                //                    }
+                //                }
+            }
+
+        })
+        
+
+        
+    }
+    
 }

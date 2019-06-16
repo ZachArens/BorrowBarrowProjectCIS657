@@ -10,6 +10,7 @@ import UIKit
 import FirebaseStorage
 import FirebaseAuth
 
+
 protocol AddItemControllerDelegate: class {
     func addItem(newTSItem: ToolShedItem)
 }
@@ -84,9 +85,9 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     
     @IBAction func addItemBtn(_ sender: UIButton) {
         
-        let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: tsImageView?.image)
-        
-        let newTSItem = ToolShedItem(itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "")
+        let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: tsImageView?.image);
+                
+        let newTSItem = ToolShedItem(itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "in Shed")
         if let d = self.delegate {
             d.addItem(newTSItem : newTSItem)
         }
