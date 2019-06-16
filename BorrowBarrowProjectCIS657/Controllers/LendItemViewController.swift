@@ -294,12 +294,23 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 //                    let state = friend["state"];
 //                    let trustYesNo = friend["trustYesNo"];
 //                    let zipcode = friend["zipcode"];
-                    self.listOfFriends.append(firstName as! String? ?? "John Doe");
+                    //self.listOfFriends.append(firstName as! String? ?? "John Doe");
                 }
                // self.tsItems = tmpItems
-                self.pickerData = self.listOfFriends;
+                if(self.listOfFriends.count < 1)
+                {
+                    self.pickerData = ["You have no friends. Go add some!"];
+                    self.friendPickerView.isUserInteractionEnabled = false;
+                }
+                else
+                {
+                    self.pickerData = self.listOfFriends;
+                }
                 self.friendPickerView.reloadAllComponents();
                 self.refreshPicker();
+
+                
+                
 
                // self.tsItemTableView.reloadData()
                 //                if DEBUG {"
