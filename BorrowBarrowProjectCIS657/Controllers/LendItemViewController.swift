@@ -11,13 +11,9 @@ import EventKit
 import FirebaseUI
 import SDWebImage
 import Firebase
-<<<<<<< HEAD
-=======
-
->>>>>>> 78c989ee82df69b6acf16fd9ecdd67d286177b04
 
 protocol LendItemDelegation{
-    func lendItemDelegate(item: ToolShedItem, index: Int?);
+    func lendItemDelegate(item: ToolShedItem?, index: Int?);
 }
 
 class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
@@ -28,7 +24,6 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     
     
     @IBOutlet weak var itemNameLabel: UILabel!
-    var item: ToolShedItem?;
     
     @IBOutlet weak var itemStatusLabel: UILabel!
     
@@ -59,7 +54,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         }
         
         selectedToolItem?.lentTo = friendName;
-        lendItemDelegate?.lendItemDelegate(item: selectedToolItem!);
+        lendItemDelegate?.lendItemDelegate(item: selectedToolItem, index: selectedToolIndex)
         navigationController?.popViewController(animated: true);
 
     }
@@ -77,6 +72,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     var friendName: String?;
     
     var selectedToolItem: ToolShedItem?;
+    var selectedToolIndex: Int?
     
     var toolShedDelegate: ToolShedViewControllerDelegate?;
     
@@ -139,10 +135,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
 //        } else {
 //            cell.itemPicture?.image = placeholderImage
 //        }
-<<<<<<< HEAD
-=======
-
->>>>>>> 78c989ee82df69b6acf16fd9ecdd67d286177b04
+        
         descriptionTextView.text = selectedToolItem?.itemDescription;
         
         //Picker view here or function that populates picker here

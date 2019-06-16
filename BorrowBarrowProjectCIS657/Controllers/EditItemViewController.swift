@@ -23,9 +23,9 @@ class EditItemViewController: UIViewController {
     @IBOutlet weak var itemDetailsTextView: UITextView!
     
     
-    @IBAction func toggleRequests(_ sender: UISwitch) {
-        item?.reqYesNo = sender.isOn;
-    }
+//    @IBAction func toggleRequests(_ sender: UISwitch) {
+//        item?.reqYesNo = sender.isOn;
+//    }
     
     
     @IBOutlet weak var restrictionsTextView: UITextView!
@@ -58,7 +58,7 @@ class EditItemViewController: UIViewController {
         item?.itemDescription = itemDetailsTextView.text;
         item?.requirements = restrictionsTextView.text;
         
-        editItemDelegate?.editItemViewControllerDelegation(item: item!);
+        editItemDelegate?.returnEditedItemDelegation(item: item!, index: itemIndex);
         
         _ = navigationController?.popViewController(animated: true);
 
