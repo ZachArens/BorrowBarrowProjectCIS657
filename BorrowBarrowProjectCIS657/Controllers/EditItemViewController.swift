@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol EditItemViewControllerDelegate{
     func editItemViewControllerDelegation(item: ToolShedItem);
@@ -32,6 +33,7 @@ class EditItemViewController: UIViewController {
     
     
     @IBAction func toggleRequests(_ sender: UISwitch) {
+        item?.reqYesNo = sender.isOn;
     }
     
     
@@ -45,6 +47,11 @@ class EditItemViewController: UIViewController {
     @IBAction func saveBtn(_ sender: UIButton) {
         
         //Save to database and popViewCtrl
+        item?.itemName = itemNameTextView.text;
+        item?.itemDescription = itemDetailsTextView.text;
+        item?.requirements = restrictionsTextView.text;
+        
+        editItemDelegate?.editItemViewControllerDelegation(item: item!);
         
         _ = navigationController?.popViewController(animated: true);
 
@@ -59,18 +66,19 @@ class EditItemViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
         setItemInfo();
         // Do any additional setup after loading the view.
     }
     
     
-    func setItemInfo() {
+    func setItemInfo()
+    {
         
-        itemImageView.image = UIImage(named: (item?.photoURL!)!) ?? UIImage(named: "emptyPhoto");
+        //itemImageView.image = UIImage(named: (item?.photoURL!)!) ?? UIImage(named: "emptyPhoto");
+        itemImageView.sd_setImage(with: URL(string: item!.photoURL!)!, placeholderImage: UIImage(named: "emptyPhoto"));
         itemNameTextView.text = item?.itemName;
         itemDetailsTextView.text = item?.itemDescription;
-
     }
 
     /*

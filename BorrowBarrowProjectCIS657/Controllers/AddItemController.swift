@@ -71,7 +71,6 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
             self.present(alert, animated: true, completion: nil)
         }
         
-
     }
     
     @IBAction func openPhotoLibBtn(_ sender: UIButton) {

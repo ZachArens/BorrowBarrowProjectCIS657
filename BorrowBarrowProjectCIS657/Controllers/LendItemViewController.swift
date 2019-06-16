@@ -52,6 +52,9 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         {
             requestCalendarAccess(store: store);
         }
+        
+        selectedToolItem?.lentTo = friendName;
+        lendItemDelegate?.lendItemDelegate(item: selectedToolItem!);
         navigationController?.popViewController(animated: true);
 
     }
@@ -86,6 +89,9 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         listOfFriends = [String]();
         self.pickerData = ["You have no friends! Go and add some!"];
         self.getFriends();
+        
+        toggledReminder = true;
+        
         
 
         self.refreshPicker();
@@ -294,7 +300,7 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 //                    let state = friend["state"];
 //                    let trustYesNo = friend["trustYesNo"];
 //                    let zipcode = friend["zipcode"];
-                    //self.listOfFriends.append(firstName as! String? ?? "John Doe");
+                    self.listOfFriends.append(firstName as! String? ?? "John Doe");
                 }
                // self.tsItems = tmpItems
                 if(self.listOfFriends.count < 1)
@@ -305,6 +311,7 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
                 else
                 {
                     self.pickerData = self.listOfFriends;
+                    self.friendName = self.listOfFriends[0];
                 }
                 self.friendPickerView.reloadAllComponents();
                 self.refreshPicker();
