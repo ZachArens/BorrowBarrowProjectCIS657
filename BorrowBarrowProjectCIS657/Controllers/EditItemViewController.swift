@@ -86,6 +86,7 @@ class EditItemViewController: UIViewController {
         }
         itemNameTextView.text = item!.itemName;
         itemDetailsTextView.text = "\(item!.itemDescription ?? "") Index is \(itemIndex ?? -1)";
+        itemDetailsTextView.text = item!.requirements
         
 
     }

@@ -29,7 +29,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     var tsItems : [ToolShedItem]?
     
     fileprivate var ref : DatabaseReference?
-    fileprivate var userId : String? = ""
+    fileprivate var userId : String = ""
     
     var selectedToolItem: ToolShedItem!
     var selectedToolIndex: Int?
@@ -79,7 +79,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
 
-        ref?.child(self.userId!).child("toolshed").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child(self.userId).child("toolshed").observeSingleEvent(of: .value, with: { (snapshot) in
             
         })
         self.setNeedsStatusBarAppearanceUpdate()
@@ -111,8 +111,10 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         //DEBUG
         if DEBUG {
             print("added item to TSItems array")
-            for item in tsItems! {
-                print(item.itemName ?? "")
+            if tsItems != nil {
+                for item in tsItems! {
+                    print(item.itemName ?? "")
+                }
             }
         }
         let keyedTSItem = self.addItemToDB(newTSItem: newTSItem)
@@ -262,7 +264,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     fileprivate func registerForFireBaseUpdates()
     {
-        self.ref!.child(self.userId!).child("toolshed").observe(.value, with: { snapshot in
+        self.ref!.child(self.userId).child("toolshed").observe(.value, with: { snapshot in
             if let postDict = snapshot.value as? [String : AnyObject] {
                 var tmpItems = [ToolShedItem]()
                 for (_,val) in postDict.enumerated() {
@@ -310,7 +312,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func addItemToDB(newTSItem : ToolShedItem) -> ToolShedItem {
-        let newChild = self.ref?.child(self.userId!).child("toolshed").childByAutoId()
+        let newChild = self.ref?.child(self.userId).child("toolshed").childByAutoId()
         newChild?.setValue(self.toDictionary(itms: newTSItem))
         if let key = newChild?.key {
             var returnTSItem = newTSItem
@@ -322,7 +324,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func editItemInDB(newTSItem : ToolShedItem) {
-        if let newChild = self.ref?.child(self.userId!).child("toolshed").child(newTSItem.dbId!) {
+        if let newChild = self.ref?.child(self.userId).child("toolshed").child(newTSItem.dbId!) {
             newChild.setValue(self.toDictionary(itms: newTSItem))
 //            if let key = newChild?.key {
 //                var returnTSItem = newTSItem
@@ -338,7 +340,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func deleteItemFromDB(tsItemToDelete: ToolShedItem) {
-        if let childToDelete = self.ref?.child(self.userId!).child("toolshed").child(tsItemToDelete.dbId!) {
+        if let childToDelete = self.ref?.child(self.userId).child("toolshed").child(tsItemToDelete.dbId!) {
             childToDelete.removeValue()
         } else {
             //TODO - add error code
