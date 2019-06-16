@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseUI
 
 protocol RequestItemViewControllerDelegate{
     func requestItemDelegate(friend: CommunityFriend);
@@ -52,8 +53,16 @@ class RequestItemViewController: UIViewController {
         
         contactNameLabel.text = communityFriend?.firstName!;
         
-        contactImageView.image = UIImage(named: (communityFriend?.friendPhoto)!) ?? UIImage(named: "emptyPhoto");
+        //contactImageView.image = UIImage(named: (communityFriend?.friendPhoto)!) ?? UIImage(named: "emptyPhoto");
         
+        ////Below is the SDWebImage code that just needs to be customized for this page
+//        let placeholderImage = UIImage(named: "emptyPhoto")
+//        if item.photoURL!.isValidStorageURL() && item.photoURL != nil {
+//            let imageRef = Storage.storage().reference(forURL: item.photoURL!)
+//            cell.contactImageView?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
+//        } else {
+//            cell.itemPicture?.image = placeholderImage
+//        }
       
         
     }

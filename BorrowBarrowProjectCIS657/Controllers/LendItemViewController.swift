@@ -8,9 +8,10 @@
 
 import UIKit
 import EventKit
+import FirebaseUI
 
 protocol LendItemDelegation{
-    func lendItemDelegate(item: ToolShedItem?);
+    func lendItemDelegate(item: ToolShedItem, index: Int?);
 }
 
 class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
@@ -103,7 +104,16 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         
         itemNameLabel.text = selectedToolItem?.itemName!;
         itemStatusLabel.text = selectedToolItem?.lentTo; //Need to inditcate who it is lent to.
-        LendImageView.image = UIImage(named: (selectedToolItem?.photoURL)!) ?? UIImage(named: "emptyPhoto")
+        //LendImageView.image = UIImage(named: (selectedToolItem?.photoURL)!) ?? UIImage(named: "emptyPhoto")\
+        
+        ////Below is the SDWebImage code that just needs to be customized for this page
+//        let placeholderImage = UIImage(named: "emptyPhoto")
+//        if item.photoURL!.isValidStorageURL() && item.photoURL != nil {
+//            let imageRef = Storage.storage().reference(forURL: item.photoURL!)
+//            cell.itemPicture?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
+//        } else {
+//            cell.itemPicture?.image = placeholderImage
+//        }
         descriptionTextView.text = selectedToolItem?.itemDescription;
         
         //Picker view here or function that populates picker here
