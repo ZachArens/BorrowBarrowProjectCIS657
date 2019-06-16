@@ -89,6 +89,9 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         friendDescription.becomeFirstResponder();
         
         friendDescription.selectedTextRange = friendDescription.textRange(from: friendDescription.beginningOfDocument, to: friendDescription.beginningOfDocument)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
+        
+        view.addGestureRecognizer(tap);
     }
     
     /*Image Picker Code  from sources:
@@ -188,5 +191,8 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         }
     }
     
+    @objc func dropKeyboard(){
+        view.endEditing(true);
+    }
 
 }

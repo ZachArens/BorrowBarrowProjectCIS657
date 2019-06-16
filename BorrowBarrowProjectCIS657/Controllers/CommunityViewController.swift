@@ -137,8 +137,8 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             if let item = self.communityFriends?[indexPath.row] {
                 cell.name?.text = "\(item.firstName ?? "First") \(item.lastName ?? "Last")"
                 //TODO need to count number of items and lends from DBase
-                cell.numOfItems?.text = "\(item.numItems)"
-                cell.numOfLends?.text = "\(item.numLends)"
+                cell.numOfItems?.text = "\(item.numItems) Items"
+                cell.numOfLends?.text = "\(item.numLends) Lends"
                 if item.trustYesNo! {
                     cell.signalImage?.image = UIImage(named: "greenSignal")
                 } else {
@@ -151,7 +151,7 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
                 } else {
                     cell.userPicture?.image = placeholderImage
                 }
-                cell.userDetails?.text = "\(item.city ?? "City")"
+                cell.userDetails?.text = "\(item.email ?? "")\n\(item.phoneNum ?? "")\n\(item.address1 ?? "")\n\(item.address2 ?? "")\n\(item.city ?? "") \(item.state ?? "") \(item.zipcode ?? "")"
                 
                 //                Image by OpenClipart-Vectors
                 //                "https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=147232"
@@ -245,8 +245,6 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func addFriendToDB(newComFriend: CommunityFriend) {
         // save history to firebase
-        //let addedItem = ToolShedItem(itemName: itemName, owner: owner, itemDescription: itemDescription, reqYesNo: reqYesNo, requirements: requirements, photo: photo, lentTo: lentTo))
-//        let addedItem = CommunityFriend(firstName: "Darth", lastName: "Vader", email: "darth@celebrity.com", phoneNum: "555-555-5555", address1: "555 Broadway Ave.", address2: "", city: "New York", state: "NY", zipcode: "99999",trustYesNo: true,friendPhoto: "darth")
         let newChild = self.ref?.child(self.userId!).child("community").childByAutoId()
         newChild?.setValue(self.toDictionary(frnds: newComFriend))
     }

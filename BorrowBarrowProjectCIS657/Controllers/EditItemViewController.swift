@@ -8,27 +8,18 @@
 
 import UIKit
 import SDWebImage
+import FirebaseUI
+import FirebaseAuth
 
 protocol EditItemViewControllerDelegate{
-    func editItemViewControllerDelegation(item: ToolShedItem);
+    func returnEditedItemDelegation(item: ToolShedItem, index: Int?);
 }
 
 class EditItemViewController: UIViewController {
 
     
     @IBOutlet weak var itemImageView: UIImageView!
-    
-    
-    @IBAction func photoLibBtn(_ sender: UIButton) {
-    }
-    
-    @IBAction func cameraBtn(_ sender: UIButton) {
-    }
-    
-    
     @IBOutlet weak var itemNameTextView: UITextField!
-    
-    
     @IBOutlet weak var itemDetailsTextView: UITextView!
     
     
@@ -39,9 +30,25 @@ class EditItemViewController: UIViewController {
     
     @IBOutlet weak var restrictionsTextView: UITextView!
     
+    @IBAction func photoLibBtn(_ sender: UIButton) {
+    }
+    
+    @IBAction func cameraBtn(_ sender: UIButton) {
+    }
+    
+    @IBAction func toggleRequests(_ sender: UISwitch) {
+    }
+    
+    
+
+    
     var editItemDelegate: EditItemViewControllerDelegate?;
     
     var item: ToolShedItem?;
+    var itemIndex: Int?
+    
+    var userId: String?
+    var tsStoragePath: StorageReference?
     
     
     @IBAction func saveBtn(_ sender: UIButton) {
@@ -67,6 +74,15 @@ class EditItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        super.viewDidLoad()
+        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
+            self.userId = user.uid
+            let storageRef = Storage.storage().reference().child(self.userId!)
+            self.tsStoragePath = storageRef.child("toolShedPics")
+            //self.registerForFireBaseUpdates()
+            }
+        }
+        
         setItemInfo();
         // Do any additional setup after loading the view.
     }
@@ -76,19 +92,21 @@ class EditItemViewController: UIViewController {
     {
         
         //itemImageView.image = UIImage(named: (item?.photoURL!)!) ?? UIImage(named: "emptyPhoto");
-        itemImageView.sd_setImage(with: URL(string: item!.photoURL!)!, placeholderImage: UIImage(named: "emptyPhoto"));
-        itemNameTextView.text = item?.itemName;
-        itemDetailsTextView.text = item?.itemDescription;
+        
+        let placeholderImage = UIImage(named: "emptyPhoto")
+        if item!.photoURL!.isValidStorageURL() && item!.photoURL != nil {
+            let imageRef = Storage.storage().reference(forURL: item!.photoURL!)
+            itemImageView?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
+        } else {
+            itemImageView?.image = placeholderImage
+        }
+        itemNameTextView.text = item!.itemName;
+        itemDetailsTextView.text = "\(item!.itemDescription ?? "") Index is \(itemIndex ?? -1)";
+        itemDetailsTextView.text = item!.requirements
+        
+
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

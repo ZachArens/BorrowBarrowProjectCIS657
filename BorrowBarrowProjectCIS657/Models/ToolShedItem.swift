@@ -18,6 +18,7 @@ struct ToolShedItem {
     var photoURL: String?
     var thumbnailURL: String?
     var lentTo: String?
+    var dbId: String?
     
     init(key: String?, itemName: String?, owner: String?, itemDescription: String?, reqYesNo: Bool?, requirements: String?, photoURL: String?, thumbnailURL: String?, lentTo: String?)
     {
@@ -41,8 +42,8 @@ struct ToolShedItem {
         self.init(key: nil, itemName: nil, owner: nil, itemDescription: nil, reqYesNo: nil, requirements: nil, photoURL: nil, thumbnailURL: nil, lentTo: nil)
     }
     
-    mutating func lend(lentTo: String?) {
-        self.lentTo = lentTo
+    mutating func addDBID(dbId: String?) {
+        self.dbId = dbId
     }
     
 }

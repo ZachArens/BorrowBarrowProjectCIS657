@@ -20,6 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app needs access to the calendar</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs access to your phone's camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to your pictures</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>This app needs acccess to the reminders </string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,13 +49,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to your pictures</string>
-	<key>NSCameraUsageDescription</key>
-	<string>This app needs access to your phone&apos;s camera</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>This app needs access to the calendar</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>This app needs acccess to the reminders </string>
 </dict>
 </plist>
