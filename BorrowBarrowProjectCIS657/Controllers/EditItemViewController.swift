@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 import FirebaseUI
 import FirebaseAuth
 
@@ -20,6 +21,13 @@ class EditItemViewController: UIViewController {
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameTextView: UITextField!
     @IBOutlet weak var itemDetailsTextView: UITextView!
+    
+    
+    @IBAction func toggleRequests(_ sender: UISwitch) {
+        item?.reqYesNo = sender.isOn;
+    }
+    
+    
     @IBOutlet weak var restrictionsTextView: UITextView!
     
     @IBAction func photoLibBtn(_ sender: UIButton) {
@@ -46,6 +54,11 @@ class EditItemViewController: UIViewController {
     @IBAction func saveBtn(_ sender: UIButton) {
         
         //Save to database and popViewCtrl
+        item?.itemName = itemNameTextView.text;
+        item?.itemDescription = itemDetailsTextView.text;
+        item?.requirements = restrictionsTextView.text;
+        
+        editItemDelegate?.editItemViewControllerDelegation(item: item!);
         
         _ = navigationController?.popViewController(animated: true);
 
@@ -60,6 +73,7 @@ class EditItemViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad();
         super.viewDidLoad()
         Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
             self.userId = user.uid
@@ -73,7 +87,9 @@ class EditItemViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func setItemInfo() {
+    
+    func setItemInfo()
+    {
         
         //itemImageView.image = UIImage(named: (item?.photoURL!)!) ?? UIImage(named: "emptyPhoto");
         

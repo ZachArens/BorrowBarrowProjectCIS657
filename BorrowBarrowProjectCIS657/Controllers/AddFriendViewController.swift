@@ -14,7 +14,7 @@ protocol AddFriendControllerDelegate: class {
     func addFriend(newComFriend: CommunityFriend)
 }
 
-class AddFriendViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddFriendViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var firstNameTxtFld: UITextField!
     @IBOutlet weak var lastNameTxtFld: UITextField!
@@ -27,6 +27,7 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var zipTxtFld: UITextField!
     @IBOutlet weak var friendImageView: UIImageView!
     
+    @IBOutlet weak var friendDescription: UITextView!
     
     var storageRef: StorageReference?
     var cfStoragePath: StorageReference?
@@ -80,6 +81,14 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
             }
         }
         
+        friendDescription.delegate = self;
+        
+        friendDescription.text = "Description";
+        friendDescription.textColor = UIColor.lightGray;
+        
+        friendDescription.becomeFirstResponder();
+        
+        friendDescription.selectedTextRange = friendDescription.textRange(from: friendDescription.beginningOfDocument, to: friendDescription.beginningOfDocument)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
         
         view.addGestureRecognizer(tap);
@@ -141,8 +150,45 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         }
         
         navigationController?.popViewController(animated: true);
-
         
+    }
+    
+    //Text View Placeholder code from the following:
+    //https://stackoverflow.com/questions/27652227/text-view-uitextview-placeholder-swift
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        let currentText:String = friendDescription.text;
+        
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        if(updatedText.isEmpty)
+        {
+            friendDescription.text = "Description";
+            friendDescription.textColor = UIColor.lightGray;
+            
+            friendDescription.selectedTextRange = friendDescription.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            
+            
+        }
+        else if friendDescription.textColor == UIColor.lightGray && !text.isEmpty
+        {
+            friendDescription.textColor = UIColor.black;
+            friendDescription.text = text;
+        }
+        else{
+            return true
+        }
+        
+        return false;
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if self.view.window != nil{
+            if friendDescription.textColor == UIColor.lightGray {
+                friendDescription.selectedTextRange = friendDescription.textRange(from: friendDescription.beginningOfDocument, to: friendDescription.beginningOfDocument)
+            }
+        }
     }
     
     @objc func dropKeyboard(){

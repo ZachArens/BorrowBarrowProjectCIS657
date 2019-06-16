@@ -183,6 +183,8 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {(action, view, deletionHandler) in
             self.deleteItemFromDB(tsItemToDelete: self.tsItems![indexPath.row])
+            //Code to delete item here
+            self.findAndRemoveReminder();
             deletionHandler(true);
         })
         
@@ -202,7 +204,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             self.tsItems![indexPath.row].lentTo = "in Shed";
             self.tsItemTableView.reloadData();
             
-            
+            self.findAndRemoveReminder();
             
             
             completionHandler(true);
@@ -216,19 +218,28 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func findAndRemoveReminder(){
         let eventStore = EKEventStore();
-        let reminder = eventStore.calendarItem(withIdentifier: "\(selectedToolItem.itemName) - \(selectedToolItem.lentTo)") as! EKReminder?;
-        eventStore.requestAccess(to: EKEntityType.reminder, completion: { (accessGranted: Bool, error: Error?) in
-            
+        //print("\(selectedToolItem?.itemName! ?? "Tool") - \(selectedToolItem.lentTo!)");
+//        NSPredicate pred = eventStore.predicateForReminders(in: [eventStore.calendars(for: .reminder)]);
+        
+        let reminder = eventStore.calendarItem(withIdentifier: "\(selectedToolItem?.itemName! ?? "Tool") - Andy") as! EKReminder?;
+        
+        if(reminder != nil)
+        {
+            eventStore.requestAccess(to: EKEntityType.reminder, completion: { (accessGranted: Bool, error: Error?) in
+                
                 if(accessGranted)
                 {
                     DispatchQueue.main.async(execute:
-                    {
-                        self.removeReminder(eventStore: eventStore, reminder: reminder!)
+                        {
+                            self.removeReminder(eventStore: eventStore, reminder: reminder!)
                     })
                 }
             }
+                
+            )
+        }
         
-)}
+    }
     
     func removeReminder(eventStore: EKEventStore, reminder: EKReminder)
     {
