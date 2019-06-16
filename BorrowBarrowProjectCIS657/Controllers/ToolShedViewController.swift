@@ -21,7 +21,10 @@ protocol ToolShedViewControllerDelegate
 
 class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate, AddItemControllerDelegate {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78c989ee82df69b6acf16fd9ecdd67d286177b04
     @IBOutlet weak var addItem: UIBarButtonItem!
     
     @IBOutlet weak var tsItemTableView: UITableView!
@@ -46,6 +49,10 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var logoutBtnRef: UIButton!
     
     //TODO - need to create alternating button to add function
+<<<<<<< HEAD
+=======
+
+>>>>>>> 78c989ee82df69b6acf16fd9ecdd67d286177b04
     @IBAction func logoutBtn(_ sender: UIButton) {
         do { try Auth.auth().signOut()
             print ("Logged out")

@@ -11,6 +11,10 @@ import EventKit
 import FirebaseUI
 import SDWebImage
 import Firebase
+<<<<<<< HEAD
+=======
+
+>>>>>>> 78c989ee82df69b6acf16fd9ecdd67d286177b04
 
 protocol LendItemDelegation{
     func lendItemDelegate(item: ToolShedItem, index: Int?);
@@ -129,6 +133,10 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
 //        } else {
 //            cell.itemPicture?.image = placeholderImage
 //        }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 78c989ee82df69b6acf16fd9ecdd67d286177b04
         descriptionTextView.text = selectedToolItem?.itemDescription;
         
         //Picker view here or function that populates picker here
