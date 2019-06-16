@@ -79,6 +79,10 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
             //self.registerForFireBaseUpdates()
             }
         }
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
+        
+        view.addGestureRecognizer(tap);
     }
     
     /*Image Picker Code  from sources:
@@ -141,5 +145,8 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         
     }
     
+    @objc func dropKeyboard(){
+        view.endEditing(true);
+    }
 
 }

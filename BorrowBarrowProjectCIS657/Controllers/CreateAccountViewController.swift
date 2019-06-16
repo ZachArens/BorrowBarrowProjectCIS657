@@ -21,7 +21,9 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
+        
+        view.addGestureRecognizer(tap);
     }
     
 
@@ -76,6 +78,8 @@ class CreateAccountViewController: UIViewController {
     }
     */
     
-    
+    @objc func dropKeyboard(){
+        view.endEditing(true);
+    }
 
 }

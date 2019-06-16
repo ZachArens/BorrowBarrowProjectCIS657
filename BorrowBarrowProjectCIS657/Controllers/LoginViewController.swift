@@ -25,7 +25,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.title = "Sign In"
-        // Do any additional setup after loading the view.
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
+        
+        view.addGestureRecognizer(tap);
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,6 +74,10 @@ class LoginViewController: UIViewController {
         }
         
         return emailOk && pwOk
+    }
+    
+    @objc func dropKeyboard(){
+        view.endEditing(true);
     }
 }
 
