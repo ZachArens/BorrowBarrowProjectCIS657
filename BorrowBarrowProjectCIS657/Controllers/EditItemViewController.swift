@@ -23,9 +23,9 @@ class EditItemViewController: UIViewController {
     @IBOutlet weak var itemDetailsTextView: UITextView!
     
     
-//    @IBAction func toggleRequests(_ sender: UISwitch) {
-//        item?.reqYesNo = sender.isOn;
-//    }
+    @IBAction func toggleRequests(_ sender: UISwitch) {
+        item?.reqYesNo = sender.isOn;
+    }
     
     
     @IBOutlet weak var restrictionsTextView: UITextView!
@@ -36,8 +36,8 @@ class EditItemViewController: UIViewController {
     @IBAction func cameraBtn(_ sender: UIButton) {
     }
     
-    @IBAction func toggleRequests(_ sender: UISwitch) {
-    }
+//    @IBAction func toggleRequests(_ sender: UISwitch) {
+//    }
     
     
 

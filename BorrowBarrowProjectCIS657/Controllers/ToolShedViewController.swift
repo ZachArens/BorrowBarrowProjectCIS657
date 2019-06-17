@@ -158,16 +158,13 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    func lendItemDelegate(item: ToolShedItem?, index: Int?) {
+    func lendItemDelegate(item: ToolShedItem, index: Int?) {
         //Perhaps change the status of item here
-        if item != nil {
-           self.editItemInDB(newTSItem: item!)
-        }
-        
+        self.editItemInDB(newTSItem: item)
         if index != nil {
-            tsItems?[index!] = item!
+            tsItems?[index!] = item
         } else {
-            tsItems?.append(item!)
+            tsItems?.append(item)
         }
         
     }
