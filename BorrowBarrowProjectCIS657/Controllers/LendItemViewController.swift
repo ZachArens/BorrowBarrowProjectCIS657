@@ -87,9 +87,15 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        listOfFriends = [String]();
-        self.pickerData = ["You have no friends! Go and add some!"];
-        self.getFriends();
+        
+        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
+            self.userId = user.uid
+            self.ref = Database.database().reference()
+            self.getListOfFriendsFromDB()
+        } else {
+            //add code if firebase is unable to connect
+            }
+        }
         
         toggledReminder = true;
         
@@ -144,8 +150,9 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         
     }
     
-    func selectEntry(item: ToolShedItem) {
+    func selectEntry(item: ToolShedItem, index: Int) {
         selectedToolItem = item;
+        selectedToolIndex = index
         setInfo();
     }
     
@@ -179,12 +186,12 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     //The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
-        return pickerData.count
+        return listOfFriends.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
-        return self.pickerData[row]
+        return self.listOfFriends[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
@@ -199,7 +206,10 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 //            print("Active setting invalid")
 //        }
         
-        self.friendName = self.pickerData[row];
+        self.friendName = self.listOfFriends[row];
+        selectedToolItem?.lentTo = friendName
+
+        
         
         //return self.pickerData[row]
     }
@@ -275,18 +285,11 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         
     }
     
-    func getFriends(){
-        userId = Auth.auth().currentUser?.uid;
-        ref = Database.database().reference();
-        registerForFireBaseUpdates();
-
-    }
-    
-    fileprivate func registerForFireBaseUpdates()
+    fileprivate func getListOfFriendsFromDB()
     {
-        self.ref!.child(self.userId!).child("community").observe(.value, with: { snapshot in
+        self.ref!.child(self.userId!).child("community").observeSingleEvent(of: .value, with: { snapshot in
             if let postDict = snapshot.value as? [String : AnyObject] {
-                var tmpItems = [ToolShedItem]()
+                var tmpItems = [String]()
                 for (_,val) in postDict.enumerated() {
 //                    let item = val.1 as! Dictionary<String,AnyObject>
 //                    let itemName = item["itemName"] as! String?
@@ -311,32 +314,22 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 //                    let state = friend["state"];
 //                    let trustYesNo = friend["trustYesNo"];
 //                    let zipcode = friend["zipcode"];
-                    self.listOfFriends.append(firstName as! String? ?? "John Doe");
+                    tmpItems.append(firstName as! String)
                 }
+                self.listOfFriends = tmpItems
                // self.tsItems = tmpItems
                 if(self.listOfFriends.count < 1)
                 {
-                    self.pickerData = ["You have no friends. Go add some!"];
+                    self.listOfFriends = ["You have no friends. Go add some!"];
                     self.friendPickerView.isUserInteractionEnabled = false;
                 }
                 else
                 {
-                    self.pickerData = self.listOfFriends;
-                    self.friendName = self.listOfFriends[0];
+//                    self.pickerData = self.listOfFriends;
+                    //self.friendName = self.listOfFriends[0];
                 }
-                self.friendPickerView.reloadAllComponents();
-                self.refreshPicker();
-
-                
-                
-
-               // self.tsItemTableView.reloadData()
-                //                if DEBUG {"
-                //                    print("new TSItems from model")
-                //                    for item in self.tsItems! {
-                //                        print(item.itemName ?? "")
-                //                    }
-                //                }
+//                self.friendPickerView.reloadAllComponents();
+//                self.refreshPicker();
             }
 
         })

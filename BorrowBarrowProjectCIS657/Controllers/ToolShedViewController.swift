@@ -16,7 +16,7 @@ import EventKit;
 
 protocol ToolShedViewControllerDelegate
 {
-    func selectEntry(item: ToolShedItem);
+    func selectEntry(item: ToolShedItem, index: Int);
 }
 
 class ToolShedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LendItemDelegation, EditItemViewControllerDelegate, AddItemControllerDelegate {

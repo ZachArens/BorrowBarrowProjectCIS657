@@ -14,6 +14,7 @@
 		1A4A84F72297732900CCC4A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4A84F52297732900CCC4A3 /* LaunchScreen.storyboard */; };
 		1A4A85022297732900CCC4A3 /* BorrowBarrowProjectCIS657Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A85012297732900CCC4A3 /* BorrowBarrowProjectCIS657Tests.swift */; };
 		1A4A850D2297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A850C2297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.swift */; };
+		1A4CCBA022B7171300055AED /* BBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4CCB9F22B7171300055AED /* BBTextView.swift */; };
 		1A6080B322AF3FA400372558 /* UIViewController+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6080B222AF3FA400372558 /* UIViewController+Validation.swift */; };
 		1A6080EF22B1924100372558 /* UIViewController+MediaUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6080EE22B1924100372558 /* UIViewController+MediaUpload.swift */; };
 		1A9A8CB3229C593A0010D824 /* ToolShedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */; };
@@ -70,6 +71,7 @@
 		1A4A85082297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorrowBarrowProjectCIS657UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4A850C2297732900CCC4A3 /* BorrowBarrowProjectCIS657UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowBarrowProjectCIS657UITests.swift; sourceTree = "<group>"; };
 		1A4A850E2297732900CCC4A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A4CCB9F22B7171300055AED /* BBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BBTextView.swift; path = BorrowBarrowProjectCIS657/Views/BBTextView.swift; sourceTree = SOURCE_ROOT; };
 		1A6080B222AF3FA400372558 /* UIViewController+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Validation.swift"; sourceTree = "<group>"; };
 		1A6080EE22B1924100372558 /* UIViewController+MediaUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+MediaUpload.swift"; sourceTree = "<group>"; };
 		1A9A8CB2229C593A0010D824 /* ToolShedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolShedItem.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				1A4A84EE2297732800CCC4A3 /* LoginViewController.swift */,
 				1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */,
 				9F572B5322A45C3700DC45B2 /* AddItemController.swift */,
+				1A4CCB9F22B7171300055AED /* BBTextView.swift */,
 				1A6080EE22B1924100372558 /* UIViewController+MediaUpload.swift */,
 				1AACD88A22A494570022AC73 /* LendItemViewController.swift */,
 				1AACD88C22A494750022AC73 /* RequestItemViewController.swift */,
@@ -487,6 +490,7 @@
 				1A6080B322AF3FA400372558 /* UIViewController+Validation.swift in Sources */,
 				1A4A84ED2297732800CCC4A3 /* AppDelegate.swift in Sources */,
 				1A9A8CB5229C90FC0010D824 /* TSItemModel.swift in Sources */,
+				1A4CCBA022B7171300055AED /* BBTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
