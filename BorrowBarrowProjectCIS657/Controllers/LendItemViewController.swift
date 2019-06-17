@@ -11,6 +11,7 @@ import EventKit
 import FirebaseUI
 import SDWebImage
 import Firebase
+import FirebaseAuth
 
 
 protocol LendItemDelegation{
@@ -97,7 +98,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         listOfFriends = [String]();
         self.pickerData = ["You have no friends! Go and add some!"];
         self.getFriends();
-        
+        self.lendBtn.isEnabled = false
         self.limitCalendar();
         
         
@@ -218,9 +219,17 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+        if row <= 0 {
+            self.friendName = self.pickerData[row];
+            self.lendBtn.isEnabled = true
+        } else {
+            let alert = UIAlertController(title: "No Friends Found",
+                                          message: "Please add some friends to your Community",
+                                          preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in print("Foo")}))
+        }
         
-        
-        self.friendName = self.listOfFriends[row];
         //selectedToolItem?.lentTo = friendName
         
         

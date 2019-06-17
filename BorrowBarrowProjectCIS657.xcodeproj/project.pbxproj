@@ -184,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4A84F02297732800CCC4A3 /* Main.storyboard */,
+				1A4CCB9F22B7171300055AED /* BBTextView.swift */,
 				1A9A8CB8229CBD680010D824 /* TSItemTableViewCell.swift */,
 				49903B21229DE4F100D4CF68 /* CFriendTableViewCell.swift */,
 				1A4A84F32297732900CCC4A3 /* Assets.xcassets */,
@@ -210,7 +211,6 @@
 				1A4A84EE2297732800CCC4A3 /* LoginViewController.swift */,
 				1AE69DED229A2F4500686EB6 /* CommunityViewController.swift */,
 				9F572B5322A45C3700DC45B2 /* AddItemController.swift */,
-				1A4CCB9F22B7171300055AED /* BBTextView.swift */,
 				1A6080EE22B1924100372558 /* UIViewController+MediaUpload.swift */,
 				1AACD88A22A494570022AC73 /* LendItemViewController.swift */,
 				1AACD88C22A494750022AC73 /* RequestItemViewController.swift */,

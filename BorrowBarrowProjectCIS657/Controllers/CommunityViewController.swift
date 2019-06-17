@@ -56,6 +56,9 @@ class CommunityViewController: UIViewController, UITableViewDelegate, UITableVie
             self.userId = user.uid
             self.ref = Database.database().reference()
             self.registerForFireBaseUpdates()
+        } else {
+            self.communityFriends?.removeAll()
+            self.filteredFriends?.removeAll()
             }
         }
         

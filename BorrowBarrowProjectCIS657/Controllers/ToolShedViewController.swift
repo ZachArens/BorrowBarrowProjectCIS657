@@ -49,6 +49,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func logoutBtn(_ sender: UIButton) {
         do { try Auth.auth().signOut()
             print ("Logged out")
+            tsItems?.removeAll()
             self.tsItemTableView.reloadData();
 
             } catch let signOutError as NSError {
@@ -81,6 +82,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             logoutBtnRef.isHidden = false;
         }
         
+        self.tsItemTableView.reloadData()
 //        let model: TSItemModel = TSItemModel()
 //        self.tsItems = model.getTSItems()
 
@@ -383,6 +385,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             return newTSItem
         }
+        self.tsItemTableView.reloadData()
     }
     
     func editItemInDB(newTSItem : ToolShedItem) {
@@ -399,6 +402,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             //TODO - add error code
             print("Item not edited: something went wrong")
         }
+        self.tsItemTableView.reloadData()
     }
     
     func deleteItemFromDB(tsItemToDelete: ToolShedItem) {
@@ -408,6 +412,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
             //TODO - add error code
             print("Item not deleted: something went wrong")
         }
+        self.tsItemTableView.reloadData()
     }
     
     @IBAction func createToToolshedUnwind(segue: UIStoryboardSegue)
