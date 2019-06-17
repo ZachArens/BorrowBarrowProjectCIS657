@@ -730,8 +730,11 @@
                                 <date key="date" timeIntervalSinceReferenceDate="582163736.21713495">
                                     <!--2019-06-14 00:08:56 +0000-->
                                 </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-975675600">
+                                    <!--1970-01-31 11:00:00 +0000-->
+                                </date>
                                 <connections>
-                                    <action selector="datePicker:" destination="qYz-yY-e6e" eventType="valueChanged" id="BNS-bg-G3t"/>
+                                    <action selector="datePicker:" destination="qYz-yY-e6e" eventType="valueChanged" id="xd4-yv-FnF"/>
                                 </connections>
                             </datePicker>
                         </subviews>
@@ -847,6 +850,7 @@
                     </view>
                     <connections>
                         <outlet property="LendImageView" destination="XSY-bT-unM" id="Eqz-W1-6Ep"/>
+                        <outlet property="datePicker" destination="0WO-Gz-fCS" id="WwZ-HB-tR4"/>
                         <outlet property="descriptionTextView" destination="RX5-0o-SWe" id="Etp-Ae-akr"/>
                         <outlet property="friendPickerText" destination="mD6-NZ-tJW" id="e1W-bW-4lp"/>
                         <outlet property="friendPickerView" destination="Y99-Eo-0h9" id="b1B-oH-aBh"/>
@@ -1444,19 +1448,14 @@
                                 <exclude reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8vo-8r-334"/>
-                                <exclude reference="A0R-bL-6yL"/>
-                                <exclude reference="J5t-HZ-izx"/>
-                                <exclude reference="NUD-ol-kUF"/>
-                                <exclude reference="jof-dU-Mar"/>
                                 <exclude reference="Wfb-uL-mCH"/>
                                 <exclude reference="BHn-YK-HRk"/>
                                 <exclude reference="6TJ-dQ-HhZ"/>
                                 <exclude reference="cHp-hd-uZg"/>
-                                <exclude reference="2DL-Lc-rIG"/>
-                                <exclude reference="i4b-zn-zqS"/>
                                 <exclude reference="HkJ-3p-p3O"/>
                                 <exclude reference="gff-FB-yJi"/>
+                                <exclude reference="2DL-Lc-rIG"/>
+                                <exclude reference="i4b-zn-zqS"/>
                                 <exclude reference="Nee-UV-8pB"/>
                                 <exclude reference="V0W-SI-29d"/>
                                 <exclude reference="XtF-bb-Axk"/>
@@ -1464,6 +1463,11 @@
                                 <exclude reference="mrr-cK-bij"/>
                                 <exclude reference="HW8-tX-YI1"/>
                                 <exclude reference="Ivc-qv-C8f"/>
+                                <exclude reference="8vo-8r-334"/>
+                                <exclude reference="A0R-bL-6yL"/>
+                                <exclude reference="J5t-HZ-izx"/>
+                                <exclude reference="NUD-ol-kUF"/>
+                                <exclude reference="jof-dU-Mar"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1478,19 +1482,14 @@
                                 <include reference="enR-23-tf9"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8vo-8r-334"/>
-                                <include reference="A0R-bL-6yL"/>
-                                <include reference="J5t-HZ-izx"/>
-                                <include reference="NUD-ol-kUF"/>
-                                <include reference="jof-dU-Mar"/>
                                 <include reference="Wfb-uL-mCH"/>
                                 <include reference="BHn-YK-HRk"/>
                                 <include reference="6TJ-dQ-HhZ"/>
                                 <include reference="cHp-hd-uZg"/>
-                                <include reference="2DL-Lc-rIG"/>
-                                <include reference="i4b-zn-zqS"/>
                                 <include reference="HkJ-3p-p3O"/>
                                 <include reference="gff-FB-yJi"/>
+                                <include reference="2DL-Lc-rIG"/>
+                                <include reference="i4b-zn-zqS"/>
                                 <include reference="Nee-UV-8pB"/>
                                 <include reference="V0W-SI-29d"/>
                                 <include reference="XtF-bb-Axk"/>
@@ -1498,6 +1497,11 @@
                                 <include reference="mrr-cK-bij"/>
                                 <include reference="HW8-tX-YI1"/>
                                 <include reference="Ivc-qv-C8f"/>
+                                <include reference="8vo-8r-334"/>
+                                <include reference="A0R-bL-6yL"/>
+                                <include reference="J5t-HZ-izx"/>
+                                <include reference="NUD-ol-kUF"/>
+                                <include reference="jof-dU-Mar"/>
                             </mask>
                         </variation>
                     </view>
@@ -1687,7 +1691,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="116" id="IPF-M8-RMF"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
@@ -1974,6 +1977,7 @@
                         <outlet property="cityTxtFld" destination="eXF-4P-m0f" id="UMB-Bc-6AO"/>
                         <outlet property="emailTxtFld" destination="ENa-fv-Pqw" id="41P-m9-ts2"/>
                         <outlet property="firstNameTxtFld" destination="eP2-ah-XrV" id="1AJ-TF-lXV"/>
+                        <outlet property="friendDescription" destination="LFT-xQ-CtI" id="mQ9-ep-9Cy"/>
                         <outlet property="friendImageView" destination="XFN-TF-T62" id="VXq-if-xEf"/>
                         <outlet property="friendImageViewer" destination="XFN-TF-T62" id="sfx-Q6-5N5"/>
                         <outlet property="lastNameTxtFld" destination="cmi-yM-8uv" id="x89-wK-lIR"/>
@@ -2475,7 +2479,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="116" id="Iuf-7Q-77O"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">

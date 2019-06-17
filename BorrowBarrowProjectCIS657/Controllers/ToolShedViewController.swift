@@ -198,13 +198,17 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let returnAction = UIContextualAction(style: .normal, title: "Item Return", handler: {(action, view, completionHandler) in
             //Move to edit page here
-            self.selectedToolItem = self.tsItems![indexPath.row];
-            //self.editViewCtrl?.item = self.tsItems![indexPath.row];
-            //self.performSegue(withIdentifier: "editItemSegue", sender: nil);
-            self.tsItems![indexPath.row].lentTo = "in Shed";
-            self.tsItemTableView.reloadData();
-            
-            self.findAndRemoveReminder();
+            if(self.selectedToolItem.lentTo != "in Shed")
+            {
+                self.selectedToolItem = self.tsItems![indexPath.row];
+                //self.editViewCtrl?.item = self.tsItems![indexPath.row];
+                //self.performSegue(withIdentifier: "editItemSegue", sender: nil);
+                self.tsItems![indexPath.row].lentTo = "in Shed";
+                self.tsItemTableView.reloadData();
+                
+                self.findAndRemoveReminder();
+            }
+
             
             
             completionHandler(true);
@@ -219,37 +223,31 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     func findAndRemoveReminder(){
         let eventStore = EKEventStore();
         //print("\(selectedToolItem?.itemName! ?? "Tool") - \(selectedToolItem.lentTo!)");
-//        NSPredicate pred = eventStore.predicateForReminders(in: [eventStore.calendars(for: .reminder)]);
+        //        NSPredicate pred = eventStore.predicateForReminders(in: [eventStore.calendars(for: .reminder)]);
+        let predicate = eventStore.predicateForReminders(in: [eventStore.defaultCalendarForNewReminders()!]);
         
-        let reminder = eventStore.calendarItem(withIdentifier: "\(selectedToolItem?.itemName! ?? "Tool") - Andy") as! EKReminder?;
+        let identifier: String = "\(selectedToolItem?.itemName! ?? "Tool") - Andy";
         
-        if(reminder != nil)
-        {
-            eventStore.requestAccess(to: EKEntityType.reminder, completion: { (accessGranted: Bool, error: Error?) in
+        var reminder: EKReminder?;
+        
+        let listOfReminders = eventStore.fetchReminders(matching: predicate, completion: {reminders in
+            for reminded in reminders!{
+                print(reminded.title);
                 
-                if(accessGranted)
+                if(reminded.title == identifier)
                 {
-                    DispatchQueue.main.async(execute:
-                        {
-                            self.removeReminder(eventStore: eventStore, reminder: reminder!)
-                    })
+                    reminder = reminded;
+                    do{
+                        try eventStore.remove(reminded, commit: true)
+                    } catch let error {
+                        print("Error occurred when deleting the reminder - \(error.localizedDescription)");
+                    }
+                    // self.removeReminder(eventStore: eventStore, reminder: reminded);
                 }
             }
-                
-            )
-        }
+        })
         
     }
-    
-    func removeReminder(eventStore: EKEventStore, reminder: EKReminder)
-    {
-        do{
-            try eventStore.remove(reminder, commit: true)
-        } catch let error {
-            print("Error occurred when deleting the reminder - \(error.localizedDescription)");
-        }
-    }
-    
     
     /*
     // MARK: - Navigation

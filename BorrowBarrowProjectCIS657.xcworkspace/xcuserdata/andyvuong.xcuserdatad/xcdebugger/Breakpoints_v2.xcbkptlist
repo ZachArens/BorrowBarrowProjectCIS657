@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/ToolShedViewController.swift"
-            timestampString = "582419069.12644"
+            timestampString = "582431038.33828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/ToolShedViewController.swift"
-            timestampString = "582419069.1265759"
+            timestampString = "582431038.341983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.1266789"
+            timestampString = "582431038.342445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "setInfo()"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.1281101"
+            timestampString = "582431038.375123"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "setInfo()"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/AddFriendViewController.swift"
-            timestampString = "582419069.129602"
+            timestampString = "582431038.376897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/AddFriendViewController.swift"
-            timestampString = "582419069.129813"
+            timestampString = "582431038.3774461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/AddFriendViewController.swift"
-            timestampString = "582419069.129914"
+            timestampString = "582431038.377825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/CommunityViewController.swift"
-            timestampString = "582419069.130006"
+            timestampString = "582429643.4699399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/CommunityViewController.swift"
-            timestampString = "582419069.130113"
+            timestampString = "582429643.472351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/AddFriendViewController.swift"
-            timestampString = "582419069.130191"
+            timestampString = "582431038.3783391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/CommunityViewController.swift"
-            timestampString = "582419069.130272"
+            timestampString = "582429643.473442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/CommunityViewController.swift"
-            timestampString = "582419069.130348"
+            timestampString = "582429643.474363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -314,13 +314,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.130425"
+            timestampString = "582431038.378859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "LendItemViewController"
-            landmarkType = "3">
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.131596"
+            timestampString = "582431038.380037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "addReminder(store:)"
             landmarkType = "7">
             <Locations>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.132687"
+            timestampString = "582431038.381168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "addReminder(store:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.133743"
+            timestampString = "582431038.381972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "getFriends()"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.134822"
+            timestampString = "582431038.383962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "getFriends()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
+            timestampString = "582431038.384931"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "registerForFireBaseUpdates()"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,27 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.135588"
+            timestampString = "582431038.3858401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "registerForFireBaseUpdates()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.136291"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "addReminder(store:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.136991"
+            timestampString = "582431038.3867199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "registerForFireBaseUpdates()"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,13 +474,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.13782"
+            timestampString = "582431038.387553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "LendItemViewController"
-            landmarkType = "21">
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "getFriends()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.138697"
+            timestampString = "582431038.388415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.139405"
+            timestampString = "582431038.389353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "registerForFireBaseUpdates()"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.140565"
+            timestampString = "582431038.390204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "registerForFireBaseUpdates()"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/AddFriendViewController.swift"
-            timestampString = "582419069.141585"
+            timestampString = "582431038.390994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
@@ -554,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/AddFriendViewController.swift"
-            timestampString = "582419069.141701"
+            timestampString = "582431038.391247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
@@ -570,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/AddFriendViewController.swift"
-            timestampString = "582419069.141811"
+            timestampString = "582431038.391438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
@@ -602,12 +602,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.14206"
+            timestampString = "582431038.391691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "datePicker(_:)"
+            landmarkName = "lendItemBtn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -618,12 +618,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.143191"
+            timestampString = "582431038.3924021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "datePicker(_:)"
+            landmarkName = "lendItemBtn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.144292"
+            timestampString = "582431038.393178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "requestCalendarAccess(store:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,12 +650,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/ToolShedViewController.swift"
-            timestampString = "582419069.145436"
+            timestampString = "582431038.393877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "lendItemDelegate(item:)"
+            landmarkName = "returnEditedItemDelegation(item:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -666,12 +666,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/ToolShedViewController.swift"
-            timestampString = "582419069.145604"
+            timestampString = "582431038.394111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
             endingLineNumber = "155"
-            landmarkName = "lendItemDelegate(item:)"
+            landmarkName = "returnEditedItemDelegation(item:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419069.145811"
+            timestampString = "582431038.394336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "LendItemViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -698,13 +698,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BorrowBarrowProjectCIS657/Controllers/LendItemViewController.swift"
-            timestampString = "582419232.601054"
+            timestampString = "582431038.396255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "LendItemViewController"
             landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BorrowBarrowProjectCIS657/Controllers/ToolShedViewController.swift"
+            timestampString = "582431038.397454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "lendItemDelegate(item:index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BorrowBarrowProjectCIS657/Controllers/ToolShedViewController.swift"
+            timestampString = "582431038.397719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "lendItemDelegate(item:index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BorrowBarrowProjectCIS657/Controllers/ToolShedViewController.swift"
+            timestampString = "582431038.397974"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "lendItemDelegate(item:index:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -63,6 +63,10 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
     
     @IBOutlet weak var lendBtn: UIButton!
     
+    
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     var pickerData: [String] = [String]()
     
     var toggledReminder: Bool!;
@@ -93,6 +97,9 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         listOfFriends = [String]();
         self.pickerData = ["You have no friends! Go and add some!"];
         self.getFriends();
+        
+        self.limitCalendar();
+        
         
         //        Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
         //            self.userId = user.uid
@@ -130,6 +137,13 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         
         self.pickerData = self.listOfFriends;
         
+    }
+    
+    func limitCalendar(){
+        datePicker.datePickerMode = UIDatePicker.Mode.date;
+        let currentDate = NSDate();
+        datePicker.minimumDate = currentDate as Date;
+        datePicker.date = currentDate as Date;
     }
     
     func setInfo() -> Void
@@ -262,7 +276,7 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         let reminder = EKReminder(eventStore: store);
         
         reminder.title = "\(selectedToolItem?.itemName! ?? "Tool") - \(self.friendName!)";
-        reminder.priority = 2; //I think this means low priority
+        reminder.priority = 0; //I think this means low priority
         
         reminder.notes = "\(selectedToolItem?.itemName! ?? "Tool") should be returning to you today from \(self.friendName!)"; //Add friend name here
         
