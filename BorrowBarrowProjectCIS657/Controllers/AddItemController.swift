@@ -12,7 +12,7 @@ import FirebaseAuth
 
 
 protocol AddItemControllerDelegate: class {
-    func addItem(newTSItem: ToolShedItem)
+    func addItem(newTSItem: ToolShedItem, localPhoto: UIImage?)
 }
 
 class AddItemController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -89,10 +89,10 @@ class AddItemController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBAction func addItemBtn(_ sender: UIButton) {
         
         let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: tsStoragePath, imageToSave: tsImageView?.image);
-                
+        let localPhoto = chosenImage
         let newTSItem = ToolShedItem(itemName: itemNameTextField.text ?? "", owner: "owner", itemDescription: itemDetailsUITextField.text ?? "", reqYesNo: restrictYNToggle.isOn, requirements: restrictDetailsTextField.text ?? "", photoURL: url, thumbnailURL: "thumbnailURL", lentTo: "in Shed")
         if let d = self.delegate {
-            d.addItem(newTSItem : newTSItem)
+            d.addItem(newTSItem : newTSItem, localPhoto: localPhoto)
         }
         
         

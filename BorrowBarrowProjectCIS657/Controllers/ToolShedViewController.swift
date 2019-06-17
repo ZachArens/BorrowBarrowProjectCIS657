@@ -33,6 +33,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var selectedToolItem: ToolShedItem!
     var selectedToolIndex: Int?
+    var localPhotos: Dictionary<Int,UIImage?> = [:]
     
     var lendItemDelegate: LendItemDelegation?;
     
@@ -134,7 +135,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    func addItem(newTSItem: ToolShedItem) {
+    func addItem(newTSItem: ToolShedItem, localPhoto: UIImage?) {
         //DEBUG
         if DEBUG {
             print("added item to TSItems array")
@@ -146,6 +147,10 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let keyedTSItem = self.addItemToDB(newTSItem: newTSItem)
         tsItems?.append(keyedTSItem)
+        let photoIndex: Int = tsItems!.count - 1
+        if photoIndex >= 0 {
+            localPhotos[photoIndex] = localPhoto
+        }
         
     }
     
@@ -298,7 +303,11 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
 //                } else {
 //                    cell.itemPicture?.image = UIImage(named: "emptyPhoto")
 //                }
-                let placeholderImage = UIImage(named: "emptyPhoto")
+                var placeholderImage = UIImage(named: "emptyPhoto")
+                if localPhotos.count > 0 {
+                    placeholderImage = localPhotos[indexPath.row] ?? UIImage(named:"emptyPhoto")
+                }
+            
                 if item.photoURL!.isValidStorageURL() && item.photoURL != nil {
                     let imageRef = Storage.storage().reference(forURL: item.photoURL!)
                     cell.itemPicture?.sd_setImage(with: imageRef, placeholderImage: placeholderImage)
