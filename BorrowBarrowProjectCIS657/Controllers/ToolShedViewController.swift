@@ -207,15 +207,18 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let returnAction = UIContextualAction(style: .normal, title: "Item Return", handler: {(action, view, completionHandler) in
             //Move to edit page here
+           
+            self.selectedToolItem = self.tsItems![indexPath.row];
+            
             if(self.selectedToolItem.lentTo! != "in Shed")
             {
-                self.selectedToolItem = self.tsItems![indexPath.row];
+                
                 //self.editViewCtrl?.item = self.tsItems![indexPath.row];
                 //self.performSegue(withIdentifier: "editItemSegue", sender: nil);
                 self.tsItems![indexPath.row].lentTo = "in Shed";
                 self.tsItemTableView.reloadData();
                 
-                self.findAndRemoveReminder(item: self.selectedToolItem);
+                //self.findAndRemoveReminder(item: self.selectedToolItem);
                 
                 self.editItemInDB(newTSItem: self.tsItems![indexPath.row]);
             } else {print("did not return")}
