@@ -29,6 +29,9 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBOutlet weak var friendDescription: UITextView!
     
+    
+    @IBOutlet weak var addFriendScrollView: UIScrollView!
+    
     var storageRef: StorageReference?
     var cfStoragePath: StorageReference?
     fileprivate var userId: String? = ""
@@ -92,6 +95,29 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
         
         view.addGestureRecognizer(tap);
+        
+        let notificationCenter = NotificationCenter.default;
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    /*
+     Code for adjusting keyboard from the following source:
+        https://www.hackingwithswift.com/example-code/uikit/how-to-adjust-a-uiscrollview-to-fit-the-keyboard
+     */
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            addFriendScrollView.contentInset = .zero
+        } else {
+            addFriendScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        
+        addFriendScrollView.scrollIndicatorInsets = addFriendScrollView.contentInset
     }
     
     /*Image Picker Code  from sources:
