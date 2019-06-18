@@ -37,6 +37,8 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     fileprivate var userId: String? = ""
     var chosenImage: UIImage?
     
+    var loggedIn: Bool?
+    
     weak var delegate: AddFriendControllerDelegate?;
     var imgPickerCtrl: UIImagePickerController!;
 
@@ -73,11 +75,13 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         imgPickerCtrl = UIImagePickerController();
+        loggedIn = false;
 
         friendImageView?.image = chosenImage ?? UIImage(named: "emptyPhoto")
         
         Auth.auth().addStateDidChangeListener { auth, user in if let user = user {
             self.userId = user.uid
+            self.loggedIn = true;
             self.storageRef = Storage.storage().reference().child(self.userId!)
             self.cfStoragePath = self.storageRef!.child("comFriendPics")
             //self.registerForFireBaseUpdates()
@@ -151,18 +155,29 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
     @IBAction func addFriendBtn(_ sender: UIButton) {
         
         //Add if statement to check if logged in
-        
-        let accountAlert = UIAlertController(title: "Do you have an account?", message: "In order to save your list of friends, you need to login or create an account", preferredStyle: .alert);
-        
-        accountAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
-            accountAlert.dismiss(animated: true, completion: nil);
-        }))
-        
-        accountAlert.addAction(UIAlertAction(title: "Login", style: .cancel, handler: {action in
-            let signInView = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendView");
-            self.present(signInView!, animated: true, completion: nil);
-        }))
-        
+        if(!loggedIn!)
+        {
+            let accountAlert = UIAlertController(title: "Do you have an account?", message: "In order to save your list of friends, you need to login or create an account", preferredStyle: .alert);
+            
+            accountAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                accountAlert.dismiss(animated: true, completion: nil);
+            }))
+            
+            accountAlert.addAction(UIAlertAction(title: "Login", style: .default, handler: {action in
+                let signInView = self.storyboard?.instantiateViewController(withIdentifier: "LoginView");
+                self.present(signInView!, animated: true, completion: nil);
+            }))
+            self.present(accountAlert, animated: true, completion: nil);
+        }
+        else
+        {
+            self.createAndAddFriend();
+        }
+
+
+    }
+    
+    func createAndAddFriend(){
         let url = self.uploadMediaToFireStorage(userId: userId, storageRefWithChilds: cfStoragePath, imageToSave: friendImageView?.image)
         
         //TODO - need to finish calculation logic for lends and items
@@ -170,13 +185,12 @@ class AddFriendViewController: UIViewController, UINavigationControllerDelegate,
         let numItemsCalc = 3
         
         let newComFriend = CommunityFriend(firstName: firstNameTxtFld.text ?? "", lastName: lastNameTxtFld.text ?? "", email: emailTxtFld.text ?? "", phoneNum: phoneTxtField.text ?? "", address1: address1TxtFld.text ?? "", address2: address2TxtFld.text ?? "", city: cityTxtFld.text ?? "", state: stateTxtFld.text ?? "", zipcode: zipTxtFld.text ?? "", trustYesNo: true, friendPhoto: url, numLends: numLendsCalc, numItems: numItemsCalc)
-
+        
         if let d = self.delegate {
             d.addFriend(newComFriend: newComFriend)
         }
         
         navigationController?.popViewController(animated: true);
-        
     }
     
     //Text View Placeholder code from the following:

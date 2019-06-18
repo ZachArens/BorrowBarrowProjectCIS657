@@ -98,7 +98,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         listOfFriends = [String]();
         self.pickerData = ["You have no friends! Go and add some!"];
         self.getFriends();
-        self.lendBtn.isEnabled = false
+        //self.lendBtn.isEnabled = false
         self.limitCalendar();
         
         
