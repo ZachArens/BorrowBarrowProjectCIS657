@@ -1524,7 +1524,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOX-Ie-EhM">
-                                <rect key="frame" x="0.0" y="333" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="333" width="414" height="420"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eP2-ah-XrV">
                                         <rect key="frame" x="20" y="20" width="374" height="30"/>
@@ -1739,7 +1739,7 @@
                                         </variation>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ENa-fv-Pqw" secondAttribute="trailing" constant="20" id="1V9-aU-91C"/>
                                     <constraint firstItem="Ggk-rt-tAa" firstAttribute="top" secondItem="8Io-XB-rR3" secondAttribute="bottom" constant="8" id="2Kz-NB-Tjx"/>
@@ -1750,7 +1750,6 @@
                                     <constraint firstItem="LFT-xQ-CtI" firstAttribute="top" secondItem="Ggk-rt-tAa" secondAttribute="bottom" constant="8" id="CLX-Mp-lkF"/>
                                     <constraint firstItem="cmi-yM-8uv" firstAttribute="top" secondItem="eP2-ah-XrV" secondAttribute="bottom" constant="8" id="DMB-hU-7eJ"/>
                                     <constraint firstItem="SZ3-v4-0MX" firstAttribute="top" secondItem="eXF-4P-m0f" secondAttribute="bottom" constant="8" id="FqU-PB-rGf"/>
-                                    <constraint firstAttribute="height" constant="250" id="HdV-QT-TKq"/>
                                     <constraint firstItem="eXF-4P-m0f" firstAttribute="top" secondItem="COt-E4-HgL" secondAttribute="bottom" constant="8" id="KYd-DL-5pQ"/>
                                     <constraint firstItem="COt-E4-HgL" firstAttribute="top" secondItem="ENa-fv-Pqw" secondAttribute="bottom" constant="8" id="KmW-Xm-ySv"/>
                                     <constraint firstAttribute="trailing" secondItem="eP2-ah-XrV" secondAttribute="trailing" constant="20" id="LV4-l7-mbQ"/>
@@ -1886,6 +1885,7 @@
                             <constraint firstItem="XFN-TF-T62" firstAttribute="leading" secondItem="NmD-wC-eKT" secondAttribute="leading" id="g4z-PA-LPi"/>
                             <constraint firstItem="NmD-wC-eKT" firstAttribute="bottom" secondItem="bVq-8T-l9o" secondAttribute="bottom" constant="12" id="i1E-4e-UJ1"/>
                             <constraint firstItem="Y5B-fL-Z9l" firstAttribute="centerY" secondItem="bsp-jK-Xg9" secondAttribute="centerY" id="oOQ-Gv-GSh"/>
+                            <constraint firstItem="bVq-8T-l9o" firstAttribute="top" secondItem="BOX-Ie-EhM" secondAttribute="bottom" constant="8" id="pm3-ZM-e0k"/>
                             <constraint firstItem="NmD-wC-eKT" firstAttribute="trailing" secondItem="bVq-8T-l9o" secondAttribute="trailing" constant="20" id="qbc-3x-buh"/>
                             <constraint firstItem="Y5B-fL-Z9l" firstAttribute="top" secondItem="XFN-TF-T62" secondAttribute="bottom" constant="8" id="rph-S1-VbY"/>
                         </constraints>
@@ -1924,6 +1924,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addFriendScrollView" destination="BOX-Ie-EhM" id="CJj-ar-Taz"/>
                         <outlet property="address1TxtFld" destination="SZ3-v4-0MX" id="URn-Gj-cjy"/>
                         <outlet property="address2TxtFld" destination="8Io-XB-rR3" id="gPY-JS-2PX"/>
                         <outlet property="cityTxtFld" destination="eXF-4P-m0f" id="UMB-Bc-6AO"/>
