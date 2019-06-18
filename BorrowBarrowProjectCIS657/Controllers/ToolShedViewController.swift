@@ -118,6 +118,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         {
             lendViewCtrl = lend;
             lend.selectedToolItem = selectedToolItem;
+            lend.selectedToolIndex = selectedToolIndex
             lend.lendItemDelegate = self;
 
         } else if let addItems = segue.destination as? AddItemController {
@@ -181,6 +182,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         let editAction = UIContextualAction(style: .normal, title: "Edit", handler: {(action, view, completionHandler) in
             //Move to edit page here
             self.selectedToolItem = self.tsItems![indexPath.row];
+            self.selectedToolIndex = indexPath.row
             self.editViewCtrl?.item = self.tsItems![indexPath.row];
             //self.editViewCtrl
             self.performSegue(withIdentifier: "editItemSegue", sender: nil);
@@ -281,6 +283,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         lendViewCtrl?.selectedToolItem = tsItems![indexPath.row];
+        lendViewCtrl?.selectedToolIndex = indexPath.row
 //        if let d = self.lendItemDelegate{
 //            print("Delegating...")
 //            d.lendItemDelegate(item: nil);
@@ -390,23 +393,17 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         if let key = newChild?.key {
             var returnTSItem = newTSItem
             returnTSItem.addDBID(dbId: key)
+            self.tsItemTableView.reloadData()
             return returnTSItem
         } else {
             return newTSItem
         }
-        self.tsItemTableView.reloadData()
     }
     
     func editItemInDB(newTSItem : ToolShedItem) {
-        if let newChild = self.ref?.child(self.userId).child("toolshed").child(newTSItem.dbId!) {
-            newChild.setValue(self.toDictionary(itms: newTSItem))
-//            if let key = newChild?.key {
-//                var returnTSItem = newTSItem
-//                returnTSItem.addDBID(dbId: key)
-//                return returnTSItem
-//            } else {
-//                return newTSItem
-//            }
+        if let editChild = self.ref?.child(self.userId).child("toolshed").child(newTSItem.dbId!) {
+            editChild.setValue(self.toDictionary(itms: newTSItem))
+            
         } else {
             //TODO - add error code
             print("Item not edited: something went wrong")

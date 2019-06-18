@@ -101,7 +101,9 @@ class EditItemViewController: UIViewController {
             itemImageView?.image = placeholderImage
         }
         itemNameTextView.text = item!.itemName;
-        itemDetailsTextView.text = "\(item!.itemDescription ?? "") Index is \(itemIndex ?? -1)";
+        let index = "Index is \(itemIndex ?? -1)"
+        let itemDescriptText = "\(item!.itemDescription ?? "")" ;
+        itemDetailsTextView.text = itemDescriptText
         itemDetailsTextView.text = item!.requirements
         
 
