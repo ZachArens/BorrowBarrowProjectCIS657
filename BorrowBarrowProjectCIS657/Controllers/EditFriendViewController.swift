@@ -13,7 +13,7 @@ protocol EditFriendViewControllerDelegate{
     func editFriendViewControllerDelegation(friend: CommunityFriend);
 }
 
-class EditFriendViewController: UIViewController {
+class EditFriendViewController: UIViewController, UITextViewDelegate {
     
     
     @IBOutlet weak var friendImageView: UIImageView!
@@ -53,7 +53,9 @@ class EditFriendViewController: UIViewController {
         
         navigationController?.popViewController(animated: true);
     }
+   
     
+    @IBOutlet weak var editFriendScrollView: UIScrollView!
     
     var friend: CommunityFriend?;
     
@@ -64,7 +66,42 @@ class EditFriendViewController: UIViewController {
         super.viewDidLoad()
         setFriendInfo();
         // Do any additional setup after loading the view.
+        
+        let notificationCenter = NotificationCenter.default;
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        
+        friendDescriptionTxtView.delegate = self;
+        
+        friendDescriptionTxtView.text = "Description";
+        friendDescriptionTxtView.textColor = UIColor.lightGray;
+        
+        friendDescriptionTxtView.becomeFirstResponder();
+        
+        friendDescriptionTxtView.selectedTextRange = friendDescriptionTxtView.textRange(from: friendDescriptionTxtView.beginningOfDocument, to: friendDescriptionTxtView.beginningOfDocument)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
     }
+    
+    /*
+     Code for adjusting keyboard from the following source:
+     https://www.hackingwithswift.com/example-code/uikit/how-to-adjust-a-uiscrollview-to-fit-the-keyboard
+     */
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            editFriendScrollView.contentInset = .zero
+        } else {
+            editFriendScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        
+        editFriendScrollView.scrollIndicatorInsets = editFriendScrollView.contentInset
+    }
+    
     
 
     func setFriendInfo(){
@@ -74,9 +111,10 @@ class EditFriendViewController: UIViewController {
         emailTxtView.text = friend?.email;
         addressTxtView.text = friend?.address1;
         address2TxtView.text = friend?.address2;
-        cityTxtView.text = friend?.friendPhoto;
+        cityTxtView.text = friend?.city;
         stateTxtView.text = friend?.state;
         zipCodeTxtView.text = friend?.zipcode;
+        
         
         //friendImageView.image = UIImage(named: ((friend?.friendPhoto!)!)) ?? UIImage(named: "emptyPhoto");
         
@@ -99,5 +137,47 @@ class EditFriendViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //Text View Placeholder code from the following:
+    //https://stackoverflow.com/questions/27652227/text-view-uitextview-placeholder-swift
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        let currentText:String = friendDescriptionTxtView.text;
+        
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        if(updatedText.isEmpty)
+        {
+            //friendDescriptionTxtView.text = "Description";
+            friendDescriptionTxtView.textColor = UIColor.lightGray;
+            
+            friendDescriptionTxtView.selectedTextRange = friendDescriptionTxtView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            
+            
+        }
+        else if friendDescriptionTxtView.textColor == UIColor.lightGray && !text.isEmpty
+        {
+            friendDescriptionTxtView.textColor = UIColor.black;
+            friendDescriptionTxtView.text = text;
+        }
+        else{
+            return true
+        }
+        
+        return false;
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if self.view.window != nil{
+            if friendDescriptionTxtView.textColor == UIColor.lightGray {
+                friendDescriptionTxtView.selectedTextRange = friendDescriptionTxtView.textRange(from: friendDescriptionTxtView.beginningOfDocument, to: friendDescriptionTxtView.beginningOfDocument)
+            }
+        }
+    }
+    
+    @objc func dropKeyboard(){
+        view.endEditing(true);
+    }
 
 }
