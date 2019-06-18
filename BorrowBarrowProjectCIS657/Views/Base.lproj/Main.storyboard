@@ -263,7 +263,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Special Requests" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8No-8K-Nbi">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Special Requests" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8No-8K-Nbi" customClass="BBTextView" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target">
                                 <rect key="frame" x="20" y="528" width="374" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -333,7 +333,7 @@
                                     <action selector="requestItemBtn:" destination="her-4D-cMu" eventType="touchUpInside" id="nzu-Q6-YZn"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J7U-BO-Voa">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J7U-BO-Voa" customClass="BBTextView" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target">
                                 <rect key="frame" x="20" y="596" width="374" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -588,7 +588,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Item Description " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RX5-0o-SWe">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Item Description " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RX5-0o-SWe" customClass="BBTextView" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target">
                                 <rect key="frame" x="16" y="339" width="382" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" hint="Notes to Lender">
@@ -850,7 +850,7 @@
                         <outlet property="friendPickerView" destination="Y99-Eo-0h9" id="b1B-oH-aBh"/>
                         <outlet property="itemNameLabel" destination="Zwt-sD-3MT" id="SjQ-52-VVd"/>
                         <outlet property="itemStatusLabel" destination="oay-0V-qou" id="35c-OB-Lkr"/>
-                        <outlet property="lendBtn" destination="BiF-pr-ymQ" id="uCp-Ek-4nF"/>
+                        <outlet property="lendBtn" destination="BiF-pr-ymQ" id="uPh-4F-NAb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rim-LF-Xpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1286,7 +1286,7 @@
                                     <action selector="openPhotoLibBtn:" destination="3m6-y3-mbS" eventType="touchUpInside" id="OZS-wb-yPY"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Item Details" translatesAutoresizingMaskIntoConstraints="NO" id="Q2m-Mi-3MU" userLabel="itemDetails">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Item Details" translatesAutoresizingMaskIntoConstraints="NO" id="Q2m-Mi-3MU" userLabel="itemDetails" customClass="BBTextView" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target">
                                 <rect key="frame" x="20" y="373" width="374" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" hint="Description" identifier="description" label="Description"/>
@@ -1347,7 +1347,7 @@
                                     <action selector="addItemBtn:" destination="3m6-y3-mbS" eventType="touchUpInside" id="HvB-1e-Z3X"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Restrictions" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="enR-23-tf9" userLabel="itemRestrict">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Restrictions" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="enR-23-tf9" userLabel="itemRestrict" customClass="BBTextView" customModule="BorrowBarrowProjectCIS657" customModuleProvider="target">
                                 <rect key="frame" x="16" y="490" width="382" height="84"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" hint="Item Requests and Restrictions" label="Restrictions"/>
@@ -1896,13 +1896,13 @@
                                 <exclude reference="bsp-jK-Xg9"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="W47-xT-OiF"/>
                                 <exclude reference="QG1-UD-agJ"/>
                                 <exclude reference="qbc-3x-buh"/>
-                                <exclude reference="W47-xT-OiF"/>
+                                <exclude reference="Pl3-Ik-3ya"/>
                                 <exclude reference="JcE-bK-FAt"/>
                                 <exclude reference="RfE-FE-S95"/>
                                 <exclude reference="oOQ-Gv-GSh"/>
-                                <exclude reference="Pl3-Ik-3ya"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1913,13 +1913,13 @@
                                 <include reference="bsp-jK-Xg9"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="W47-xT-OiF"/>
                                 <include reference="QG1-UD-agJ"/>
                                 <include reference="qbc-3x-buh"/>
-                                <include reference="W47-xT-OiF"/>
+                                <include reference="Pl3-Ik-3ya"/>
                                 <exclude reference="JcE-bK-FAt"/>
                                 <include reference="RfE-FE-S95"/>
                                 <include reference="oOQ-Gv-GSh"/>
-                                <include reference="Pl3-Ik-3ya"/>
                             </mask>
                         </variation>
                     </view>
