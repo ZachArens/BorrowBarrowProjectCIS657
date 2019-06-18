@@ -113,7 +113,7 @@ class LendItemViewController: UIViewController, ToolShedViewControllerDelegate
         
         toggledReminder = true;
         
-        
+        reminderDate = datePicker.date;
         
         self.refreshPicker();
         setInfo();
@@ -284,10 +284,14 @@ extension LendItemViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     {
         let reminder = EKReminder(eventStore: store);
         
+        let dateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "MM-dd-yyy";
+        let stringDate = dateFormatter.string(from: reminderDate!);
+        
         reminder.title = "\(selectedToolItem?.itemName! ?? "Tool") - \(self.friendName!)";
         reminder.priority = 0; //I think this means low priority
         
-        reminder.notes = "\(selectedToolItem?.itemName! ?? "Tool") should be returning to you today from \(self.friendName!)"; //Add friend name here
+        reminder.notes = "\(selectedToolItem?.itemName! ?? "Tool") should be returning to you on \(stringDate) from \(self.friendName!)"; //Add friend name here
         
         reminder.calendar = store.defaultCalendarForNewReminders();
         

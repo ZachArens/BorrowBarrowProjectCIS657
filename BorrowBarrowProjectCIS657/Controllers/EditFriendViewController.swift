@@ -80,7 +80,7 @@ class EditFriendViewController: UIViewController, UITextViewDelegate {
         friendDescriptionTxtView.becomeFirstResponder();
         
         friendDescriptionTxtView.selectedTextRange = friendDescriptionTxtView.textRange(from: friendDescriptionTxtView.beginningOfDocument, to: friendDescriptionTxtView.beginningOfDocument)
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
+        let _: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dropKeyboard));
     }
     
     /*

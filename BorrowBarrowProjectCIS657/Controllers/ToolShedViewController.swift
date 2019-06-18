@@ -191,9 +191,9 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         })
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {(action, view, deletionHandler) in
+            self.findAndRemoveReminder(item: self.tsItems![indexPath.row]);
             self.deleteItemFromDB(tsItemToDelete: self.tsItems![indexPath.row])
             //Code to delete item here
-            self.findAndRemoveReminder();
             deletionHandler(true);
         })
         
@@ -215,7 +215,9 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
                 self.tsItems![indexPath.row].lentTo = "in Shed";
                 self.tsItemTableView.reloadData();
                 
-                self.findAndRemoveReminder();
+                self.findAndRemoveReminder(item: self.selectedToolItem);
+                
+                self.editItemInDB(newTSItem: self.tsItems![indexPath.row]);
             } else {print("did not return")}
 
             
@@ -229,7 +231,7 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         return configuration;
     }
     
-    func findAndRemoveReminder(){
+    func findAndRemoveReminder(item: ToolShedItem){
         let eventStore = EKEventStore();
         //print("\(selectedToolItem?.itemName! ?? "Tool") - \(selectedToolItem.lentTo!)");
         //        NSPredicate pred = eventStore.predicateForReminders(in: [eventStore.calendars(for: .reminder)]);
@@ -239,9 +241,14 @@ class ToolShedViewController: UIViewController, UITableViewDelegate, UITableView
         
         var reminder: EKReminder?;
         
-        let listOfReminders = eventStore.fetchReminders(matching: predicate, completion: {reminders in
+        
+        
+        let listOfReminders = eventStore.fetchReminders(matching: predicate, completion: {
+            (reminders: [EKReminder]?) -> Void in
             for reminded in reminders!{
-                print(reminded.title);
+                
+                reminder = reminded as EKReminder;
+                print(reminder!.title);
                 
                 if(reminded.title == identifier)
                 {

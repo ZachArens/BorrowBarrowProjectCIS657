@@ -667,13 +667,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KZ8JLL6JQC;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BorrowBarrowProjectCIS657/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ZacharyArens.apps.BorrowBarrowProjectCIS657;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndyVuong.apps.BorrowBarrowProjectCIS657;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -686,13 +686,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KZ8JLL6JQC;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BorrowBarrowProjectCIS657/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ZacharyArens.apps.BorrowBarrowProjectCIS657;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndyVuong.apps.BorrowBarrowProjectCIS657;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
